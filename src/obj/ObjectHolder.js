@@ -7,7 +7,8 @@ var ObjectHolder = (function () {
     ObjectHolder.init = function(opts) {
         this.background = new Background();
         this.enemyBox = new Laya.Sprite();
-        this.bulletBox = new Laya.Sprite();
+        this.heroBulletBox = new Laya.Sprite();
+        this.enemyBulletBox = new Laya.Sprite();
         this.itemBox = new Laya.Sprite();
         this.hero = new Laya.Sprite();
     }
@@ -17,8 +18,10 @@ var ObjectHolder = (function () {
         this.background = new Background();
         this.enemyBox.destroy();
         this.enemyBox = new Laya.Sprite();
-        this.bulletBox.destroy();
-        this.bulletBox = new Laya.Sprite();
+        this.enemyBulletBox.destroy();
+        this.enemyBulletBox = new Laya.Sprite();
+        this.heroBulletBox.destroy();
+        this.heroBulletBox = new Laya.Sprite();
         this.itemBox.destroy();
         this.itemBox = new Laya.Sprite();
         this.hero.destroy();

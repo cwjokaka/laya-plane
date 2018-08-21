@@ -10,7 +10,8 @@ var PlayScene = (function (_super) {
         ObjectHolder.init();
         this.background = ObjectHolder.background;
         this.enemyBox = ObjectHolder.enemyBox;
-        this.bulletBox = ObjectHolder.bulletBox;
+        this.enemyBulletBox = ObjectHolder.enemyBulletBox;
+        this.heroBulletBox = ObjectHolder.heroBulletBox;
         this.itemBox = ObjectHolder.itemBox;
         this.hero = ObjectHolder.hero;
         this.init();
@@ -25,6 +26,11 @@ var PlayScene = (function (_super) {
      */
     _proto.init = function() {
         Laya.stage.addChild(this.background);
+        Laya.stage.addChild(this.enemyBox);
+        Laya.stage.addChild(this.enemyBulletBox);
+        Laya.stage.addChild(this.heroBulletBox);
+        Laya.stage.addChild(this.itemBox);
+        Laya.stage.addChild(this.hero);
     }
 
     /**

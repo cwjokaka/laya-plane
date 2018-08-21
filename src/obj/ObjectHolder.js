@@ -17,11 +17,11 @@ var ObjectHolder = (function () {
         this.background.destroy();
         this.background = new Background();
         this.enemyBox.destroy();
-        this.enemyBulletBox = new Laya.Sprite();
+        this.enemyBox = new Laya.Sprite();
         this.enemyBulletBox.destroy();
-        this.heroBulletBox = new Laya.Sprite();
+        this.enemyBulletBox = new Laya.Sprite();
         this.heroBulletBox.destroy();
-        this.bulletBox = new Laya.Sprite();
+        this.heroBulletBox = new Laya.Sprite();
         this.itemBox.destroy();
         this.itemBox = new Laya.Sprite();
         this.hero.destroy();

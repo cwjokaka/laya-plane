@@ -43,5 +43,12 @@ var Hero = (function (_super) {
         //设置机身居中
         this.body.pos(-this.bound.width/2, -this.bound.height/2);
     }
+
+    /**
+     * 主角移动
+     */
+    _proto.move = function(){
+        this.hero.pos(Laya.stage.mouseX, Laya.stage.mouseY);
+    }
     return Hero;
 }(Laya.Sprite));

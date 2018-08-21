@@ -31,12 +31,15 @@ var PlayScene = (function (_super) {
         Laya.stage.addChild(this.heroBulletBox);
         Laya.stage.addChild(this.itemBox);
         Laya.stage.addChild(this.hero);
+        this.restart();
     }
 
     /**
      * 重新游戏
      */
     _proto.restart = function() {
+        //恢复游戏
+        this.resume();
     }
 
     /**
@@ -46,5 +49,20 @@ var PlayScene = (function (_super) {
 
     }
 
+    /**
+     * 暂停游戏
+     */
+    _proto.pause = function(){
+        //移除舞台的鼠标移动事件
+        Laya.stage.off(Laya.Event.MOUSE_MOVE, this, this.hero.move);
+    }
+
+    /**
+     * 恢复游戏
+     */
+    _proto.resume = function(){
+        //添加鼠标移动触发事件
+        Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.hero.move);
+    }
     return PlayScene;
 }(Laya.Sprite));

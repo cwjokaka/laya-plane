@@ -9,6 +9,7 @@ var Hero = (function (_super) {
         this.hp = 1;
         this.atk = 1;
 
+        this.init();
     }
 
     Laya.class(Hero, "Hero", _super);
@@ -35,8 +36,8 @@ var Hero = (function (_super) {
         }
     }
     _proto.playAction = function(action){
-         this.action = action;
-        this.body.play(0, true, this.type + "_" + action);
+        this.action = action;
+        this.body.play(0, true, "hero_" + action);
         //获取动画大小区域t
         this.bound = this.body.getBounds();
         //设置机身居中

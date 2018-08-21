@@ -3,6 +3,10 @@
 */
 var Role = (function (_super) {
     function Role(opts) {
+        Role.super(this);
+        if(!opts) 
+            opts = {};
+
         this.hp = opts.hp || 1;
         this.maxHp = opts.maxHp || 1;
         this.atk = opts.maxHp || 1;
@@ -10,7 +14,7 @@ var Role = (function (_super) {
     }
 
     Laya.class(Role, "Role", _super);
-    var _proto = Bullet.prototype;
+    var _proto = Role.prototype;
 
     /**
      * 初始化

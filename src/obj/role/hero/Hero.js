@@ -5,10 +5,9 @@ var Hero = (function (_super) {
     function Hero() {
         Hero.super(this);
 
-        this.maxHp = 1;
-        this.hp = 1;
-        this.atk = 1;
-
+        //初始位置
+        this.x = SysConfig.SCREEN_WIDTH / 2;
+        this.y = SysConfig.SCREEN_HEIGHT - 80;
         this.init();
     }
 
@@ -51,4 +50,4 @@ var Hero = (function (_super) {
         this.hero.pos(Laya.stage.mouseX, Laya.stage.mouseY);
     }
     return Hero;
-}(Laya.Sprite));
+}(Role));

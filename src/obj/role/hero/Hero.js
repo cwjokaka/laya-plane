@@ -11,7 +11,7 @@ var Hero = (function (_super) {
         this.y = SysConfig.SCREEN_HEIGHT - 80;
         this.hitRadius = 30;
         //射击间隔
-        this.shootInterval = 200;
+        this.shootInterval = 400;
         //下次射击时间
         this.shootTime = Laya.Browser.now() + 200;
         //普通子弹数量
@@ -76,7 +76,7 @@ var Hero = (function (_super) {
         var bulletPos = HeroConfig.BULLET_POS[this.normalBulletNum - 1];
         for(var i = 0; i < this.normalBulletNum; i++){
             var normalBullet = Laya.Pool.getItemByClass("HeroBullet", HeroBullet);
-            normalBullet.init({'x':this.x + bulletPos[i], 'y':this.y - this.hitRadius -10, 'atk':this.atk, 'vx':0, 'vy':-4});
+            normalBullet.init({'x':this.x + bulletPos[i], 'y':this.y - this.hitRadius -10, 'atk':this.atk, 'vx':0, 'vy':-5});
             ObjectHolder.heroBulletBox.addChild(normalBullet);
         }
 

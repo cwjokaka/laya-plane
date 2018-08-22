@@ -5,7 +5,6 @@ var Role = (function (_super) {
     function Role(opts) {
         Role.super(this);
         opts = opts || {};
-
         this.hp = opts.hp || 1;
         this.maxHp = opts.maxHp || 1;
         this.atk = opts.atk || 1;

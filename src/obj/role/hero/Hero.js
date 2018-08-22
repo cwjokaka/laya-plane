@@ -5,7 +5,7 @@ var bulletPos = [[0], [-15, 15], [-30, 0, 30], [-45, -15, 15, 45]];
 var Hero = (function (_super) {
     function Hero() {
         Hero.super(this);
-
+        
         //初始位置
         this.x = SysConfig.SCREEN_WIDTH / 2;
         this.y = SysConfig.SCREEN_HEIGHT - 80;
@@ -13,7 +13,7 @@ var Hero = (function (_super) {
         //射击间隔
         this.shootInterval = 200;
         //下次射击时间
-        this.shootTime = Laya.Browser.now() + 1000;
+        this.shootTime = Laya.Browser.now() + 200;
         //普通子弹数量
         this.normalBulletNum = 1;      
 
@@ -73,10 +73,10 @@ var Hero = (function (_super) {
     }
 
     _proto.creatBullet = function(){
-        var bulletPos = this.bulletPos[this.normalBulletNum - 1];
+        var bulletPos = HeroConfig.BULLET_POS[this.normalBulletNum - 1];
         for(var i = 0; i < this.normalBulletNum; i++){
             var normalBullet = Laya.Pool.getItemByClass("HeroBullet", HeroBullet);
-            normalBullet.pos(this.x + bulletPos[i], this.y - this.hitRadius -10);
+            normalBullet.init({'x':this.x + bulletPos[i], 'y':this.y - this.hitRadius -10, 'atk':this.atk, 'vx':0, 'vy':-4});
             ObjectHolder.heroBulletBox.addChild(normalBullet);
         }
 

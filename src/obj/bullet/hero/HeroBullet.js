@@ -4,19 +4,22 @@
 var HeroBullet = (function (_super) {
     function HeroBullet() {
         HeroBullet.super(this);
-        this.init();
+        this.className = "HeroBullet";
     }
 
     Laya.class(HeroBullet, 'HeroBullet', _super);
 
     var _proto = HeroBullet.prototype;
 
-    _proto.init = function(){
-        //创建一个动画为飞机的身体
-        this.body = new Laya.Animation();
-        //把机体添加到 容器内
-        this.addChild(this.body);
-        this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
+    _proto.childInit = function(opts){
+
+        if(!this.body){
+            //创建一个动画为飞机的身体
+            this.body = new Laya.Animation();
+            //把机体添加到 容器内
+            this.addChild(this.body);
+            this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
+        }
         this.playAction("fly");
     }
     _proto.onPlayComplete = function(){

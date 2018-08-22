@@ -50,6 +50,12 @@ var PlayScene = (function (_super) {
         //主角射击
         this.hero.shoot();
         
+        //主角子弹移动循环
+        for(var i = this.heroBulletBox.numChildren - 1; i > -1; i--){
+            var heroBullet = this.heroBulletBox.getChildAt(i);
+            heroBullet.move();
+        }
+
         //生成小飞机
         if(Laya.timer.currFrame % (80) === 0){
             var smallEnemy = new SmallEnemy();

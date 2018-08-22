@@ -46,6 +46,8 @@ var PlayScene = (function (_super) {
      * 游戏主循环
      */
     _proto.onLoop = function() {
+        //主角射击
+        this.hero.shoot();
 
     }
 

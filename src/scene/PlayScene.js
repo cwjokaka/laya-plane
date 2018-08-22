@@ -59,6 +59,7 @@ var PlayScene = (function (_super) {
         //生成小飞机
         if(Laya.timer.currFrame % (80) === 0){
             var smallEnemy = new SmallEnemy();
+            smallEnemy.init();
             smallEnemy.pos(Math.random()*SysConfig.SCREEN_WIDTH + 40, -100);
             this.enemyBox.addChild(smallEnemy);
         }

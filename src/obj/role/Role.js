@@ -4,12 +4,10 @@
 var Role = (function (_super) {
     function Role(opts) {
         Role.super(this);
-        if(!opts) 
-            opts = {};
-
+        opts = opts || {};
         this.hp = opts.hp || 1;
         this.maxHp = opts.maxHp || 1;
-        this.atk = opts.maxHp || 1;
+        this.atk = opts.atk || 1;
         this.init(opts);
     }
 

@@ -16,7 +16,6 @@ var PlayScene = (function (_super) {
         this.hero = ObjectHolder.hero;
         //创建UI界面
         this.playUI = new PlayUI();
-        Laya.stage.addChild(this.playUI);
         GameHolder.init({'playUI': this.playUI});
         this.init();
     }
@@ -35,6 +34,7 @@ var PlayScene = (function (_super) {
         Laya.stage.addChild(this.heroBulletBox);
         Laya.stage.addChild(this.itemBox);
         Laya.stage.addChild(this.hero);
+        Laya.stage.addChild(this.playUI);
         Laya.timer.frameLoop(1, this, this.onLoop);
         this.restart();
     }

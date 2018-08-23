@@ -34,9 +34,9 @@ P 7E990267 vscroll.png
 P E466EB1C vslider$bar.png
 P 2BFF7046 vslider.png
 D resource
+D resource/role
 R 4F008F46 background.png
 P E4078869 blank.png
-P 1263F649 btn_home.png
 P C55A0DA5 btn_pause.png
 P E0432FE6 bullet1.png
 P F3A98A3A bullet2.png
@@ -66,7 +66,10 @@ P E0E80CA1 hero_down3.png
 P 9AC69A4E hero_down4.png
 P 75C8D8F4 hero_fly1.png
 P 44A2D9AC hero_fly2.png
-R B1A0C8A5 home_bg.png
 P 7CF51DF3 label.png
 P D8B68072 ufo1.png
 P 266CE476 ufo2.png
+D resource/ui
+P A383C51D myLabel.png
+P CFA3C26F progressBar$bar.png
+P C2BE12DA progressBar.png

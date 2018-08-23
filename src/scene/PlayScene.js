@@ -58,13 +58,13 @@ var PlayScene = (function (_super) {
 
         //生成小飞机
         if(Laya.timer.currFrame % (80) === 0){
-            var smallEnemy = new SmallEnemy();
-            smallEnemy.init();
-            smallEnemy.pos(Math.random()*SysConfig.SCREEN_WIDTH + 40, -100);
+            var smallEnemy = Laya.Pool.getItemByClass(SmallEnemy.prototype.className, SmallEnemy);
+            smallEnemy.init({x: Math.random()*SysConfig.SCREEN_WIDTH + 20, y: -100});
+            // smallEnemy.pos(, );
             this.enemyBox.addChild(smallEnemy);
         }
 
-        for(var i = 0; i < this.enemyBox.numChildren; i++){
+        for(var i = 0,len = this.enemyBox.numChildren; i < len; i++){
             this.enemyBox.getChildAt(i).move();
         }  
         
@@ -85,20 +85,6 @@ var PlayScene = (function (_super) {
     _proto.resume = function(){
         //添加鼠标移动触发事件
         Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.hero.move);
-    }
-
-
-    _proto.createEnemy = function(type,num,speed,hp){
-        for(var i=0;i<num;i++){
-            //创建敌人
-            var enemy = Laya.Pool.getItemByClass("role",Role);
-            //初始化角色
-            enemy.init("enemy"+(type+1),1,hp,speed,this.radius[type]);
-            //随机位置
-            enemy.pos(Math.random()*400+40,-Math.random()*200 - 100);
-            //添加到舞台上
-            this.roleBox.addChild(enemy);
-        }
     }
 
 

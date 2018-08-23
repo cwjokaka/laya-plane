@@ -23,7 +23,7 @@ var Enemy = (function (_super) {
 
     _proto.init = function(opts) {
         _super.call(this, opts);
-        _super.prototype.init.call(this.opts);
+        _super.prototype.init.call(this, opts);
         this.state = this.stateEnum.ALIVE;
     }
 

@@ -2,13 +2,8 @@
 * 飞机基类
 */
 var Role = (function (_super) {
-    function Role(opts) {
+    function Role() {
         Role.super(this);
-                opts = opts || {};
-        this.hp = opts.hp || 1;
-        this.maxHp = opts.maxHp || 1;
-        this.atk = opts.atk || 1;
-
     }
 
     Laya.class(Role, "Role", _super);
@@ -18,6 +13,12 @@ var Role = (function (_super) {
      * 初始化
      */
     _proto.init = function(opts) {
+        opts = opts || {};
+        this.x = opts.x || 0;
+        this.y = opts.y || 0;
+        this.hp = opts.hp || 1;
+        this.maxHp = opts.maxHp || 1;
+        this.atk = opts.atk || 1;
     }
 
 

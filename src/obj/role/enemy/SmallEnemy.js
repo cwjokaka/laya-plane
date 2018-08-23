@@ -2,7 +2,7 @@
 * name;
 */
 var SmallEnemy = (function (_super) {
-    function SmallEnemy(opts) {
+    function SmallEnemy() {
     }
 
     Laya.class(SmallEnemy, "SmallEnemy", _super);
@@ -23,7 +23,7 @@ var SmallEnemy = (function (_super) {
 
         //创建一个动画为飞机的身体
         this.body = new Laya.Animation();
-        //把机体添加到 容器内
+        //把机体添加到容器内
         this.addChild(this.body);
         this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
         this.playAction("fly");

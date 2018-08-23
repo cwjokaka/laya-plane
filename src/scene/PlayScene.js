@@ -56,8 +56,37 @@ var PlayScene = (function (_super) {
             heroBullet.move();
         }
 
+        // 碰撞事件Start
+
+        /**
+         * 主角子弹碰敌机
+         */
+        for(var i = 0; i < this.heroBulletBox.numChildren; i++) {
+            var heroBullet = this.heroBulletBox.getChildAt(i);
+            for(var j = 0; j < this.enemyBox.numChildren; j++) {
+                var enemy = this.enemyBox.getChildAt(j);
+                if (heroBullet.getBounds().intersects(enemy.getBounds())) {
+                    var next = heroBullet.onHitTarget(enemy);
+                    enemy.hitBy(heroBullet);
+                    if(!next) break; 
+                }
+            }
+        }
+        /**
+         * 主角碰敌机
+         */
+        for(var i = 0; i < this.enemyBox.numChildren; i++) {
+            var enemy = this.enemyBox.getChildAt(i);
+            if (this.hero.getBounds().intersects(enemy.getBounds())) {
+                enemy.impactedBy(this.hero);
+            }
+        }
+
+        // 碰撞事件End
+
+
         //生成小飞机
-        if(Laya.timer.currFrame % (80) === 0){
+        if(Laya.timer.currFrame % (40) === 0){
             var smallEnemy = Laya.Pool.getItemByClass(SmallEnemy.prototype.className, SmallEnemy);
             smallEnemy.init({x: Math.random()*SysConfig.SCREEN_WIDTH + 20, y: -100});
             this.enemyBox.addChild(smallEnemy);
@@ -76,8 +105,8 @@ var PlayScene = (function (_super) {
         }
 
 
-        for(var i = 0,len = this.enemyBox.numChildren; i < len; i++){
-            this.enemyBox.getChildAt(i).move();
+        for(var i = 0; i < this.enemyBox.numChildren; i++){
+            this.enemyBox.getChildAt(i).moveAndRecover();
         }  
         
 

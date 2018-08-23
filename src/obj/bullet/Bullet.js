@@ -51,6 +51,8 @@ var Bullet = (function (_super) {
      */
     _proto.onHitTarget = function(target) {
         this.removeSelf();
+        //回收对象
+        Laya.Pool.recover("HeroBullet", this);
     }
 
     return Bullet;

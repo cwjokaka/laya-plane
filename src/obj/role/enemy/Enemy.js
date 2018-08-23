@@ -24,23 +24,90 @@ var Enemy = (function (_super) {
     _proto.init = function(opts) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
+        opts = opts || {};
+        this.vx = opts.vx || 0;
+        this.vy = opts.vy || 1;
+
+        //创建一个动画为飞机的身体
+        this.body = new Laya.Animation();
+        //把机体添加到容器内
+        this.addChild(this.body);
+        this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
+        this.playAction("fly");
+
         this.state = this.stateEnum.ALIVE;
     }
 
     // 默认移动方式
     _proto.move = function() {
-        this.y++;
+        if (this.state != this.stateEnum.DEATH)
+            this.y += this.vy;
+    }
+
+    /**
+     * 被攻击时触发
+     * from: 攻击源
+     */
+    _proto.hitBy = function(from) {
+        this.hp -= from.atk;
+        switch (this.state) {
+            case this.stateEnum.ALIVE:
+            case this.stateEnum.HURT:
+                if(this.hp > 0){
+                    this.state = this.stateEnum.HURT;
+                    this.playAction('hit');
+                } else {
+                    this.state = this.stateEnum.DEATH;
+                    this.playAction('down');
+                }
+                break;
+            case this.stateEnum.DEATH:
+                break;
+            default:
+                console.error('未知的敌机状态:', this.state);
+
+        }
+    }
+
+    /**
+     * 被机体撞击时触发
+     * from: 撞击源
+     */
+    _proto.impactedBy = function(from) {
+        this.hp = 0;
+        switch (this.state) {
+            case this.stateEnum.ALIVE:
+            case this.stateEnum.HURT:
+                from.impactedBy(this);
+                this.state = this.stateEnum.DEATH;
+                this.playAction('down');
+                break;
+            case this.stateEnum.DEATH:
+                break;
+            default:
+                console.error('未知的敌机状态:', this.state);
+        }
+    }
+
+    // 移动与回收
+    _proto.moveAndRecover = function() {
+        this.move();
+        if (this.y > SysConfig.SCREEN_HEIGHT + 30) {
+            this.removeSelf();
+            Laya.Pool.recover(this.className, this);
+        }
+
     }
 
     // 动画播放完后执行
     _proto.onPlayComplete = function(){
-        //如果是击毁动画 则隐藏对象
-        if(this.state === this.stateEnum.DEATH){
-            //停止动画播放
+        // 如果是击毁动画 则隐藏对象
+        if(this.state === this.stateEnum.DEATH) {
+            // 停止动画播放
             this.body.stop();
             this.removeSelf();
             Laya.Pool.recover(this.className, this);
-        }else if(this.state === this.stateEnum.HURT){
+        } else if(this.state === this.stateEnum.HURT) {
             this.state = this.stateEnum.ALIVE;
             this.playAction("fly");
         }

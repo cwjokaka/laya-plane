@@ -59,6 +59,23 @@ var Hero = (function (_super) {
         this.hero.pos(Laya.stage.mouseX, Laya.stage.mouseY);
     }
 
+    /**
+     * 被攻击时触发
+     * from: 攻击源
+     */
+    _proto.hitBy = function(from) {
+        console.log('主角碰到了:', from.className);
+    }
+
+    /**
+     * 机体之间碰撞时触发
+     * from: 碰撞源
+     */
+    _proto.impactedBy = function(from) {
+        console.log('主角碰到了:', from.className);
+    }
+
+
     _proto.shoot = function(){
             //获取当前时间
             var time = Laya.Browser.now();

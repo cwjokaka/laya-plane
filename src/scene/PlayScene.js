@@ -51,7 +51,7 @@ var PlayScene = (function (_super) {
         this.hero.shoot();
         
         //主角子弹移动循环
-        for(var i = this.heroBulletBox.numChildren - 1; i > -1; i--){
+        for(var i = 0; i < this.heroBulletBox.numChildren; i++){
             var heroBullet = this.heroBulletBox.getChildAt(i);
             heroBullet.move();
         }

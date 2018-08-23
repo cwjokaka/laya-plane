@@ -20,13 +20,34 @@ var SmallEnemy = (function (_super) {
     _proto.init = function(opts) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
+        opts = opts || {};
+        this.maxHp = opts.maxHp || 3;
+        this.hp = opts.hp || this.maxHp;
+        this.vy = opts.vy || 3;
+    }
 
-        //创建一个动画为飞机的身体
-        this.body = new Laya.Animation();
-        //把机体添加到容器内
-        this.addChild(this.body);
-        this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
-        this.playAction("fly");
+    /**
+     * 被攻击时触发
+     * from: 攻击源
+     */
+    _proto.hitBy = function(from) {
+        this.hp -= from.atk;
+        switch (this.state) {
+            case this.stateEnum.ALIVE:
+            case this.stateEnum.HURT:
+                if(this.hp > 0){
+                    this.state = this.stateEnum.HURT;
+                } else {
+                    this.state = this.stateEnum.DEATH;
+                    this.playAction('down');
+                }
+                break;
+            case this.stateEnum.DEATH:
+                break;
+            default:
+                console.error('未知的敌机状态:', this.state);
+
+        }
     }
 
 

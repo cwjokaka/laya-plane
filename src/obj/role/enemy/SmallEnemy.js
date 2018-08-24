@@ -28,6 +28,7 @@ var SmallEnemy = (function (_super) {
         this.maxHp = opts.maxHp || 3;
         this.hp = opts.hp || this.maxHp;
         this.vy = opts.vy || 3;
+        this.score = opts.score || 1;
     }
 
     /**
@@ -44,6 +45,7 @@ var SmallEnemy = (function (_super) {
                 } else {
                     this.state = this.stateEnum.DEATH;
                     this.playAction('down');
+                    GameHolder.increaseScore(this.score);
                 }
                 break;
             case this.stateEnum.DEATH:

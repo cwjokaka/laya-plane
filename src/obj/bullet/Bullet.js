@@ -42,7 +42,7 @@ var Bullet = (function (_super) {
         if (this.x < -30 || this.x > SysConfig.SCREEN_WIDTH + 30 || this.y < -30 || this.y > SysConfig.SCREEN_HEIGHT + 30) {
             this.removeSelf();
             //回收对象
-            Laya.Pool.recover("HeroBullet", this);
+            Laya.Pool.recover(this.className, this);
         }
     }
 

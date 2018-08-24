@@ -14,6 +14,10 @@ var Enemy = (function (_super) {
     _proto.className = 'Enemy';
     // 动画前缀
     _proto.aniPre = 'enemy_';
+    // 宽度体型修正
+    _proto.widthFix = 5;
+    // 高度体型修正
+    _proto.heightFix = 5;
 
     _proto.stateEnum = {
         ALIVE: 0,       
@@ -34,7 +38,10 @@ var Enemy = (function (_super) {
         this.addChild(this.body);
         this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
         this.playAction("fly");
-
+        var bound = this.body.getBounds();
+        var newBound = bound.clone();
+        newBound.setTo(newBound.x + this.widthFix, newBound.y + this.heightFix, newBound.width - 2 * this.widthFix, newBound.height - 2 * this.heightFix);
+        this.setBounds(newBound);
         this.state = this.stateEnum.ALIVE;
     }
 

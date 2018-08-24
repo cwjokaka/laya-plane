@@ -13,6 +13,10 @@ var LargeEnemy = (function (_super) {
     _proto.className = 'LargeEnemy';
     // 动画前缀
     _proto.aniPre = 'enemy3_';
+    // 宽度体型修正
+    _proto.widthFix = 20;
+    // 高度体型修正
+    _proto.heightFix = 20;
 
     /**
      * 初始化

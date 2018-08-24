@@ -13,6 +13,10 @@ var SmallEnemy = (function (_super) {
     _proto.className = 'SmallEnemy';
     // 动画前缀
     _proto.aniPre = 'enemy1_';
+    // 宽度体型修正
+    _proto.widthFix = 5;
+    // 高度体型修正
+    _proto.heightFix = 10;
 
     /**
      * 初始化

@@ -13,6 +13,10 @@ var MediumEnemy = (function (_super) {
     _proto.className = 'MediumEnemy';
     // 动画前缀
     _proto.aniPre = 'enemy2_';
+    // 宽度体型修正
+    _proto.widthFix = 8;
+    // 高度体型修正
+    _proto.heightFix = 15;
 
     /**
      * 初始化

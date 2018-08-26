@@ -18,6 +18,9 @@ var LargeEnemy = (function (_super) {
     // 高度体型修正
     _proto.heightFix = 20;
 
+    // 物品掉落率 0~1
+    _proto.itemDropChance = 0.5;
+
     /**
      * 初始化
      */

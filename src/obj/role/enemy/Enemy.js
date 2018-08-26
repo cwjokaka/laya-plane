@@ -19,6 +19,15 @@ var Enemy = (function (_super) {
     // 高度体型修正
     _proto.heightFix = 5;
 
+    // 物品掉落率 0~1
+    _proto.itemDropChance = 0;
+    // 物品掉落区间
+    _proto.itemDropZone = [
+        {from: 0, to: 0.5, item: ItemBoom},
+        {from: 0.5, to: 1, item: ItemBullet}
+    ];
+
+    // 状态枚举
     _proto.stateEnum = {
         ALIVE: 0,       
         HURT: 1,
@@ -97,6 +106,24 @@ var Enemy = (function (_super) {
         }
     }
 
+    /**
+     * 物品掉落
+     */
+    _proto.dropItem = function() {
+        var ran = Math.random();
+        if (this.itemDropChance >= ran) {
+            ran = Math.random();
+            for(var i in this.itemDropZone) {
+                if(ran >= this.itemDropZone[i].from && ran <= this.itemDropZone[i].to){
+                    var item = Laya.Pool.getItemByClass(this.itemDropZone[i].item.className, this.itemDropZone[i].item);
+                    item.init({x: this.x, y: this.y});
+                    ObjectHolder.itemBox.addChild(item);
+                    break;
+                }
+            }
+        }
+    }
+
     // 移动与回收
     _proto.moveAndRecover = function() {
         this.move();
@@ -113,6 +140,8 @@ var Enemy = (function (_super) {
         if(this.state === this.stateEnum.DEATH) {
             // 停止动画播放
             this.body.stop();
+            // 掉落物品
+            this.dropItem();
             this.removeSelf();
             Laya.Pool.recover(this.className, this);
         } else if(this.state === this.stateEnum.HURT) {

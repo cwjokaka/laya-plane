@@ -1,19 +1,19 @@
 /*
 * name;
 */
-var Item = (function () {
+var Item = (function (_super) {
 
     function Item() {}
 
 
-    Laya.class(Enemy, "Item", _super);
+    Laya.class(Item, "Item", _super);
 
     var _proto = Item.prototype;
 
     // 类名
     _proto.className = 'Item';
     // 动画前缀
-    _proto.aniPre = 'ufo1_';
+    _proto.aniPre = 'item_';
     // 宽度体型修正
     _proto.widthFix = 5;
     // 高度体型修正
@@ -21,8 +21,10 @@ var Item = (function () {
 
     _proto.init = function(opts) {
         _super.call(this, opts);
-        _super.prototype.init.call(this, opts);
+        // _super.prototype.init.call(this, opts);
         opts = opts || {};
+        this.x = opts.x || 0;
+        this.y = opts.y || 0;
         this.vx = opts.vx || 0;
         this.vy = opts.vy || 1;
         this.score = opts.score || 1;
@@ -45,20 +47,8 @@ var Item = (function () {
      * from: 撞击源
      */
     _proto.impactedBy = function(from) {
-        this.hp = 0;
-        switch (this.state) {
-            case this.stateEnum.ALIVE:
-            case this.stateEnum.HURT:
-                from.impactedBy(this);
-                this.state = this.stateEnum.DEATH;
-                this.playAction('down');
-                GameHolder.increaseScore(this.score);
-                break;
-            case this.stateEnum.DEATH:
-                break;
-            default:
-                console.error('未知的敌机状态:', this.state);
-        }
+        this.removeSelf();
+        Laya.Pool.recover(this.className, this);
     }
 
     // 移动与回收

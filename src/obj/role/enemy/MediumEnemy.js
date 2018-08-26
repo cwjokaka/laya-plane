@@ -17,6 +17,9 @@ var MediumEnemy = (function (_super) {
     _proto.widthFix = 8;
     // 高度体型修正
     _proto.heightFix = 15;
+    
+    // 物品掉落率 0~1
+    _proto.itemDropChance = 0.2;
 
     /**
      * 初始化

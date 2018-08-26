@@ -85,6 +85,15 @@ var PlayScene = (function (_super) {
                 enemy.impactedBy(this.hero);
             }
         }
+        /**
+         * 主角碰道具
+         */
+        for(var i = 0; i < this.itemBox.numChildren; i++) {
+            var item = this.itemBox.getChildAt(i);
+            if (this.hero.getBounds().intersects(item.getBounds())) {
+                item.impactedBy(this.hero);
+            }
+        }
 
         // 碰撞事件End
 
@@ -108,11 +117,15 @@ var PlayScene = (function (_super) {
             this.enemyBox.addChild(largeEnemy);
         }
 
-
+        // 敌机移动
         for(var i = 0; i < this.enemyBox.numChildren; i++){
             this.enemyBox.getChildAt(i).moveAndRecover();
         }  
-        
+
+        // 子弹移动
+        for(var i = 0; i < this.itemBox.numChildren; i++) {
+            this.itemBox.getChildAt(i).moveAndRecover();
+        }
 
     }
 

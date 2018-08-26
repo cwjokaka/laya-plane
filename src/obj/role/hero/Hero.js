@@ -24,6 +24,11 @@ var Hero = (function (_super) {
 
     var _proto = Hero.prototype;
 
+    // 宽度体型修正
+    _proto.widthFix = 35;
+    // 高度体型修正
+    _proto.heightFix = 5;
+
     _proto.init = function(){
         //创建一个动画为飞机的身体
         this.body = new Laya.Animation();
@@ -31,6 +36,11 @@ var Hero = (function (_super) {
         this.addChild(this.body);
         this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
         this.playAction("fly");
+        var bound = this.body.getBounds();
+        var newBound = bound.clone();
+        newBound.setTo(newBound.x + this.widthFix, newBound.y + this.heightFix, newBound.width - 2 * this.widthFix, newBound.height - 2 * this.heightFix);
+        this.setBounds(newBound);
+
     }
     _proto.onPlayComplete = function(){
         //如果是击毁动画 则隐藏对象
@@ -64,7 +74,7 @@ var Hero = (function (_super) {
      * from: 攻击源
      */
     _proto.hitBy = function(from) {
-        console.log('主角碰到了:', from.className);
+        // console.log('主角碰到了:', from.className);
     }
 
     /**
@@ -72,7 +82,7 @@ var Hero = (function (_super) {
      * from: 碰撞源
      */
     _proto.impactedBy = function(from) {
-        console.log('主角碰到了:', from.className);
+        // console.log('主角碰到了:', from.className);
     }
 
 

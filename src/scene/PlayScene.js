@@ -15,7 +15,7 @@ var PlayScene = (function (_super) {
         this.itemBox = ObjectHolder.itemBox;
         this.hero = ObjectHolder.hero;
         //创建UI界面
-        this.playUI = new PlayUI();
+        this.playUI = ObjectHolder.playUI;
         GameHolder.init({'playUI': this.playUI});
         this.init();
     }
@@ -92,6 +92,7 @@ var PlayScene = (function (_super) {
             var item = this.itemBox.getChildAt(i);
             if (this.hero.getBounds().intersects(item.getBounds())) {
                 item.impactedBy(this.hero);
+                this.hero.impactedItem(item);
             }
         }
 

@@ -15,7 +15,9 @@ var Hero = (function (_super) {
         //下次射击时间
         this.shootTime = Laya.Browser.now() + 200;
         //普通子弹数量
-        this.normalBulletNum = 1;      
+        this.normalBulletNum = 1;
+        
+        this.maxBoomNum = 10;
         this.boomNum = 10;
         this.init();
     }
@@ -23,6 +25,12 @@ var Hero = (function (_super) {
     Laya.class(Hero, "Hero", _super);
 
     var _proto = Hero.prototype;
+
+    // 状态枚举
+    _proto.itemEnum = {
+        DOUBLE_BULLET: 'ItemBullet',  
+        SKILL_BOOM: 'ItemBoom',     
+    }
 
     _proto.init = function(){
         //创建一个动画为飞机的身体
@@ -73,6 +81,25 @@ var Hero = (function (_super) {
      */
     _proto.impactedBy = function(from) {
         console.log('主角碰到了:', from.className);
+    }
+
+    _proto.impactedItem = function(item){
+        switch (item.className) {
+            case this.itemEnum.DOUBLE_BULLET:
+                if(this.normalBulletNum == 1){
+                    this.normalBulletNum++;
+                }
+                break;
+            case this.itemEnum.SKILL_BOOM:
+                if(this.boomNum < this.maxBoomNum){
+                    this.boomNum++;
+                    ObjectHolder.playUI.showBoom(this.boomNum);
+                }
+                break;
+            default:
+                console.error('未知物品:', item.className);
+
+        }
     }
 
 

@@ -11,6 +11,7 @@ var ObjectHolder = (function () {
         this.enemyBulletBox = new Laya.Sprite();
         this.itemBox = new Laya.Sprite();
         this.hero = new Hero();
+        this.playUI = new PlayUI();
     }
 
     ObjectHolder.reset = function() {
@@ -26,6 +27,8 @@ var ObjectHolder = (function () {
         this.itemBox = new Laya.Sprite();
         this.hero.destroy();
         this.hero = new Hero();
+        this.playUI.destroy();
+        this.playUI = new PlayUI();
     }
 
     return ObjectHolder;

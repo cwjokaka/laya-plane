@@ -69,7 +69,12 @@ P 44A2D9AC hero_fly2.png
 P 7CF51DF3 label.png
 P D8B68072 ufo1.png
 P 266CE476 ufo2.png
+P 94F9BE92 upgrade.png
 D resource/ui
+P 1B5389F5 attriUpgradeBg.png
 P A383C51D myLabel.png
 P CFA3C26F progressBar$bar.png
 P C2BE12DA progressBar.png
+P CF676A85 upgrade.png
+P 1D5B2BEE upgradeBtn.png
+P 09E754CC upgradeBtn1.png

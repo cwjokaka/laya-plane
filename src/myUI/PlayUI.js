@@ -12,6 +12,7 @@ var PlayUI = (function(_super){
     _proto.reset = function(){
         this.showBoom(ObjectHolder.hero.boomNum);
         this.showScore(0)
+        this.showUpgradesphere(0);
     }
 
     //暂停按钮点击事件
@@ -47,9 +48,9 @@ var PlayUI = (function(_super){
     _proto.showHp = function(value){
         this.hpLabel.text = "HP:" + value;
     }
-    //显示等级
-    _proto.showLevel = function(value){
-        this.levelLabel.text = "level:" + value;
+    //显示升级球数量
+    _proto.showUpgradesphere = function(value){
+        this.upgradesphereLabel.text = value;
     }
     //显示积分
     _proto.showScore = function(value){

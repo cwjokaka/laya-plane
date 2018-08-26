@@ -23,8 +23,9 @@ var Enemy = (function (_super) {
     _proto.itemDropChance = 0;
     // 物品掉落区间
     _proto.itemDropZone = [
-        {from: 0, to: 0.5, item: ItemBoom},
-        {from: 0.5, to: 1, item: ItemBullet}
+        {from: 0, to: 0.3, item: ItemBoom},
+        {from: 0.3, to: 0.6, item: ItemBullet},
+        {from: 0.6, to: 1, item: ItemUpgrade}
     ];
 
     // 状态枚举

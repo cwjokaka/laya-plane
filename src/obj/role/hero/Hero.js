@@ -6,6 +6,10 @@ var Hero = (function (_super) {
     function Hero() {
         Hero.super(this);
         
+        var fighter = CustHolder.fighters[0];
+        this.atk = fighter.atk;
+        this.hp = fighter.hp;
+
         //初始位置
         this.x = SysConfig.SCREEN_WIDTH / 2;
         this.y = SysConfig.SCREEN_HEIGHT - 80;
@@ -34,7 +38,8 @@ var Hero = (function (_super) {
     // 状态枚举
     _proto.itemEnum = {
         DOUBLE_BULLET: 'ItemBullet',  
-        SKILL_BOOM: 'ItemBoom',     
+        SKILL_BOOM: 'ItemBoom',  
+        UPGRATE: 'ItemUpgrade',   
     }
 
 	_proto.init = function(){
@@ -105,6 +110,9 @@ var Hero = (function (_super) {
                     this.boomNum++;
                     ObjectHolder.playUI.showBoom(this.boomNum);
                 }
+                break;
+            case this.itemEnum.UPGRATE:
+                GameHolder.increaseUpgradeSphere(1);
                 break;
             default:
                 console.error('未知物品:', item.className);

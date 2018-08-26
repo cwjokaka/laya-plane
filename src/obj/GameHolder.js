@@ -9,6 +9,7 @@ var GameHolder = (function () {
         this.socre = 0;
         this.level = 1;
         this.nextLevelScore = 200;
+        this.upgradeSphere = 0;
     }
 
     GameHolder.increaseScore = function(value){
@@ -18,6 +19,11 @@ var GameHolder = (function () {
             this.nextLevelScore += this.nextLevelScore * 0.5;
         }
         this.playUI.showScore(this.socre);
+    }
+
+    GameHolder.increaseUpgradeSphere = function(value){
+        this.upgradeSphere += value;
+        this.playUI.showUpgradesphere(this.upgradeSphere);
     }
 
     return GameHolder;

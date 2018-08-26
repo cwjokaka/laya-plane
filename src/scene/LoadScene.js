@@ -29,6 +29,9 @@ var LoadScene = (function (_super) {
 		Laya.stage.addChild(progressBar);
 		this.startLoad();
 		this.loadAnimation();
+		
+		//用户信息初始化（后面改为调后台接口）
+		CustHolder.init();
 	}
 
 	/**
@@ -59,7 +62,7 @@ var LoadScene = (function (_super) {
 	_proto.onAllLoaded = function() {
 		console.log('加载完成,进入游戏');
 		this.removeSelf();
-		Laya.stage.addChild(new PlayScene());
+		Laya.stage.addChild(new StartScene());
 	}
 
 	/**
@@ -107,8 +110,10 @@ var LoadScene = (function (_super) {
 
         //缓存强化包
         Laya.Animation.createFrames(["resource/role/ufo1.png"],"ufo1_fly");
-        //缓存医疗包
+        //缓存炸弹包
         Laya.Animation.createFrames(["resource/role/ufo2.png"],"ufo2_fly");
+        //缓存升级球
+        Laya.Animation.createFrames(["resource/role/upgrade.png"],"upgrade_fly");
     }
 	return LoadScene;
 

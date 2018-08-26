@@ -31,7 +31,7 @@ var Enemy = (function (_super) {
         opts = opts || {};
         this.vx = opts.vx || 0;
         this.vy = opts.vy || 1;
-
+        this.score = opts.score || 1;
         //创建一个动画为飞机的身体
         this.body = new Laya.Animation();
         //把机体添加到容器内
@@ -88,6 +88,7 @@ var Enemy = (function (_super) {
                 from.impactedBy(this);
                 this.state = this.stateEnum.DEATH;
                 this.playAction('down');
+                GameHolder.increaseScore(this.score);
                 break;
             case this.stateEnum.DEATH:
                 break;

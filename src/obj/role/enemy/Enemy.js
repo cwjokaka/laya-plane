@@ -29,10 +29,13 @@ var Enemy = (function (_super) {
 
     // 状态枚举
     _proto.stateEnum = {
-        ALIVE: 0,       
+        ALIVE: 0,
         HURT: 1,
         DEATH: 2
     }
+
+    // 攻击间隔(帧数)
+    _proto.attackInterval = 60;
 
     _proto.init = function(opts) {
         _super.call(this, opts);
@@ -41,6 +44,8 @@ var Enemy = (function (_super) {
         this.vx = opts.vx || 0;
         this.vy = opts.vy || 1;
         this.score = opts.score || 1;
+        // 下一次攻击的帧数
+        this.attackFrame = Laya.timer.currFrame + this.attackInterval;
         //创建一个动画为飞机的身体
         this.body = new Laya.Animation();
         //把机体添加到容器内
@@ -131,7 +136,17 @@ var Enemy = (function (_super) {
             this.removeSelf();
             Laya.Pool.recover(this.className, this);
         }
+    }
 
+    // 攻击
+    _proto.attack = function() {
+        var nowFrame = Laya.timer.currFrame;
+        if (this.attackFrame <= nowFrame) {
+            var bullet = Laya.Pool.getItemByClass(EnemyBullet.className, EnemyBullet);
+            bullet.init({x: this.x, y: this.y, vy: 5, vx: 0});
+            ObjectHolder.enemyBulletBox.addChild(bullet);
+            this.attackFrame = nowFrame + this.attackInterval;
+        }
     }
 
     // 动画播放完后执行

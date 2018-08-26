@@ -74,7 +74,7 @@ var Hero = (function (_super) {
      * from: 攻击源
      */
     _proto.hitBy = function(from) {
-        // console.log('主角碰到了:', from.className);
+        
     }
 
     /**

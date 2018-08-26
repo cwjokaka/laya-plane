@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":3,
-    "selecteID":4,
+    "selectedBox":1,
+    "selecteID":5,
     "props":{"width":400,"sceneColor":"#000000","height":825},
     "nodeParent":-1,
     "label":"View",
@@ -38,6 +38,19 @@
                         ],
                     "$HIDDEN":false
                 }]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "props":{"y":793,"x":7,"width":59,"var":"boomLabel","valign":"middle","text":"炸弹","height":36,"fontSize":20,"color":"#1a22e8","borderColor":"#0c4ae8"},
+            "nodeParent":1,
+            "label":"Label(boomLabel)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":5,
+            "child":[
+                ]
         }],
     "animations":[
         {

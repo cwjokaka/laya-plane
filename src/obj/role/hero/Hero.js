@@ -16,7 +16,7 @@ var Hero = (function (_super) {
         this.shootTime = Laya.Browser.now() + 200;
         //普通子弹数量
         this.normalBulletNum = 1;      
-
+        this.boomNum = 10;
         this.init();
     }
 

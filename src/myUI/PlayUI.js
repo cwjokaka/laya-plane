@@ -1,6 +1,8 @@
 var PlayUI = (function(_super){
     function PlayUI(){
         PlayUI.super(this);
+        //炸弹事件
+        this.boomLabel.on(Laya.Event.CLICK, this, this.onBoom);
         this.reset();
     }
     //注册类
@@ -8,7 +10,7 @@ var PlayUI = (function(_super){
     var _proto = PlayUI.prototype;
 
     _proto.reset = function(){
-        
+        this.showBoom(ObjectHolder.hero.boomNum);
         this.showScore(0)
     }
 
@@ -16,8 +18,14 @@ var PlayUI = (function(_super){
     _proto.onBoom = function(event){
         //阻止事件往下传递
         event.stopPropagation();
-        this.gameMain.boomAction();
-        Laya.stage.once(Laya.Event.CLICK, this, this.onStageClick);
+        if(ObjectHolder.hero.boomNum > 0){
+            ObjectHolder.hero.boomNum--;
+            var boom = new Boom();
+            boom.init({'atk': 99999, 'x': 0, 'y': 825, 'vx': 0, 'vy': -3});
+            ObjectHolder.heroBulletBox.addChild(boom);
+            this.showBoom(ObjectHolder.hero.boomNum);
+        }
+        //Laya.stage.once(Laya.Event.CLICK, this, this.onStageClick);
     }
 
     //暂停按钮点击事件
@@ -49,7 +57,7 @@ var PlayUI = (function(_super){
     }
     //显示积分
     _proto.showBoom = function(value){
-        this.boom.text = "炸" + value;
+        this.boomLabel.text = "炸弹：" + value;
     }
     return PlayUI;
 })(ui.GameInfoUI);

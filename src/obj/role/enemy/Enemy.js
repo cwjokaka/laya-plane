@@ -86,8 +86,7 @@ var Enemy = (function (_super) {
             case this.stateEnum.DEATH:
                 break;
             default:
-                console.error('未知的敌机状态:', this.state);
-
+                console.error('hitBy未知的敌机状态:', this.state);
         }
     }
 

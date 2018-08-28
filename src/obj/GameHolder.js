@@ -4,21 +4,42 @@
 var GameHolder = (function () {
     var GameHolder = {}
 
+    // 游戏状态
+    GameHolder.stateEnum = {
+        PLAY: 0,
+        PAUSE: 1,
+        END: 2
+    };
+
+    // 游戏进行中的状态
+    GameHolder.playStateEnum = {
+        NORMAL: 0,
+        SHOW_BOSS: 1,
+        BOSSING: 2,
+        BONUS: 3
+    };
+
+
     GameHolder.init = function(opts) {
         this.playUI = opts.playUI;
-        this.socre = 0;
+        this.score = 0;
         this.level = 1;
         this.nextLevelScore = 200;
         this.upgradeSphere = 0;
+        this.state = GameHolder.stateEnum.PLAY;
+        this.playState = GameHolder.playStateEnum.NORMAL;
     }
 
     GameHolder.increaseScore = function(value){
-        this.socre += value;
-        if(this.socre > this.nextLevelScore){
+        this.score += value;
+        if(this.score > this.nextLevelScore){
             this.level++;
             this.nextLevelScore += this.nextLevelScore * 0.5;
         }
-        this.playUI.showScore(this.socre);
+        if(this.score > 2 && this.playState === this.playStateEnum.NORMAL) {
+            this.playState = this.playStateEnum.SHOW_BOSS;
+        }
+        this.playUI.showScore(this.score);
     }
 
     GameHolder.increaseUpgradeSphere = function(value){

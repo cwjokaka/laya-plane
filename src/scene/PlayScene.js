@@ -14,6 +14,7 @@ var PlayScene = (function (_super) {
         this.heroBulletBox = ObjectHolder.heroBulletBox;
         this.itemBox = ObjectHolder.itemBox;
         this.hero = ObjectHolder.hero;
+
         //创建UI界面
         this.playUI = ObjectHolder.playUI;
         GameHolder.init({'playUI': this.playUI});
@@ -38,7 +39,7 @@ var PlayScene = (function (_super) {
         Laya.timer.frameLoop(1, this, this.onLoop);
         this.restart();
     }
-
+ 
     /**
      * 重新游戏
      */
@@ -51,97 +52,134 @@ var PlayScene = (function (_super) {
      * 游戏主循环
      */
     _proto.onLoop = function() {
-        //主角射击
-        this.hero.shoot();
-        
-        //主角子弹移动循环
-        for(var i = 0; i < this.heroBulletBox.numChildren; i++){
-            var heroBullet = this.heroBulletBox.getChildAt(i);
-            heroBullet.move();
-        }
+        switch(GameHolder.state) {
 
-        // 碰撞事件Start
-
-        /**
-         * 主角子弹碰敌机
-         */
-        for(var i = 0; i < this.heroBulletBox.numChildren; i++) {
-            var heroBullet = this.heroBulletBox.getChildAt(i);
-            for(var j = 0; j < this.enemyBox.numChildren; j++) {
-                var enemy = this.enemyBox.getChildAt(j);
-                if (heroBullet.getBounds().intersects(enemy.getBounds())) {
-                    var next = heroBullet.onHitTarget(enemy);
-                    enemy.hitBy(heroBullet);
-                    if(!next) break; 
+            /**
+             * 游戏进行时
+             */
+            case GameHolder.stateEnum.PLAY:
+                //主角射击
+                this.hero.shoot();
+                //主角子弹移动循环
+                for(var i = 0; i < this.heroBulletBox.numChildren; i++){
+                    var heroBullet = this.heroBulletBox.getChildAt(i);
+                    heroBullet.move();
                 }
-            }
-        }
-        /**
-         * 主角碰敌机
-         */
-        for(var i = 0; i < this.enemyBox.numChildren; i++) {
-            var enemy = this.enemyBox.getChildAt(i);
-            if (this.hero.getBounds().intersects(enemy.getBounds())) {
-                enemy.impactedBy(this.hero);
-            }
-        }
-        /**
-         * 主角碰道具
-         */
-        for(var i = 0; i < this.itemBox.numChildren; i++) {
-            var item = this.itemBox.getChildAt(i);
-            if (this.hero.getBounds().intersects(item.getBounds())) {
-                item.impactedBy(this.hero);
-                this.hero.impactedItem(item);
-            }
-        }
-        /**
-         * 主角碰敌军子弹
-         */
-        for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
-            var enemyBullet = this.enemyBulletBox.getChildAt(i);
-            if (this.hero.getBounds().intersects(enemyBullet.getBounds())) {
-                enemyBullet.impactedBy(this.hero);
-            }
-        }
+
+                // 碰撞事件Start
+
+                /**
+                 * 主角子弹碰敌机
+                 */
+                for(var i = 0; i < this.heroBulletBox.numChildren; i++) {
+                    var heroBullet = this.heroBulletBox.getChildAt(i);
+                    for(var j = 0; j < this.enemyBox.numChildren; j++) {
+                        var enemy = this.enemyBox.getChildAt(j);
+                        if (heroBullet.getBounds().intersects(enemy.getBounds())) {
+                            var next = heroBullet.onHitTarget(enemy);
+                            enemy.hitBy(heroBullet);
+                            if(!next) break; 
+                        }
+                    }
+                }
+                /**
+                 * 主角碰敌机
+                 */
+                for(var i = 0; i < this.enemyBox.numChildren; i++) {
+                    var enemy = this.enemyBox.getChildAt(i);
+                    if (this.hero.getBounds().intersects(enemy.getBounds())) {
+                        enemy.impactedBy(this.hero);
+                    }
+                }
+                /**
+                 * 主角碰道具
+                 */
+                for(var i = 0; i < this.itemBox.numChildren; i++) {
+                    var item = this.itemBox.getChildAt(i);
+                    if (this.hero.getBounds().intersects(item.getBounds())) {
+                        item.impactedBy(this.hero);
+                        this.hero.impactedItem(item);
+                    }
+                }
+                /**
+                 * 主角碰敌军子弹
+                 */
+                for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
+                    var enemyBullet = this.enemyBulletBox.getChildAt(i);
+                    if (this.hero.getBounds().intersects(enemyBullet.getBounds())) {
+                        enemyBullet.impactedBy(this.hero);
+                    }
+                }
+
+                // 碰撞事件End
+
+                // 敌机移动&攻击
+                for(var i = 0; i < this.enemyBox.numChildren; i++){
+                    this.enemyBox.getChildAt(i).attack();
+                    this.enemyBox.getChildAt(i).moveAndRecover();
+                }
+
+                // 物品移动
+                for(var i = 0; i < this.itemBox.numChildren; i++) {
+                    this.itemBox.getChildAt(i).moveAndRecover();
+                }
+
+                // 敌军子弹移动
+                for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
+                    this.enemyBulletBox.getChildAt(i).moveAndRecover();
+                }
 
 
-        // 碰撞事件End
+                switch(GameHolder.playState) {
+                    case GameHolder.playStateEnum.NORMAL:
+                        //生成小飞机
+                        if(Laya.timer.currFrame % (40) === 0){
+                            var smallEnemy = Laya.Pool.getItemByClass(SmallEnemy.prototype.className, SmallEnemy);
+                            smallEnemy.init({x: Math.random()*SysConfig.SCREEN_WIDTH, y: -100});
+                            this.enemyBox.addChild(smallEnemy);
+                        }
+                        //生成中型飞机
+                        if(Laya.timer.currFrame % (80) === 0){
+                            var mediumEnemy = Laya.Pool.getItemByClass(MediumEnemy.prototype.className, MediumEnemy);
+                            mediumEnemy.init({x: Math.random()*SysConfig.SCREEN_WIDTH, y: -100});
+                            this.enemyBox.addChild(mediumEnemy);
+                        }
+                        //生成大型飞机
+                        if(Laya.timer.currFrame % (80) === 0){
+                            var largeEnemy = Laya.Pool.getItemByClass(LargeEnemy.prototype.className, LargeEnemy);
+                            largeEnemy.init({x: Math.random()*SysConfig.SCREEN_WIDTH, y: -100});
+                            this.enemyBox.addChild(largeEnemy);
+                        }
+                        break;
+                    // 出BOSS
+                    case GameHolder.playStateEnum.SHOW_BOSS:
+                        this.boss = Laya.Pool.getItemByClass(Boss.className, Boss);
+                        this.boss.init({x: SysConfig.SCREEN_WIDTH / 2,y: -100});
+                        this.enemyBox.addChild(this.boss);
+                        GameHolder.playState = GameHolder.playStateEnum.BOSSING;
+                        break;
+                    // 打BOSS中
+                    case GameHolder.playStateEnum.BOSSING:
+                        break;
+                    // 奖励时间
+                    case GameHolder.playStateEnum.BONUS:
+                        break;
+                    
+                }
 
+                break; 
 
-        //生成小飞机
-        if(Laya.timer.currFrame % (40) === 0){
-            var smallEnemy = Laya.Pool.getItemByClass(SmallEnemy.prototype.className, SmallEnemy);
-            smallEnemy.init({x: Math.random()*SysConfig.SCREEN_WIDTH, y: -100});
-            this.enemyBox.addChild(smallEnemy);
-        }
-        //生成中型飞机
-        if(Laya.timer.currFrame % (80) === 0){
-            var mediumEnemy = Laya.Pool.getItemByClass(MediumEnemy.prototype.className, MediumEnemy);
-            mediumEnemy.init({x: Math.random()*SysConfig.SCREEN_WIDTH, y: -100});
-            this.enemyBox.addChild(mediumEnemy);
-        }
-        //生成大型飞机
-        if(Laya.timer.currFrame % (80) === 0){
-            var largeEnemy = Laya.Pool.getItemByClass(LargeEnemy.prototype.className, LargeEnemy);
-            largeEnemy.init({x: Math.random()*SysConfig.SCREEN_WIDTH, y: -100});
-            this.enemyBox.addChild(largeEnemy);
-        }
+            /**
+             * 游戏暂停
+             */
+            case GameHolder.stateEnum.PAUSE:
+                break;
+            /**
+             * 游戏结束
+             */
+            case GameHolder.stateEnum.END:
+                break;
 
-        // 敌机移动
-        for(var i = 0; i < this.enemyBox.numChildren; i++){
-            this.enemyBox.getChildAt(i).attack();
-            this.enemyBox.getChildAt(i).moveAndRecover();
-        }  
-
-        // 物品移动
-        for(var i = 0; i < this.itemBox.numChildren; i++) {
-            this.itemBox.getChildAt(i).moveAndRecover();
-        }
-
-        // 敌军子弹移动
-        for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
-            this.enemyBulletBox.getChildAt(i).moveAndRecover();
         }
 
     }

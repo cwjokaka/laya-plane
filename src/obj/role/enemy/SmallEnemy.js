@@ -18,6 +18,9 @@ var SmallEnemy = (function (_super) {
     // 高度体型修正
     _proto.heightFix = 10;
 
+    // 默认最大生命值
+    _proto.maxHp = 2;
+
     /**
      * 初始化
      */
@@ -25,8 +28,6 @@ var SmallEnemy = (function (_super) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
-        this.maxHp = opts.maxHp || 3;
-        this.hp = opts.hp || this.maxHp;
         this.vy = opts.vy || 3;
         this.score = opts.score || 1;
     }
@@ -37,6 +38,10 @@ var SmallEnemy = (function (_super) {
      */
     _proto.hitBy = function(from) {
         this.hp -= from.atk;
+        if (this.bar) {
+            this.bar.setValue(this.hp);
+        }
+
         switch (this.state) {
             case this.stateEnum.ALIVE:
             case this.stateEnum.HURT:
@@ -54,6 +59,10 @@ var SmallEnemy = (function (_super) {
                 console.error('未知的敌机状态:', this.state);
 
         }
+    }
+
+    _proto.attack = function() {
+
     }
 
 

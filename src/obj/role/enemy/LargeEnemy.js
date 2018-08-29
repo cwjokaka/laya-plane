@@ -21,6 +21,9 @@ var LargeEnemy = (function (_super) {
     // 物品掉落率 0~1
     _proto.itemDropChance = 0.5;
 
+    // 默认最大生命值
+    _proto.maxHp = 10;
+
     /**
      * 初始化
      */
@@ -28,8 +31,6 @@ var LargeEnemy = (function (_super) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
-        this.maxHp = opts.maxHp || 5;
-        this.hp = opts.hp || this.maxHp;
         this.vy = opts.vy || 1;
     }
 

@@ -35,6 +35,9 @@ var Enemy = (function (_super) {
         DEATH: 2
     }
 
+    // 默认最大生命值
+    _proto.maxHp = 1;
+
     // 攻击间隔(帧数)
     _proto.attackInterval = 60;
 
@@ -42,6 +45,10 @@ var Enemy = (function (_super) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
+        delete this.maxHp;
+        delete this.hp;
+        this.maxHp = opts.maxHp || this.maxHp;
+        this.hp = opts.hp || this.maxHp;
         this.vx = opts.vx || 0;
         this.vy = opts.vy || 1;
         this.score = opts.score || 1;
@@ -58,6 +65,13 @@ var Enemy = (function (_super) {
         newBound.setTo(newBound.x + this.widthFix, newBound.y + this.heightFix, newBound.width - 2 * this.widthFix, newBound.height - 2 * this.heightFix);
         this.setBounds(newBound);
         this.state = this.stateEnum.ALIVE;
+        // 添加血条
+        var width = newBound.width;
+        var height = newBound.height;
+        var bar = Laya.Pool.getItemByClass(Bar.prototype.className, Bar);
+        this.bar = bar;
+        bar.init({x: -(width / 2), y: -(height / 2) - 30, width: width,borderWidth: 4, maxValue: this.maxHp});
+        this.addChild(bar);
     }
 
     // 默认移动方式
@@ -72,6 +86,9 @@ var Enemy = (function (_super) {
      */
     _proto.hitBy = function(from) {
         this.hp -= from.atk;
+        if (this.bar) {
+            this.bar.setValue(this.hp);
+        }
         switch (this.state) {
             case this.stateEnum.ALIVE:
             case this.stateEnum.HURT:
@@ -86,8 +103,7 @@ var Enemy = (function (_super) {
             case this.stateEnum.DEATH:
                 break;
             default:
-                console.error('未知的敌机状态:', this.state);
-
+                console.error('hitBy未知的敌机状态:', this.state);
         }
     }
 
@@ -97,6 +113,10 @@ var Enemy = (function (_super) {
      */
     _proto.impactedBy = function(from) {
         this.hp = 0;
+        if (this.bar) {
+            this.bar.setValue(this.hp);
+        }
+
         switch (this.state) {
             case this.stateEnum.ALIVE:
             case this.stateEnum.HURT:
@@ -160,6 +180,7 @@ var Enemy = (function (_super) {
             this.dropItem();
             this.removeSelf();
             Laya.Pool.recover(this.className, this);
+            Laya.Pool.recover(this.bar.className, this.bar);
         } else if(this.state === this.stateEnum.HURT) {
             this.state = this.stateEnum.ALIVE;
             this.playAction("fly");

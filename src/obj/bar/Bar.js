@@ -37,10 +37,11 @@ var Bar = (function (_super) {
 
     _proto.setValue = function(value) {
         if (value >= this.maxValue || value <= 0) {
-            return;
+            this.curValue = 0;
+        } else {
+            this.curValue = value;
         }
 
-        this.curValue = value;
         this.graphics.clear();
         this.graphics.drawRect(0, 0, (this.curValue / this.maxValue) * this.width, this.height, this.color);
         // this.graphics.drawLines(0, 0, [-this.borderWidth/2, 0, this.width, 0, this.width, this.height, 0, this.height, 0, 0], this.borderColor, this.borderWidth);

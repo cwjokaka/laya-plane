@@ -26,6 +26,9 @@ var Boss = (function (_super) {
         DEATH: 3
     };
 
+    // 默认最大生命值
+    _proto.maxHp = 100;
+
     /**
      * 初始化
      */
@@ -33,12 +36,13 @@ var Boss = (function (_super) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
-        this.maxHp = opts.maxHp || 5;
-        this.hp = opts.hp || this.maxHp;
+        // this.maxHp = opts.maxHp || 300;
+        // this.hp = opts.hp || this.maxHp;
         this.vy = opts.vy || 1;
         this.vx = opts.vx || 1;
         this.dir = 1;
         this.state = this.stateEnum.SHOW;
+        this.width = this.body.getBounds().width;
     }
 
     // 移动
@@ -53,7 +57,7 @@ var Boss = (function (_super) {
             case this.stateEnum.ALIVE:
             case this.stateEnum.HURT:
                 this.x += this.vx * this.dir;
-                if (this.x <= 0 || this.x >= SysConfig.SCREEN_WIDTH){
+                if (this.x <= this.width / 2 || this.x >= SysConfig.SCREEN_WIDTH - this.width / 2 ){
                     this.dir = -this.dir;
                 }
                 break;
@@ -71,6 +75,9 @@ var Boss = (function (_super) {
      */
     _proto.hitBy = function(from) {
         this.hp -= from.atk;
+        if (this.bar) {
+            this.bar.setValue(this.hp);
+        }
         switch (this.state) {
             case this.stateEnum.SHOW:
                 break;
@@ -91,6 +98,13 @@ var Boss = (function (_super) {
         }
     }
 
+    /**
+     * 被机体撞击时触发
+     * from: 撞击源
+     */
+    _proto.impactedBy = function(from) {
+        
+    }
 
 
     return Boss;

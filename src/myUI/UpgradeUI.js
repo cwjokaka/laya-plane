@@ -9,6 +9,10 @@ var UpgradeUI = (function(_super){
         this.backLabel.on(Laya.Event.CLICK, this, this.goBack);
         //绑定升级攻击力
         this.attUpgradeBtn.on(Laya.Event.CLICK, this, this.upgradeAtt);
+        //绑定升级HP
+        this.hpUpgradeBtn.on(Laya.Event.CLICK, this, this.upgradeHp);
+        //绑定升级设计频率
+        this.shootSpeedBtn.on(Laya.Event.CLICK, this, this.upgradeShootSpeed);
         this.init();
     }
     //注册类
@@ -34,6 +38,28 @@ var UpgradeUI = (function(_super){
             CustHolder.upgradeAtk(this.currentFighter, 1);
 
             this.attLabel.text = CustHolder.fighters[this.currentFighter].atk;
+            this.upgradeSphereLabel.text = CustHolder.upgradeSphere;
+        }
+    }
+
+    //升级当前选中战机hp
+    _proto.upgradeHp = function(){
+        if(CustHolder.upgradeSphere >= 30){
+            CustHolder.upgradeSphere -= 30;
+            CustHolder.upgradeHp(this.currentFighter, 1);
+
+            this.attLabel.text = CustHolder.fighters[this.currentFighter].hp;
+            this.upgradeSphereLabel.text = CustHolder.upgradeSphere;
+        }
+    }
+
+    //升级当前选中战机设计频率
+    _proto.upgradeShootSpeed = function(){
+        if(CustHolder.upgradeSphere >= 20){
+            CustHolder.upgradeSphere -= 20;
+            CustHolder.upgradeShootSpeed(this.currentFighter, 1);
+
+            this.shootSpeedLabel.text = CustHolder.fighters[this.currentFighter].shootSpeed;
             this.upgradeSphereLabel.text = CustHolder.upgradeSphere;
         }
     }

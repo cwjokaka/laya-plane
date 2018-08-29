@@ -26,7 +26,7 @@ var Item = (function (_super) {
         this.x = opts.x || 0;
         this.y = opts.y || 0;
         this.vx = opts.vx || 0;
-        this.vy = opts.vy || 1;
+        this.vy = opts.vy || 3;
         this.score = opts.score || 1;
         this.body = new Laya.Animation();
         this.addChild(this.body);

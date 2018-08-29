@@ -1,7 +1,7 @@
 (function(){
     var WebGL = laya.webgl.WebGL;
     Laya.init(SysConfig.SCREEN_WIDTH, SysConfig.SCREEN_HEIGHT, WebGL);
-    Laya.Stat.show(0,0);
+    //Laya.Stat.show(0,0);
     //屏幕缩放模式 始终等比显示
     Laya.stage.scaleMode = Laya.Stage.SCALE_SHOWALL;
     Laya.stage.frameRate = Laya.Stage.FRAME_FAST;

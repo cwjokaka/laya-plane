@@ -9,13 +9,11 @@ var Hero = (function (_super) {
         var fighter = CustHolder.fighters[0];
         this.atk = fighter.atk;
         this.hp = fighter.hp;
-
+        this.shootInterval = fighter.shootSpeed;
         //初始位置
         this.x = SysConfig.SCREEN_WIDTH / 2;
         this.y = SysConfig.SCREEN_HEIGHT - 80;
         this.hitRadius = 30;
-        //射击间隔
-        this.shootInterval = 400;
         //下次射击时间
         this.shootTime = Laya.Browser.now() + 200;
         //普通子弹数量
@@ -125,9 +123,7 @@ var Hero = (function (_super) {
             //获取当前时间
             var time = Laya.Browser.now();
             //如果当前时间大于下次设计时间
-            if(time > this.shootTime){
-                //更新下次射击时间
-                this.shootTime = time + this.shootInterval;
+            if(Laya.timer.currFrame % (Math.floor(this.shootInterval)) === 0){
                 this.creatBullet();
             }
 

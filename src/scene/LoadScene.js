@@ -26,7 +26,7 @@ var LoadScene = (function (_super) {
 		progressBar.x = (Laya.stage.width - progressBar.width) / 2;
 		progressBar.y = Laya.stage.height / 2;
 		progressBar.sizeGrid = "5,5,5,5";
-		Laya.stage.addChild(progressBar);
+		this.addChild(progressBar);
 		this.startLoad();
 		this.loadAnimation();
 		

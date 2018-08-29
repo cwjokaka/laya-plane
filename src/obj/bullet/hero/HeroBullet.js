@@ -20,6 +20,7 @@ var HeroBullet = (function (_super) {
             this.addChild(this.body);
             this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
         }
+        this.vy = -8;
         this.playAction("fly");
     }
     _proto.onPlayComplete = function(){

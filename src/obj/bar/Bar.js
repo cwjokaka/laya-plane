@@ -25,6 +25,7 @@ var Bar = (function (_super) {
         this.borderWidth = opts.borderWidth || 1;
         this.maxValue = opts.maxValue || 64;
         this.curValue = opts.curValue || this.maxValue;
+        this.alpha = opts.alpha || 0.3;
         // 绘制边框
         // this.graphics.drawLines(0, 0, [0, 0, this.width, 0, this.width, this.height, 0, this.height, 0, 0], this.borderColor, this.borderWidth);
         // 填充颜色(底层)
@@ -36,7 +37,10 @@ var Bar = (function (_super) {
     }
 
     _proto.setValue = function(value) {
-        if (value >= this.maxValue || value <= 0) {
+        if (value > this.maxValue) {
+            this.curValue = this.maxValue;
+        } 
+        else if (value <= 0) {
             this.curValue = 0;
         } else {
             this.curValue = value;

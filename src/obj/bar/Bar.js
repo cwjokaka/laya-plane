@@ -33,7 +33,7 @@ var Bar = (function (_super) {
         // 填充颜色(上层)
         // this.graphics.drawRect(0, 0, (this.curValue / this.maxValue) * this.width, this.height, this.color);
         // Laya.timer.frameLoop(1, this, this.refresh);    
-        this.setValue(this.maxValue);
+        this.setValue(this.curValue);
     }
 
     _proto.setValue = function(value) {

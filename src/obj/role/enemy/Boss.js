@@ -74,15 +74,15 @@ var Boss = (function (_super) {
      * from: 攻击源
      */
     _proto.hitBy = function(from) {
-        this.hp -= from.atk;
-        if (this.bar) {
-            this.bar.setValue(this.hp);
-        }
         switch (this.state) {
             case this.stateEnum.SHOW:
                 break;
             case this.stateEnum.ALIVE:
             case this.stateEnum.HURT:
+                this.hp -= from.atk;
+                if (this.bar) {
+                    this.bar.setValue(this.hp);
+                }
                 if(this.hp > 0){
                     this.state = this.stateEnum.HURT;
                     this.playAction('hit');

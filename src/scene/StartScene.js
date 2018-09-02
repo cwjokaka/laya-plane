@@ -15,6 +15,7 @@ var StartScene = (function (_super) {
 
     _proto.startGame = function(){
         this.removeSelf();
+        this.destroy();
 		Laya.stage.addChild(new PlayScene());
     }
 

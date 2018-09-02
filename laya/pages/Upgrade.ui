@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":12,
-    "selecteID":15,
+    "selectedBox":17,
+    "selecteID":20,
     "props":{"width":400,"sceneColor":"#dca2f3","height":825},
     "nodeParent":-1,
     "label":"View",
@@ -118,7 +118,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":7,"x":31,"width":52,"var":"hpUpgradeLabel","valign":"middle","text":"30","height":29,"fontSize":15,"bold":true,"align":"center"},
+                    "props":{"y":7,"x":31,"width":52,"var":"hpUpgradeLabel","valign":"middle","text":"30(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
                     "nodeParent":6,
                     "label":"Label(hpUpgradeLabel)",
                     "isDirectory":false,
@@ -196,7 +196,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":7,"x":31,"width":52,"valign":"middle","text":"20","height":29,"fontSize":15,"bold":true,"align":"center"},
+                    "props":{"y":7,"x":31,"width":52,"valign":"middle","text":"20(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
                     "nodeParent":12,
                     "label":"Label",
                     "isDirectory":false,
@@ -274,7 +274,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":7,"x":31,"width":52,"valign":"middle","text":"80","height":29,"fontSize":15,"bold":true,"align":"center"},
+                    "props":{"y":7,"x":31,"width":52,"valign":"middle","text":"80(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
                     "nodeParent":17,
                     "label":"Label",
                     "isDirectory":false,

@@ -29,6 +29,16 @@ var Boss = (function (_super) {
     // 默认最大生命值
     _proto.maxHp = 100;
 
+    // 攻击方式
+    _proto.attackMode = [
+        [
+            {bullet: EnemyBulletGroup, params: {}, delay: 10}
+        ],
+        [
+
+        ]
+    ]
+
     /**
      * 初始化
      */
@@ -36,8 +46,6 @@ var Boss = (function (_super) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
-        // this.maxHp = opts.maxHp || 300;
-        // this.hp = opts.hp || this.maxHp;
         this.vy = opts.vy || 1;
         this.vx = opts.vx || 1;
         this.dir = 1;
@@ -66,6 +74,16 @@ var Boss = (function (_super) {
                 break;
             default:
                 break;
+        }
+    }
+
+    // 攻击
+    _proto.attack = function() {
+        var nowFrame = Laya.timer.currFrame;
+        if (this.attackFrame <= nowFrame) {
+            var bulletGroup = Laya.Pool.getItemByClass(EnemyBulletGroup.prototype.className, EnemyBulletGroup);
+            bulletGroup.init({x: this.x, y: this.y});
+            ObjectHolder.enemyBulletBox.addChild(bulletGroup);
         }
     }
 

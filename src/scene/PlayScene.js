@@ -101,14 +101,12 @@ var PlayScene = (function (_super) {
                         this.hero.impactedItem(item);
                     }
                 }
+                
                 /**
-                 * 主角碰敌军子弹
+                 * 检测主角是否碰到敌军子弹,并处理逻辑
                  */
                 for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
-                    var enemyBullet = this.enemyBulletBox.getChildAt(i);
-                    if (this.hero.getBounds().intersects(enemyBullet.getBounds())) {
-                        enemyBullet.impactedBy(this.hero);
-                    }
+                    this.enemyBulletBox.getChildAt(i).checkCollisionAndDeal(this.hero);
                 }
 
                 // 碰撞事件End

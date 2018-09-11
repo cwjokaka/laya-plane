@@ -56,6 +56,14 @@ var EnemyBullet = (function (_super) {
         Laya.Pool.recover(this.className, this);
     }
 
+    /**
+     * 判断是否碰撞到主角,如果碰撞到,处理逻辑
+     */
+    _proto.checkCollisionAndDeal = function(hero) {
+        if (hero.getBounds().intersects(this.getBounds())) {
+            this.impactedBy(hero);
+        }
+    }
 
 
     return EnemyBullet;

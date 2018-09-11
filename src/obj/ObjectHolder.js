@@ -9,6 +9,7 @@ var ObjectHolder = (function () {
         this.enemyBox = new Laya.Sprite();
         this.heroBulletBox = new Laya.Sprite();
         this.enemyBulletBox = new Laya.Sprite();
+        this.enemyFactory = new BaseEnemyFactory();
         this.itemBox = new Laya.Sprite();
         this.hero = new Hero();
         this.playUI = new PlayUI();
@@ -29,6 +30,7 @@ var ObjectHolder = (function () {
         this.hero = new Hero();
         this.playUI.destroy();
         this.playUI = new PlayUI();
+        this.enemyFactory = new BaseEnemyFactory();
     }
 
     return ObjectHolder;

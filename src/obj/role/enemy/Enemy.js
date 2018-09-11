@@ -47,7 +47,8 @@ var Enemy = (function (_super) {
         opts = opts || {};
         delete this.maxHp;
         delete this.hp;
-        this.maxHp = opts.maxHp || this.maxHp;
+        var ratioHp = opts.ratioHp || 1
+        this.maxHp = opts.maxHp || this.maxHp * ratioHp;
         this.hp = opts.hp || this.maxHp;
         this.vx = opts.vx || 0;
         this.vy = opts.vy || 1;

@@ -22,6 +22,10 @@ var GameHolder = (function () {
         BONUS: 3
     };
 
+    GameHolder.ratio = {
+        hp:     [1, 1.1, 1.2],
+        atk:    [1, 1.1, 1.2]
+    }
 
     GameHolder.gameData = {
         appearBossIndex: 0,//boss出现的下标
@@ -30,8 +34,8 @@ var GameHolder = (function () {
     GameHolder.init = function(opts) {
         this.playUI = opts.playUI;
         this.score = 0;
-        this.level = 1;
-        this.nextLevelScore = 200;
+        this.level = 0;
+        this.nextLevelScore = 10;
         this.upgradeSphere = 0;
         this.state = GameHolder.stateEnum.PLAY;
         this.playState = GameHolder.playStateEnum.NORMAL;
@@ -48,6 +52,13 @@ var GameHolder = (function () {
             GameHolder.gameData.appearBossIndex++;
         }
         this.playUI.showScore(this.score);
+    }
+
+    GameHolder.getRatioHp = function(){
+        if (this.level >= GameHolder.ratio.hp.length){
+            return 2;
+        }
+        return GameHolder.ratio.hp[this.level];
     }
 
     GameHolder.increaseUpgradeSphere = function(value){

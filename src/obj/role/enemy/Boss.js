@@ -27,7 +27,7 @@ var Boss = (function (_super) {
     };
 
     // 默认最大生命值
-    _proto.maxHp = 100;
+    _proto.maxHp = 800 * (GameHolder.gameData.appearBossIndex + 1) * 2;
 
     /**
      * 初始化
@@ -43,6 +43,7 @@ var Boss = (function (_super) {
         this.dir = 1;
         this.state = this.stateEnum.SHOW;
         this.width = this.body.getBounds().width;
+        this.score = 100;
     }
 
     // 移动
@@ -63,6 +64,7 @@ var Boss = (function (_super) {
                 break;
             case this.stateEnum.DEATH:
                 GameHolder.playState = GameHolder.playStateEnum.NORMAL;
+                //GameHolder.increaseScore(this.score);
                 break;
             default:
                 break;

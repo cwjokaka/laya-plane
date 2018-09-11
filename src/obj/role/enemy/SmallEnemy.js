@@ -29,7 +29,7 @@ var SmallEnemy = (function (_super) {
         _super.prototype.init.call(this, opts);
         opts = opts || {};
         this.vy = opts.vy || 3;
-        this.score = opts.score || 1;
+        this.score = opts.score || 5;
     }
 
     /**
@@ -47,6 +47,7 @@ var SmallEnemy = (function (_super) {
             case this.stateEnum.HURT:
                 if(this.hp > 0){
                     this.state = this.stateEnum.HURT;
+                    GameHolder.increaseScore(GameConfig.HIT_SCORE);
                 } else {
                     this.state = this.stateEnum.DEATH;
                     this.playAction('down');

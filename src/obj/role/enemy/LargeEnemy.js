@@ -32,6 +32,7 @@ var LargeEnemy = (function (_super) {
         _super.prototype.init.call(this, opts);
         opts = opts || {};
         this.vy = opts.vy || 1;
+        this.score = 20;
     }
 
 

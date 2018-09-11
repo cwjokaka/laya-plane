@@ -9,7 +9,7 @@ var CustHolder = (function () {
         this.upgradeSphere = 1000;
         //拥有的战机集合（暂未实现）
         this.fighters = [
-                {'atk' : 1, 'shootSpeed' : 50, 'hp' : 10,},
+                {'atk' : 1, 'shootSpeed' : 50, 'hp' : 100,},
             ];
 
     }

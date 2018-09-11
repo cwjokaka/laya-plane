@@ -32,6 +32,7 @@ var MediumEnemy = (function (_super) {
         _super.prototype.init.call(this, opts);
         opts = opts || {};
         this.vy = opts.vy || 2;
+        this.score = 10;
     }
 
 

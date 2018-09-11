@@ -3,6 +3,9 @@ var PlayUI = (function(_super){
         PlayUI.super(this);
         //炸弹事件
         this.boomLabel.on(Laya.Event.CLICK, this, this.onBoom);
+        this.heroHpBar = new Bar();
+        this.heroHpBar.init({width: 100, borderWidth: 4, maxValue: 100});
+        this.heroHpPos.addChild(this.heroHpBar);
         this.reset();
     }
     //注册类
@@ -47,6 +50,7 @@ var PlayUI = (function(_super){
     //显示血量
     _proto.showHp = function(value){
         this.hpLabel.text = "HP:" + value;
+        this.heroHpBar.clean
     }
     //显示升级球数量
     _proto.showUpgradesphere = function(value){

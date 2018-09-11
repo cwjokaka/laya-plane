@@ -115,11 +115,6 @@ var PlayScene = (function (_super) {
                  */
                 for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
                     this.enemyBulletBox.getChildAt(i).checkCollisionAndDeal(this.hero);
-                    var enemyBullet = this.enemyBulletBox.getChildAt(i);
-                    if (this.hero.getBounds().intersects(enemyBullet.getBounds())) {
-                        enemyBullet.impactedBy(this.hero);
-                        this.hero.hitAction(enemyBullet.atk);
-                    }
                 }
 
                 // 碰撞事件End

@@ -11,6 +11,9 @@ var GameHolder = (function () {
         END: 2
     };
 
+    // 游戏状态
+    GameHolder.appearBossScores = [500, 800, 2000, 15000];
+
     // 游戏进行中的状态
     GameHolder.playStateEnum = {
         NORMAL: 0,
@@ -19,6 +22,10 @@ var GameHolder = (function () {
         BONUS: 3
     };
 
+
+    GameHolder.gameData = {
+        appearBossIndex: 0,//boss出现的下标
+    }
 
     GameHolder.init = function(opts) {
         this.playUI = opts.playUI;
@@ -36,8 +43,9 @@ var GameHolder = (function () {
             this.level++;
             this.nextLevelScore += this.nextLevelScore * 0.5;
         }
-        if(this.score > 2 && this.playState === this.playStateEnum.NORMAL) {
+        if(this.score > GameHolder.appearBossScores[GameHolder.gameData.appearBossIndex] && this.playState === this.playStateEnum.NORMAL) {
             this.playState = this.playStateEnum.SHOW_BOSS;
+            GameHolder.gameData.appearBossIndex++;
         }
         this.playUI.showScore(this.score);
     }

@@ -29,13 +29,13 @@ var PlayScene = (function (_super) {
      * 场景初始化
      */
     _proto.init = function() {
-        Laya.stage.addChild(this.background);
-        Laya.stage.addChild(this.enemyBox);
-        Laya.stage.addChild(this.enemyBulletBox);
-        Laya.stage.addChild(this.heroBulletBox);
-        Laya.stage.addChild(this.itemBox);
-        Laya.stage.addChild(this.hero);
-        Laya.stage.addChild(this.playUI);
+        this.addChild(this.background);
+        this.addChild(this.enemyBox);
+        this.addChild(this.enemyBulletBox);
+        this.addChild(this.heroBulletBox);
+        this.addChild(this.itemBox);
+        this.addChild(this.hero);
+        this.addChild(this.playUI);
         Laya.timer.frameLoop(1, this, this.onLoop);
         this.restart();
     }
@@ -52,6 +52,13 @@ var PlayScene = (function (_super) {
      * 游戏主循环
      */
     _proto.onLoop = function() {
+        if(this.hero.hp < 0 && !this.test){
+            this.test = true;
+            var deadUI = new DeadUI(this);
+            this.hero.playAction('down');
+            this.parent.addChild(deadUI);
+            return;
+        }
         switch(GameHolder.state) {
 
             /**
@@ -89,6 +96,7 @@ var PlayScene = (function (_super) {
                     var enemy = this.enemyBox.getChildAt(i);
                     if (this.hero.getBounds().intersects(enemy.getBounds())) {
                         enemy.impactedBy(this.hero);
+                        this.hero.hitAction(enemy.atk);
                     }
                 }
                 /**
@@ -107,6 +115,11 @@ var PlayScene = (function (_super) {
                  */
                 for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
                     this.enemyBulletBox.getChildAt(i).checkCollisionAndDeal(this.hero);
+                    var enemyBullet = this.enemyBulletBox.getChildAt(i);
+                    if (this.hero.getBounds().intersects(enemyBullet.getBounds())) {
+                        enemyBullet.impactedBy(this.hero);
+                        this.hero.hitAction(enemyBullet.atk);
+                    }
                 }
 
                 // 碰撞事件End

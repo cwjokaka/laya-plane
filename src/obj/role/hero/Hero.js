@@ -84,8 +84,8 @@ var Hero = (function (_super) {
      * 被攻击时触发
      * from: 攻击源
      */
-    _proto.hitBy = function(from) {
-        
+    _proto.hitAction = function(loseHp) {
+        this.hp -= loseHp;
     }
 
     /**

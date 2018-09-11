@@ -48,7 +48,7 @@ var UpgradeUI = (function(_super){
             CustHolder.upgradeSphere -= 30;
             CustHolder.upgradeHp(this.currentFighter, 1);
 
-            this.attLabel.text = CustHolder.fighters[this.currentFighter].hp;
+            this.hpLabel.text = CustHolder.fighters[this.currentFighter].hp;
             this.upgradeSphereLabel.text = CustHolder.upgradeSphere;
         }
     }

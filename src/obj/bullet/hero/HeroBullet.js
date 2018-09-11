@@ -20,7 +20,7 @@ var HeroBullet = (function (_super) {
             this.addChild(this.body);
             this.body.on(Laya.Event.COMPLETE, this, this.onPlayComplete);
         }
-        this.vy = -8;
+        this.vy = -10;
         this.playAction("fly");
     }
     _proto.onPlayComplete = function(){
@@ -38,6 +38,7 @@ var HeroBullet = (function (_super) {
         this.action = action;
         this.body.play(0, true, "bullet1_" + action);
         //获取动画大小区域t
+        this.body.setBounds(new laya.maths.Rectangle(0, 0 ,20, 20));
         this.bound = this.body.getBounds();
         //设置机身居中
         this.body.pos(-this.bound.width/2, -this.bound.height/2);

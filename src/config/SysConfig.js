@@ -9,3 +9,7 @@ var SysConfig = {
 var HeroConfig = {
     BULLET_POS : [[0], [-15, 15], [-30, 0, 30], [-45, -15, 15, 45]],
 };
+
+var GameConfig = {
+    HIT_SCORE: 1,
+};

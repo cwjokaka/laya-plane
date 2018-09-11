@@ -95,9 +95,11 @@ var Enemy = (function (_super) {
                 if(this.hp > 0){
                     this.state = this.stateEnum.HURT;
                     this.playAction('hit');
+                    GameHolder.increaseScore(GameConfig.HIT_SCORE);
                 } else {
                     this.state = this.stateEnum.DEATH;
                     this.playAction('down');
+                    GameHolder.increaseScore(this.score);
                 }
                 break;
             case this.stateEnum.DEATH:

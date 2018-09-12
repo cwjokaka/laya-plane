@@ -32,7 +32,9 @@ var Boss = (function (_super) {
     // 攻击方式
     _proto.attackMode = [
         [
-            {bullet: EnemyBulletGroup, params: {}, delay: 10}
+            {bullet: EnemyBullet, delay: 30, repeat: 6},
+            {bullet: EnemyBullet, delay: 60, repeat: 3},
+            {bullet: EnemyBullet, delay: 15, repeat: 5}
         ],
         [
 
@@ -52,6 +54,9 @@ var Boss = (function (_super) {
         this.state = this.stateEnum.SHOW;
         this.width = this.body.getBounds().width;
         this.score = 100;
+        this.curForm = 0;
+        this.curAttackIndex = 0;
+        this.curRepeatCount = 1;
     }
 
     // 移动
@@ -81,11 +86,30 @@ var Boss = (function (_super) {
 
     // 攻击
     _proto.attack = function() {
-        var nowFrame = Laya.timer.currFrame;
-        if (this.attackFrame <= nowFrame) {
-            var bulletGroup = Laya.Pool.getItemByClass(EnemyBulletGroup.prototype.className, EnemyBulletGroup);
-            bulletGroup.init({x: this.x, y: this.y});
-            ObjectHolder.enemyBulletBox.addChild(bulletGroup);
+        switch(this.state) {
+            case this.stateEnum.SHOW:
+                break;
+            case this.stateEnum.ALIVE:
+            case this.stateEnum.HURT:
+                var nowFrame = Laya.timer.currFrame;
+                if (this.attackFrame <= nowFrame) {
+                    var curAttack = this.attackMode[this.curForm][this.curAttackIndex];
+
+                    if (++this.curRepeatCount >= curAttack.repeat) {
+                        this.curRepeatCount = 1;
+                        if (++this.curAttackIndex >= this.attackMode[this.curForm].length) {
+                            this.curAttackIndex = 0;
+                        }
+                    }
+                    var bulletClass = curAttack.bullet;
+                    var bullet = Laya.Pool.getItemByClass(bulletClass.prototype.className, bulletClass);
+                    bullet.init({x: this.x, y: this.y});
+                    ObjectHolder.enemyBulletBox.addChild(bullet);
+                    this.attackFrame = nowFrame + curAttack.delay;
+                }
+                break;
+            case this.stateEnum.DEATH:
+                break;
         }
     }
 

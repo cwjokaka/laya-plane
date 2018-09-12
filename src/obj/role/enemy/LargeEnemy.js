@@ -24,6 +24,8 @@ var LargeEnemy = (function (_super) {
     // 默认最大生命值
     _proto.maxHp = 10;
 
+    _proto.attackInterval = 120;
+
     /**
      * 初始化
      */

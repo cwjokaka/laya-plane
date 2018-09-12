@@ -96,7 +96,7 @@ var PlayScene = (function (_super) {
                     var enemy = this.enemyBox.getChildAt(i);
                     if (this.hero.getBounds().intersects(enemy.getBounds())) {
                         enemy.impactedBy(this.hero);
-                        this.hero.hitAction(enemy.atk);
+                    
                     }
                 }
                 /**

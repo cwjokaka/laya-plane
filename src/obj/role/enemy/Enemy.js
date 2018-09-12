@@ -123,7 +123,7 @@ var Enemy = (function (_super) {
         switch (this.state) {
             case this.stateEnum.ALIVE:
             case this.stateEnum.HURT:
-                from.impactedBy(this);
+                from.hitAction(this.atk);
                 this.state = this.stateEnum.DEATH;
                 this.playAction('down');
                 GameHolder.increaseScore(this.score);

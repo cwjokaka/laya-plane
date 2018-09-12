@@ -100,7 +100,7 @@ var Hero = (function (_super) {
      * from: 碰撞源
      */
     _proto.impactedBy = function(from) {
-        // console.log('主角碰到了:', from.className);
+        this.editHp(-1);
     }
 
     _proto.impactedItem = function(item){

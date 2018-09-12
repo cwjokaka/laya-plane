@@ -35,7 +35,8 @@ P E466EB1C vslider$bar.png
 P 2BFF7046 vslider.png
 D resource
 D resource/role
-R 4F008F46 background.png
+R B82A6366 background.png
+R 4F008F46 background1.png
 P E4078869 blank.png
 P C55A0DA5 btn_pause.png
 P 67A9A743 bullet1.png
@@ -73,6 +74,7 @@ P 266CE476 ufo2.png
 P 94F9BE92 upgrade.png
 D resource/ui
 P 1B5389F5 attriUpgradeBg.png
+P 9CC5A95F hpLogo.png
 P A383C51D myLabel.png
 P CFA3C26F progressBar$bar.png
 P C2BE12DA progressBar.png

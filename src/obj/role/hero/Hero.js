@@ -9,6 +9,7 @@ var Hero = (function (_super) {
         var fighter = CustHolder.fighters[0];
         this.atk = fighter.atk;
         this.hp = fighter.hp;
+        this.maxHp = fighter.hp;
         this.shootInterval = fighter.shootSpeed;
         //初始位置
         this.x = SysConfig.SCREEN_WIDTH / 2;
@@ -85,7 +86,13 @@ var Hero = (function (_super) {
      * from: 攻击源
      */
     _proto.hitAction = function(loseHp) {
-        this.hp -= loseHp;
+        this.editHp(-1 * loseHp);
+    }
+
+    _proto.editHp = function(value){
+        this.hp += value;
+        console.log(this.hp);
+        GameHolder.playInfos.playUI.showHp(this.hp);
     }
 
     /**

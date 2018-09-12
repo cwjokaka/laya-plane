@@ -12,7 +12,7 @@ var ObjectHolder = (function () {
         this.enemyFactory = new BaseEnemyFactory();
         this.itemBox = new Laya.Sprite();
         this.hero = new Hero();
-        this.playUI = new PlayUI();
+        this.playUI = new PlayUI({'maxHeroHp': this.hero.maxHp});
     }
 
     ObjectHolder.reset = function() {

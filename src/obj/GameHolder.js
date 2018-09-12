@@ -31,39 +31,43 @@ var GameHolder = (function () {
         appearBossIndex: 0,//boss出现的下标
     }
 
+    GameHolder.playInfos = {
+
+    };
+
     GameHolder.init = function(opts) {
-        this.playUI = opts.playUI;
-        this.score = 0;
-        this.level = 0;
-        this.nextLevelScore = 10;
-        this.upgradeSphere = 0;
+        GameHolder.playInfos.playUI = opts.playUI;
+        GameHolder.playInfos.score = 0;
+        GameHolder.playInfos.level = 0;
+        GameHolder.playInfos.nextLevelScore = 10;
+        GameHolder.playInfos.upgradeSphere = 0;
         this.state = GameHolder.stateEnum.PLAY;
         this.playState = GameHolder.playStateEnum.NORMAL;
     }
 
     GameHolder.increaseScore = function(value){
-        this.score += value;
-        if(this.score > this.nextLevelScore){
-            this.level++;
-            this.nextLevelScore += this.nextLevelScore * 0.5;
+        GameHolder.playInfos.score += value;
+        if(GameHolder.playInfos.score > GameHolder.playInfos.nextLevelScore){
+            GameHolder.playInfos.level++;
+            GameHolder.playInfos.nextLevelScore += GameHolder.playInfos.nextLevelScore * 0.5;
         }
-        if(this.score > GameHolder.appearBossScores[GameHolder.gameData.appearBossIndex] && this.playState === this.playStateEnum.NORMAL) {
+        if(GameHolder.playInfos.score > GameHolder.appearBossScores[GameHolder.gameData.appearBossIndex] && this.playState === this.playStateEnum.NORMAL) {
             this.playState = this.playStateEnum.SHOW_BOSS;
             GameHolder.gameData.appearBossIndex++;
         }
-        this.playUI.showScore(this.score);
+        GameHolder.playInfos.playUI.showScore(GameHolder.playInfos.score);
     }
 
     GameHolder.getRatioHp = function(){
-        if (this.level >= GameHolder.ratio.hp.length){
+        if (GameHolder.playInfos.level >= GameHolder.ratio.hp.length){
             return 2;
         }
-        return GameHolder.ratio.hp[this.level];
+        return GameHolder.ratio.hp[GameHolder.playInfos.level];
     }
 
     GameHolder.increaseUpgradeSphere = function(value){
-        this.upgradeSphere += value;
-        this.playUI.showUpgradesphere(this.upgradeSphere);
+        GameHolder.playInfos.upgradeSphere += value;
+        GameHolder.playInfos.playUI.showUpgradesphere(GameHolder.playInfos.upgradeSphere);
     }
 
     return GameHolder;

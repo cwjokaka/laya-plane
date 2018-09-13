@@ -24,6 +24,10 @@ var MediumEnemy = (function (_super) {
     // 默认最大生命值
     _proto.maxHp = 5;
 
+
+    _proto.attackInterval = 180;
+
+
     /**
      * 初始化
      */

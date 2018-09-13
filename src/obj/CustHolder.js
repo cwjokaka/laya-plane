@@ -28,5 +28,9 @@ var CustHolder = (function () {
         var fighter = this.fighters[index]
         fighter.shootSpeed -= fighter.shootSpeed * 0.05;
     }
+
+    CustHolder.increaseSphere = function(value){
+        this.upgradeSphere += value;
+    }
     return CustHolder;
 }());

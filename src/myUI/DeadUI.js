@@ -11,6 +11,7 @@ var DeadUI = (function(_super){
     var _proto = DeadUI.prototype;
 
     _proto.endGame = function(){
+        CustHolder.increaseSphere(GameHolder.playInfos.upgradeSphere);
         this.playScence.removeSelf();
         Laya.stage.removeChild(this.playScence);
         Laya.stage.addChild(new StartScene());

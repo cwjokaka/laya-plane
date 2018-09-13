@@ -91,7 +91,6 @@ var Hero = (function (_super) {
 
     _proto.editHp = function(value){
         this.hp += value;
-        console.log(this.hp);
         GameHolder.playInfos.playUI.showHp(this.hp);
     }
 

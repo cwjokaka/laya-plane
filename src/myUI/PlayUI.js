@@ -53,7 +53,7 @@ var PlayUI = (function(_super){
     }
     //显示升级球数量
     _proto.showUpgradesphere = function(value){
-        this.upgradesphereLabel.text = value;
+        this.upgradesphereLabel.text = CustHolder.upgradeSphere + value;
     }
     //显示积分
     _proto.showScore = function(value){

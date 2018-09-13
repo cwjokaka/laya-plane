@@ -14,7 +14,7 @@ var PlayScene = (function (_super) {
         this.heroBulletBox = ObjectHolder.heroBulletBox;
         this.itemBox = ObjectHolder.itemBox;
         this.hero = ObjectHolder.hero;
-
+        this.test = true;
         //创建UI界面
         this.playUI = ObjectHolder.playUI;
         GameHolder.init({'playUI': this.playUI});
@@ -52,11 +52,13 @@ var PlayScene = (function (_super) {
      * 游戏主循环
      */
     _proto.onLoop = function() {
-        if(this.hero.hp < 0 && !this.test){
-            this.test = true;
-            var deadUI = new DeadUI(this);
-            this.hero.playAction('down');
-            this.parent.addChild(deadUI);
+        if(this.hero.hp < 0){
+            if(this.test){
+                var deadUI = new DeadUI(this);
+                this.hero.playAction('down');
+                this.parent.addChild(deadUI);
+                this.test = false;
+            }
             return;
         }
         switch(GameHolder.state) {

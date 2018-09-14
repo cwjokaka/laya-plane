@@ -8,7 +8,7 @@ var EnemyBulletGroup = (function (_super) {
     Laya.class(EnemyBulletGroup, "EnemyBulletGroup", _super);
     var _proto = EnemyBulletGroup.prototype;
 
-        // 类名
+    // 类名
     _proto.className = 'EnemyBulletGroup';
 
 

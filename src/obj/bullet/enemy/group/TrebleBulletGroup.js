@@ -43,6 +43,9 @@ var TrebleBulletGroup = (function (_super) {
      */
     _proto.checkCollisionAndDeal = function(hero) {
         for (var i = 0; i<this.numChildren; i++) {
+            var bullet = this.getChildAt(i);
+            var bound = bullet.getBounds();
+            bound.setTo(this.x, this.y, bound.width, bound.height);
             this.getChildAt(i).checkCollisionAndDeal(hero);
         }
     }

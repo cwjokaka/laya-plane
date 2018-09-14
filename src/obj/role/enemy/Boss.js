@@ -32,8 +32,8 @@ var Boss = (function (_super) {
     // 攻击方式
     _proto.attackMode = [
         [
+            // {bullet: TrebleBulletGroup, delay: 60, repeat: 3}
             {bullet: EnemyBullet, delay: 30, repeat: 6},
-            {bullet: EnemyBullet, delay: 60, repeat: 3},
             {bullet: EnemyBullet, delay: 15, repeat: 5}
         ],
         [

@@ -25,6 +25,9 @@ var EnemyBullet = (function (_super) {
         this.vx = opts.vx || 0;
         // y轴速度
         this.vy = opts.vy || 1;
+
+        this.setBounds(this.getGraphicBounds().clone());
+
     }
 
     /**

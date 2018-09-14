@@ -114,6 +114,8 @@ var LoadScene = (function (_super) {
         Laya.Animation.createFrames(["resource/role/ufo2.png"],"ufo2_fly");
         //缓存升级球
         Laya.Animation.createFrames(["resource/role/upgrade.png"],"upgrade_fly");
+		//缓存升级球
+        Laya.Animation.createFrames(["resource/ui/hpLogo.png"],"heroHp_fly");
     }
 	return LoadScene;
 

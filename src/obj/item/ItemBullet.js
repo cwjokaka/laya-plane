@@ -4,6 +4,7 @@
 var ItemBullet = (function (_super) {
 
     function ItemBullet() {
+        this.lifeCycle = 1800;
     }
 
     Laya.class(ItemBullet, "ItemBullet", _super);

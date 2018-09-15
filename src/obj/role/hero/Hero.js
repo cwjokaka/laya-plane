@@ -19,6 +19,8 @@ var Hero = (function (_super) {
         this.shootTime = Laya.Browser.now() + 200;
         //普通子弹数量
         this.normalBulletNum = 1;
+        this.normalBulletFrame = 0;
+        this.normalBulletLifeCycle = 0;
         
         this.maxBoomNum = 10;
         this.boomNum = 10;
@@ -38,7 +40,8 @@ var Hero = (function (_super) {
     _proto.itemEnum = {
         DOUBLE_BULLET: 'ItemBullet',  
         SKILL_BOOM: 'ItemBoom',  
-        UPGRATE: 'ItemUpgrade',   
+        UPGRATE: 'ItemUpgrade',
+        HP: 'ItemHp',
     }
 
 	_proto.init = function(){
@@ -107,6 +110,8 @@ var Hero = (function (_super) {
             case this.itemEnum.DOUBLE_BULLET:
                 if(this.normalBulletNum == 1){
                     this.normalBulletNum++;
+                    this.normalBulletFrame = Laya.timer.currFrame;
+                    this.normalBulletLifeCycle = item.lifeCycle;
                 }
                 break;
             case this.itemEnum.SKILL_BOOM:
@@ -117,6 +122,9 @@ var Hero = (function (_super) {
                 break;
             case this.itemEnum.UPGRATE:
                 GameHolder.increaseUpgradeSphere(1);
+                break;
+            case this.itemEnum.HP:
+                this.editHp(item.increaseHp);
                 break;
             default:
                 console.error('未知物品:', item.className);
@@ -131,6 +139,12 @@ var Hero = (function (_super) {
             //如果当前时间大于下次设计时间
             if(Laya.timer.currFrame % (Math.floor(this.shootInterval)) === 0){
                 this.creatBullet();
+            }
+
+            if(this.normalBulletNum > 1 && (this.normalBulletFrame + this.normalBulletLifeCycle < Laya.timer.currFrame)){
+                this.normalBulletNum--;
+                this.normalBulletFrame = 0;
+                this.normalBulletLifeCycle = 0;
             }
 
 

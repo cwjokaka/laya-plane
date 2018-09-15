@@ -27,6 +27,8 @@ var GameHolder = (function () {
         atk:    [1, 1.1, 1.2]
     }
 
+   GameHolder.ememyHp = [1, 2, 5]
+
     GameHolder.gameData = {
         appearBossIndex: 0,//boss出现的下标
     }
@@ -38,8 +40,8 @@ var GameHolder = (function () {
     GameHolder.init = function(opts) {
         GameHolder.playInfos.playUI = opts.playUI;
         GameHolder.playInfos.score = 0;
-        GameHolder.playInfos.level = 0;
-        GameHolder.playInfos.nextLevelScore = 10;
+        GameHolder.playInfos.level = 1;
+        GameHolder.playInfos.nextLevelScore = 50;
         GameHolder.playInfos.upgradeSphere = 0;
         this.state = GameHolder.stateEnum.PLAY;
         this.playState = GameHolder.playStateEnum.NORMAL;
@@ -49,7 +51,7 @@ var GameHolder = (function () {
         GameHolder.playInfos.score += value;
         if(GameHolder.playInfos.score > GameHolder.playInfos.nextLevelScore){
             GameHolder.playInfos.level++;
-            GameHolder.playInfos.nextLevelScore += GameHolder.playInfos.nextLevelScore * 0.5;
+            GameHolder.playInfos.nextLevelScore += GameHolder.playInfos.nextLevelScore * 1;
         }
         if(GameHolder.playInfos.score > GameHolder.appearBossScores[GameHolder.gameData.appearBossIndex] && this.playState === this.playStateEnum.NORMAL) {
             this.playState = this.playStateEnum.SHOW_BOSS;
@@ -58,11 +60,21 @@ var GameHolder = (function () {
         GameHolder.playInfos.playUI.showScore(GameHolder.playInfos.score);
     }
 
-    GameHolder.getRatioHp = function(){
-        if (GameHolder.playInfos.level >= GameHolder.ratio.hp.length){
-            return 2;
+    GameHolder.getRatioHp = function(type){
+        var  ratio = 0.15;
+        if(type == 1){
+            ratio = 0.12;
+        }else if(ratio == 2){
+            ratio = 0.08;
         }
-        return GameHolder.ratio.hp[GameHolder.playInfos.level];
+        var hp = GameHolder.ememyHp[type] * GameHolder.playInfos.level * ratio;
+        console.log("HP: " + hp);
+        return hp;
+        // console.log("GameHolder.playInfos.level" + GameHolder.playInfos.level);
+        // if (GameHolder.playInfos.level >= GameHolder.ratio.hp.length){
+        //     return 2;
+        // }
+        // return GameHolder.ratio.hp[GameHolder.playInfos.level];
     }
 
     GameHolder.increaseUpgradeSphere = function(value){

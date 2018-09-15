@@ -121,7 +121,7 @@ var Hero = (function (_super) {
                 }
                 break;
             case this.itemEnum.UPGRATE:
-                GameHolder.increaseUpgradeSphere(1);
+                GameHolder.increaseUpgradeSphere(8);
                 break;
             case this.itemEnum.HP:
                 this.editHp(item.increaseHp);

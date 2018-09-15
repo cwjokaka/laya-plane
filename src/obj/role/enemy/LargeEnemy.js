@@ -19,7 +19,7 @@ var LargeEnemy = (function (_super) {
     _proto.heightFix = 20;
 
     // 物品掉落率 0~1
-    _proto.itemDropChance = 0.5;
+    _proto.itemDropChance = 0.8;
 
     // 默认最大生命值
     _proto.maxHp = 10;

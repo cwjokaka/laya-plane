@@ -105,6 +105,14 @@ var LoadScene = (function (_super) {
         //缓存敌机3碰撞动作
         Laya.Animation.createFrames(["resource/role/enemy3_hit.png"],"enemy3_hit");
 
+        //缓存敌机4飞行动作
+        Laya.Animation.createFrames(["resource/role/enemy4_fly1.png","resource/role/enemy4_fly2.png"],"enemy4_fly");
+        //缓存敌机4爆炸动作
+        Laya.Animation.createFrames(["resource/role/enemy4_down1.png","resource/role/enemy4_down2.png","resource/role/enemy4_down3.png"
+        ,"resource/role/enemy4_down4.png","resource/role/enemy4_down5.png","resource/role/enemy4_down6.png"],"enemy4_down");
+        //缓存敌机4碰撞动作
+        Laya.Animation.createFrames(["resource/role/enemy4_hit.png"],"enemy4_hit");
+
         //缓存子弹动画
         Laya.Animation.createFrames(["resource/role/bullet1.png"],"bullet1_fly");
 

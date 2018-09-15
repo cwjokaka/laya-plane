@@ -12,7 +12,7 @@ var Boss = (function (_super) {
     // 类名
     _proto.className = 'Boss';
     // 动画前缀
-    _proto.aniPre = 'enemy3_';
+    _proto.aniPre = 'enemy4_';
     // 宽度体型修正
     _proto.widthFix = 20;
     // 高度体型修正

@@ -63,8 +63,12 @@ var EnemyBullet = (function (_super) {
      * 判断是否碰撞到主角,如果碰撞到,处理逻辑
      */
     _proto.checkCollisionAndDeal = function(hero) {
-        if (hero.getBounds().intersects(this.getBounds())) {
+        var bound = this.getBounds();
+        bound.setTo(this.parent.x + this.x, this.parent.y + this.y, 5, 5);
+        // this.graphics.drawRect(0, 0, 5, 5, 'black');  
+        if (hero.getBounds().intersects(bound)) {
             this.impactedBy(hero);
+            hero.editHp(-this.atk);
         }
     }
 

@@ -21,15 +21,20 @@ var TrebleBulletGroup = (function (_super) {
         this.count = opts.count || 10;
         this.x = opts.x || 0;
         this.y = opts.y || 0;
-        for (var i = -1; i < 1; i++) {
-            var rad = 2*Math.PI / 360 * i * 30;
+        console.log('start');
+        this.graphics.clear();
+        for (var i = -1; i < 2; i++) {
+            var rad = (2*Math.PI / 360) * i * 20;
             var bullet = Laya.Pool.getItemByClass(EnemyBullet.prototype.className, EnemyBullet);
             var vx = Math.sin(rad) * this.speed;
             var vy = Math.cos(rad) * this.speed;
             bullet.init({x: 0, y:0, vx: vx, vy: vy});
+            console.log(rad, vx, vy);
             this.addChild(bullet);
             // console.log(bullet.toParentPoint(bullet.po))
         }
+        console.log('end');
+
     }
 
     _proto.moveAndRecover = function() {
@@ -45,8 +50,10 @@ var TrebleBulletGroup = (function (_super) {
         for (var i = 0; i<this.numChildren; i++) {
             var bullet = this.getChildAt(i);
             var bound = bullet.getBounds();
-            bound.setTo(this.x, this.y, bound.width, bound.height);
-            this.getChildAt(i).checkCollisionAndDeal(hero);
+            // console.log(bound);
+            // console.log(bound.x, bound.y);
+            bound.setTo(this.x + bound.x, this.y + bound.y, bound.width, bound.height);
+            bullet.checkCollisionAndDeal(hero);
         }
     }
 

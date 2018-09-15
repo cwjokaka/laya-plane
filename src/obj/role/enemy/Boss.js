@@ -103,7 +103,7 @@ var Boss = (function (_super) {
                     }
                     var bulletClass = curAttack.bullet;
                     var bullet = Laya.Pool.getItemByClass(bulletClass.prototype.className, bulletClass);
-                    bullet.init({x: this.x, y: this.y});
+                    bullet.init({x: this.x, y: this.y, vy: (Math.random() + 1) * 2});
                     ObjectHolder.enemyBulletBox.addChild(bullet);
                     this.attackFrame = nowFrame + curAttack.delay;
                 }

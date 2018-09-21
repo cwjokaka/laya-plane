@@ -118,7 +118,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":7,"x":31,"width":52,"var":"hpUpgradeLabel","valign":"middle","text":"30(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
+                    "props":{"y":7,"x":31,"width":52,"var":"hpUpgradeLabel","valign":"middle","text":"50(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
                     "nodeParent":6,
                     "label":"Label(hpUpgradeLabel)",
                     "isDirectory":false,
@@ -196,7 +196,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":7,"x":31,"width":52,"valign":"middle","text":"20(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
+                    "props":{"y":7,"x":31,"width":52,"valign":"middle","text":"50(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
                     "nodeParent":12,
                     "label":"Label",
                     "isDirectory":false,
@@ -274,7 +274,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":7,"x":31,"width":52,"valign":"middle","text":"80(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
+                    "props":{"y":7,"x":31,"width":52,"valign":"middle","text":"100(+1)","height":29,"fontSize":15,"bold":true,"align":"center"},
                     "nodeParent":17,
                     "label":"Label",
                     "isDirectory":false,

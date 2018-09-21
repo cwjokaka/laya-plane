@@ -12,7 +12,7 @@ var Boss = (function (_super) {
     // 类名
     _proto.className = 'Boss';
     // 动画前缀
-    _proto.aniPre = 'enemy3_';
+    _proto.aniPre = 'enemy4_';
     // 宽度体型修正
     _proto.widthFix = 20;
     // 高度体型修正
@@ -27,7 +27,7 @@ var Boss = (function (_super) {
     };
 
     // 默认最大生命值
-    _proto.maxHp = 50 * (GameHolder.gameData.appearBossIndex + 1) * 2;
+    _proto.maxHp = 300 * (GameHolder.gameData.appearBossIndex + 1) * 2;
 
     // 攻击方式
     _proto.attackMode = [

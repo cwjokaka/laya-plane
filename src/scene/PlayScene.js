@@ -37,6 +37,7 @@ var PlayScene = (function (_super) {
         this.addChild(this.hero);
         this.addChild(this.playUI);
         Laya.timer.frameLoop(1, this, this.onLoop);
+        GameHolder.gameData.appearBossIndex = 0;
         this.restart();
     }
  

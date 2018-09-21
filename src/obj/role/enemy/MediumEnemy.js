@@ -19,7 +19,7 @@ var MediumEnemy = (function (_super) {
     _proto.heightFix = 15;
     
     // 物品掉落率 0~1
-    _proto.itemDropChance = 0.6;
+    _proto.itemDropChance = 0.65;
 
     // 默认最大生命值
     _proto.maxHp = 5;

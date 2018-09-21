@@ -12,7 +12,7 @@ var GameHolder = (function () {
     };
 
     // 游戏状态
-    GameHolder.appearBossScores = [30, 800, 2000, 15000];
+    GameHolder.appearBossScores = [10, 2000, 4000, 8000, 15000];
 
     // 游戏进行中的状态
     GameHolder.playStateEnum = {
@@ -27,7 +27,7 @@ var GameHolder = (function () {
         atk:    [1, 1.1, 1.2]
     }
 
-   GameHolder.ememyHp = [1, 2, 5]
+   GameHolder.ememyHp = [1, 2, 3]
 
     GameHolder.gameData = {
         appearBossIndex: 0,//boss出现的下标

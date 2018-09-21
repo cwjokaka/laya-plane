@@ -63,7 +63,7 @@ var HomePageUI=(function(_super){
 
 		}
 
-		HomePageUI.uiView={"type":"View","props":{"width":400,"height":825},"child":[{"type":"Image","props":{"y":-2,"x":-3,"width":533,"skin":"resource/role/background.png","height":852}},{"type":"Image","props":{"y":230,"x":63,"width":289,"skin":"resource/ui/myLabel.png","height":101},"child":[{"type":"Label","props":{"y":28,"x":50,"width":182,"var":"startGameLabel","text":"开始游戏","height":62,"fontSize":45,"color":"#cd1b18"}}]},{"type":"Image","props":{"y":344,"x":62,"width":289,"skin":"resource/ui/myLabel.png","height":101},"child":[{"type":"Label","props":{"y":25,"x":48,"width":182,"var":"upgradeAttriLabel","text":"升级属性","height":62,"fontSize":45,"color":"#cd1b18"}}]}]};
+		HomePageUI.uiView={"type":"View","props":{"width":400,"height":825},"child":[{"type":"Image","props":{"y":-2,"x":-3,"width":533,"skin":"resource/role/background.png","height":852}},{"type":"Image","props":{"y":264,"x":89,"width":214,"skin":"resource/ui/myLabel.png","height":71},"child":[{"type":"Label","props":{"y":15,"x":38,"width":120,"var":"startGameLabel","text":"开始游戏","height":48,"fontSize":36,"color":"#cd1b18"}}]},{"type":"Image","props":{"y":375,"x":91,"width":214,"skin":"resource/ui/myLabel.png","height":71},"child":[{"type":"Label","props":{"y":13,"x":33,"width":182,"var":"upgradeAttriLabel","text":"升级属性","height":62,"fontSize":36,"color":"#cd1b18"}}]}]};
 		return HomePageUI;
 	})(View);
 var UpgradeUI=(function(_super){

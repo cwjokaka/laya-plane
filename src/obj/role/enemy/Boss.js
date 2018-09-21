@@ -27,7 +27,7 @@ var Boss = (function (_super) {
     };
 
     // 默认最大生命值
-    _proto.maxHp = 50 * (GameHolder.gameData.appearBossIndex + 1) * 2;
+    _proto.maxHp = 300 * (GameHolder.gameData.appearBossIndex + 1) * 2;
 
     // 攻击方式
     _proto.attackMode = [

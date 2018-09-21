@@ -43,8 +43,7 @@ var EnemyBullet = (function (_super) {
      */
     _proto.moveAndRecover = function() {
         this.move();
-        var pos = this.getAbsPos();
-        if (pos[0] < -30 || pos[0] > SysConfig.SCREEN_WIDTH + 30 || pos[1] < -30 || pos[1] > SysConfig.SCREEN_HEIGHT + 30) {
+        if (this.x < -30 || this.x > SysConfig.SCREEN_WIDTH + 30 || this.y < -30 || this.y > SysConfig.SCREEN_HEIGHT + 30) {
             this.removeSelf();
             //回收对象
             Laya.Pool.recover(this.className, this);
@@ -65,25 +64,12 @@ var EnemyBullet = (function (_super) {
      */
     _proto.checkCollisionAndDeal = function(hero) {
         var bound = this.getBounds();
-        var pos = this.getAbsPos();
-        bound.setTo(pos[0], pos[1], 5, 5);
+        bound.setTo(this.parent.x + this.x, this.parent.y + this.y, 5, 5);
+        // this.graphics.drawRect(0, 0, 5, 5, 'black');  
         if (hero.getBounds().intersects(bound)) {
             this.impactedBy(hero);
             hero.editHp(-this.atk);
         }
-    }
-
-    // 获取绝对坐标
-    _proto.getAbsPos = function() {
-        var parent = this.parent;
-        var x = this.x;
-        var y = this.y;
-        while (parent) {
-            x += parent.x;
-            y += parent.y;
-            parent = parent.parent;
-        }
-        return [x, y];
     }
 
 

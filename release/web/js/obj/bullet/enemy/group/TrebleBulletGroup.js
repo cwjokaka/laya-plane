@@ -39,7 +39,7 @@ var TrebleBulletGroup = (function (_super) {
 
     _proto.moveAndRecover = function() {
         for (var i = 0; i<this.numChildren; i++) {
-            this.getChildAt(i).moveAndRecover();
+            this.getChildAt(i).move();
         }
     }
 
@@ -49,6 +49,10 @@ var TrebleBulletGroup = (function (_super) {
     _proto.checkCollisionAndDeal = function(hero) {
         for (var i = 0; i<this.numChildren; i++) {
             var bullet = this.getChildAt(i);
+            var bound = bullet.getBounds();
+            // console.log(bound);
+            // console.log(bound.x, bound.y);
+            bound.setTo(this.x + bound.x, this.y + bound.y, bound.width, bound.height);
             bullet.checkCollisionAndDeal(hero);
         }
     }

@@ -34,7 +34,8 @@ var Boss = (function (_super) {
         [
             {bullet: TrebleBulletGroup, delay: 60, repeat: 3},
             {bullet: EnemyBullet, delay: 30, repeat: 6},
-            {bullet: EnemyBullet, delay: 15, repeat: 5}
+            {bullet: EnemyBullet, delay: 15, repeat: 5},
+            {bullet: RingBulletGroup, delay: 15, repeat: 5}
         ],
         [
 

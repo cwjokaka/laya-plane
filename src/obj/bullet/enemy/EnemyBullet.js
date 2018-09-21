@@ -46,7 +46,7 @@ var EnemyBullet = (function (_super) {
         var pos = this.getAbsPos();
         if (pos[0] < -30 || pos[0] > SysConfig.SCREEN_WIDTH + 30 || pos[1] < -30 || pos[1] > SysConfig.SCREEN_HEIGHT + 30) {
             this.removeSelf();
-            //回收对象
+            // 回收对象
             Laya.Pool.recover(this.className, this);
         }
     }

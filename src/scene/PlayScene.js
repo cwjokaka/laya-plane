@@ -194,6 +194,8 @@ var PlayScene = (function (_super) {
         //添加鼠标移动触发事件
         // Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.hero.move);
         Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.hero.move);
+        Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.hero.mouseDown);
+        Laya.stage.on(Laya.Event.MOUSE_UP, this, this.hero.mouseUp);
     }
 
 

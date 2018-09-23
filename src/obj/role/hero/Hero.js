@@ -14,6 +14,9 @@ var Hero = (function (_super) {
         //初始位置
         this.x = SysConfig.SCREEN_WIDTH / 2;
         this.y = SysConfig.SCREEN_HEIGHT - 80;
+        this.localX = this.x;
+        this.localY = this.y;
+        this.isMouseDown = false;
         this.hitRadius = 30;
         //下次射击时间
         this.shootTime = Laya.Browser.now() + 200;
@@ -81,9 +84,30 @@ var Hero = (function (_super) {
      * 主角移动
      */
     _proto.move = function(){
-        this.hero.pos(Laya.stage.mouseX, Laya.stage.mouseY);
+        //this.hero.pos(Laya.stage.mouseX, Laya.stage.mouseY);
+        if(this.isMouseDown){
+            var vx = Laya.stage.mouseX - this.localX;
+            var vy = Laya.stage.mouseY - this.localY;
+            if(vx != 0){
+                this.hero.x = this.hero.x + vx;
+                this.localX = Laya.stage.mouseX;
+            }
+            if(vy != 0){
+                this.hero.y = this.hero.y + vy;
+                this.localY = Laya.stage.mouseY;
+            }
+        }
+
     }
 
+    _proto.mouseDown = function(){
+        this.localX = Laya.stage.mouseX;
+        this.localY = Laya.stage.mouseY;
+        this.isMouseDown = true;
+    }
+    _proto.mouseUp = function(){
+        this.isMouseDown = false;
+    }
     /**
      * 被攻击时触发
      * from: 攻击源

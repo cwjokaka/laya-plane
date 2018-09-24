@@ -68,12 +68,14 @@ var Enemy = (function (_super) {
         this.setBounds(newBound);
         this.state = this.stateEnum.ALIVE;
         // 添加血条
-        var width = newBound.width;
-        var height = newBound.height;
-        var bar = Laya.Pool.getItemByClass(Bar.prototype.className, Bar);
-        this.bar = bar;
-        bar.init({x: -(width / 2), y: -(height / 2) - 30, width: width,borderWidth: 4, maxValue: this.maxHp});
-        this.addChild(bar);
+        if(!opts.isHiddenBlood){
+            var width = newBound.width;
+            var height = newBound.height;
+            var bar = Laya.Pool.getItemByClass(Bar.prototype.className, Bar);
+            this.bar = bar;
+            bar.init({x: -(width / 2), y: -(height / 2) - 30, width: width,borderWidth: 4, maxValue: this.maxHp});
+            this.addChild(bar);
+        }
     }
 
     // 默认移动方式
@@ -184,7 +186,9 @@ var Enemy = (function (_super) {
             this.dropItem();
             this.removeSelf();
             Laya.Pool.recover(this.className, this);
-            Laya.Pool.recover(this.bar.className, this.bar);
+            if(this.bar){
+              Laya.Pool.recover(this.bar.className, this.bar);              
+            }
         } else if(this.state === this.stateEnum.HURT) {
             this.state = this.stateEnum.ALIVE;
             this.playAction("fly");

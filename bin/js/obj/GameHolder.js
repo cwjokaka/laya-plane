@@ -68,7 +68,6 @@ var GameHolder = (function () {
             ratio = 0.08;
         }
         var hp = GameHolder.ememyHp[type] * GameHolder.playInfos.level * ratio;
-        console.log("HP: " + hp);
         return hp;
         // console.log("GameHolder.playInfos.level" + GameHolder.playInfos.level);
         // if (GameHolder.playInfos.level >= GameHolder.ratio.hp.length){

@@ -29,10 +29,13 @@ var EnemyBullet = (function (_super) {
         this.body = new Laya.Animation();
         this.addChild(this.body);
         this.body.play(0, true, "enemy_bullet_fly");
+        // this.bound = this.body.getBounds();
         this.setBounds(this.getGraphicBounds().clone());
 
-    }
+        // this.body.pos(-this.bound.width/2, -this.bound.height/2);
 
+    }
+    
     /**
      * 子弹移动
      */

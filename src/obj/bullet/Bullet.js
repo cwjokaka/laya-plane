@@ -30,7 +30,7 @@ var Bullet = (function (_super) {
      * 子类初始化方法
      */
     _proto.childInit = function(opts){
-        this.graphics.drawRect(0, 0, 5, 5, 'red');  
+        // this.graphics.drawRect(0, 0, 5, 5, 'red');  
     }
 
     /**

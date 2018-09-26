@@ -35,7 +35,9 @@ var Boss = (function (_super) {
             {bullet: TrebleBulletGroup, delay: 60, repeat: 3},
             {bullet: EnemyBullet, delay: 30, repeat: 6},
             {bullet: EnemyBullet, delay: 15, repeat: 5},
-            {bullet: RingBulletGroup, delay: 15, repeat: 5}
+            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: 5},
+            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: -5},
+            {bullet: RingBulletGroup, delay: 10, repeat: 20, angleOffset: 10}
         ],
         [
 
@@ -104,7 +106,7 @@ var Boss = (function (_super) {
                     }
                     var bulletClass = curAttack.bullet;
                     var bullet = Laya.Pool.getItemByClass(bulletClass.prototype.className, bulletClass);
-                    bullet.init({x: this.x, y: this.y, vy: (Math.random() + 1) * 2});
+                    bullet.init({x: this.x, y: this.y, vy: (Math.random() + 1) * 2, curRepeat: this.curRepeatCount, angleOffset: curAttack.angleOffset});
                     ObjectHolder.enemyBulletBox.addChild(bullet);
                     this.attackFrame = nowFrame + curAttack.delay;
                 }

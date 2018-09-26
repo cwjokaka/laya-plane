@@ -36,7 +36,8 @@ P 2BFF7046 vslider.png
 D resource
 D resource/role
 R 400F0B7B background.png
-R 4F008F46 background1.png
+R 39F080F7 background1.png
+R 4F008F46 background1b.png
 P E4078869 blank.png
 P C55A0DA5 btn_pause.png
 P 03ABFE64 bullet1.png

@@ -89,11 +89,17 @@ var Hero = (function (_super) {
             var vx = Laya.stage.mouseX - this.localX;
             var vy = Laya.stage.mouseY - this.localY;
             if(vx != 0){
-                this.hero.x = this.hero.x + vx;
+                var x = this.hero.x + vx;
+                if(x > - 5 && x < SysConfig.SCREEN_WIDTH + 5){
+                    this.hero.x = x;
+                }
                 this.localX = Laya.stage.mouseX;
             }
             if(vy != 0){
-                this.hero.y = this.hero.y + vy;
+                var y = this.hero.y + vy;
+                if(y > - 5 && y < SysConfig.SCREEN_HEIGHT + 5){
+                    this.hero.y = y;
+                }
                 this.localY = Laya.stage.mouseY;
             }
         }

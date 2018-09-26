@@ -21,10 +21,12 @@ var RingBulletGroup = (function (_super) {
         this.count = opts.count || 10;
         this.x = opts.x || 0;
         this.y = opts.y || 0;
-        
+        this.curRepeat = opts.curRepeat || 1;
+        this.perAngle = 360 / this.count;
+        this.angleOffset = opts.angleOffset || 0;   // 偏移角度
         this.graphics.clear();
         for (var i = 0; i < 10; i++) {
-            var rad = (2*Math.PI / 360) * i * 36;
+            var rad = (2*Math.PI / 360) * i * this.perAngle + (2*Math.PI / 360) * this.angleOffset * this.curRepeat;
             var bullet = Laya.Pool.getItemByClass(EnemyBullet.prototype.className, EnemyBullet);
             var vx = Math.sin(rad) * this.speed;
             var vy = Math.cos(rad) * this.speed;

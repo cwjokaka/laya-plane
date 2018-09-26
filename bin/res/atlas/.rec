@@ -37,7 +37,6 @@ D resource
 D resource/role
 R 400F0B7B background.png
 R 4F008F46 background1.png
-R B82A6366 background2.png
 P E4078869 blank.png
 P C55A0DA5 btn_pause.png
 P 67A9A743 bullet1.png
@@ -72,6 +71,7 @@ P 3E137DEE enemy4_down6.png
 P 05AB04E5 enemy4_fly1.png
 P 857787A9 enemy4_fly2.png
 P A8782C5B enemy4_hit.png
+P 61020D44 enemy_bullet.png
 P A1876A5F hero_down1.png
 P 50922602 hero_down2.png
 P E0E80CA1 hero_down3.png

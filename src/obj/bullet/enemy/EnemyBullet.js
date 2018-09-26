@@ -26,6 +26,9 @@ var EnemyBullet = (function (_super) {
         // y轴速度
         this.vy = opts.vy || 1;
 
+        this.body = new Laya.Animation();
+        this.addChild(this.body);
+        this.body.play(0, true, "enemy_bullet_fly");
         this.setBounds(this.getGraphicBounds().clone());
 
     }

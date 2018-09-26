@@ -170,7 +170,7 @@ var Enemy = (function (_super) {
         var nowFrame = Laya.timer.currFrame;
         if (this.attackFrame <= nowFrame) {
             var bullet = Laya.Pool.getItemByClass(EnemyBullet.className, EnemyBullet);
-            bullet.init({x: this.x, y: this.y, vy: 5, vx: 0});
+            bullet.init({x: this.x - 3, y: this.y - 3, vy: 5, vx: 0});
             ObjectHolder.enemyBulletBox.addChild(bullet);
             this.attackFrame = nowFrame + this.attackInterval;
         }

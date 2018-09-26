@@ -3,6 +3,7 @@
 */
 var EnemyBulletGroup = (function (_super) {
     function EnemyBulletGroup() {
+        Role.super(this);
     }
 
     Laya.class(EnemyBulletGroup, "EnemyBulletGroup", _super);
@@ -13,8 +14,8 @@ var EnemyBulletGroup = (function (_super) {
 
 
     _proto.init = function(opts) {
-        _super.call(this, opts);
-        _super.prototype.init.call(this, opts);
+        // _super.call(this, opts);
+        // _super.prototype.init.call(this, opts);
         opts = opts || {};
         // 子弹速度
         this.speed = opts.speed || 3;
@@ -45,4 +46,4 @@ var EnemyBulletGroup = (function (_super) {
 
 
     return EnemyBulletGroup;
-}(EnemyBullet));
+}(Laya.Sprite));

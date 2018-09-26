@@ -12,7 +12,7 @@ var RingBulletGroup = (function (_super) {
     _proto.className = 'RingBulletGroup';
 
     _proto.init = function(opts) {
-        // _super.call(this, opts);
+        _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
         // 子弹速度

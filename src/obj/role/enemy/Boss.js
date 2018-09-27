@@ -40,11 +40,10 @@ var Boss = (function (_super) {
     _proto.attackMode = [
         [
             {bullet: TrebleBulletGroup, delay: 60, repeat: 3, fireHoles: ['main']},
-            {bullet: EnemyBullet, delay: 30, repeat: 6, fireHoles: ['main', 'right', 'left']},
+            {bullet: EnemyBullet, delay: 30, repeat: 6, fireHoles: ['main']},
             {bullet: EnemyBullet, delay: 15, repeat: 5, fireHoles: ['main']},
-            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: 5, fireHoles: ['main', 'right']},
-            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: -5, fireHoles: ['main', 'right']},
-            {bullet: RingBulletGroup, delay: 10, repeat: 20, angleOffset: 10, fireHoles: ['main', 'left', 'right']}
+            {bullet: RingBulletGroup, delay: 30, repeat: 10, angleOffset: 5, fireHoles: ['main']},
+            {bullet: RingBulletGroup, delay: 30, repeat: 10, angleOffset: -5, fireHoles: ['main']},
         ],
         [
 
@@ -116,7 +115,13 @@ var Boss = (function (_super) {
                         
                         var bulletClass = curAttack.bullet;
                         var bullet = Laya.Pool.getItemByClass(bulletClass.prototype.className, bulletClass);
-                        bullet.init({x: this.x + fireOffset[0], y: this.y + fireOffset[1], vy: (Math.random() + 1) * 2, curRepeat: this.curRepeatCount, angleOffset: curAttack.angleOffset});
+                        bullet.init({
+                            x: this.x + fireOffset[0],
+                            y: this.y + fireOffset[1],
+                            vy: (Math.random() + 1) * 2,
+                            curRepeat: this.curRepeatCount,
+                            angleOffset: curAttack.angleOffset
+                        });
                         ObjectHolder.enemyBulletBox.addChild(bullet);
                     }
                     this.attackFrame = nowFrame + curAttack.delay;

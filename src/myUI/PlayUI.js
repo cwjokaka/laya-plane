@@ -25,8 +25,8 @@ var PlayUI = (function(_super){
         if(ObjectHolder.hero.boomNum > 0){
             ObjectHolder.hero.boomNum--;
             var boom = new Boom();
-            boom.init({'atk': 99999, 'x': 0, 'y': 825, 'vx': 0, 'vy': -3});
-            ObjectHolder.heroBulletBox.addChild(boom);
+            boom.init({'atk': 99999, 'x': 0, 'y': 825, 'vx': 0, 'vy': -4});
+            ObjectHolder.heroBoomBox.addChild(boom);
             this.showBoom(ObjectHolder.hero.boomNum);
         }
         //Laya.stage.once(Laya.Event.CLICK, this, this.onStageClick);

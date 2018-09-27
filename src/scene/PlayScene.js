@@ -12,6 +12,7 @@ var PlayScene = (function (_super) {
         this.enemyBox = ObjectHolder.enemyBox;
         this.enemyBulletBox = ObjectHolder.enemyBulletBox;
         this.heroBulletBox = ObjectHolder.heroBulletBox;
+        this.heroBoomBox = ObjectHolder.heroBoomBox;
         this.itemBox = ObjectHolder.itemBox;
         this.hero = ObjectHolder.hero;
         this.test = true;
@@ -32,6 +33,7 @@ var PlayScene = (function (_super) {
         this.addChild(this.background);
         this.addChild(this.enemyBox);
         this.addChild(this.heroBulletBox);
+        this.addChild(this.heroBoomBox);
         this.addChild(this.itemBox);
         this.addChild(this.hero);
         this.addChild(this.enemyBulletBox);
@@ -78,6 +80,31 @@ var PlayScene = (function (_super) {
 
                 // 碰撞事件Start
 
+                /**
+                 * 主角炸弹碰 敌机 和 子弹
+                 */
+                
+                for(var i = 0; i < this.heroBoomBox.numChildren; i++) {
+                    var heroBullet = this.heroBoomBox.getChildAt(i);
+                    heroBullet.move();
+                    for(var j = 0; j < this.enemyBox.numChildren; j++) {
+                        var enemy = this.enemyBox.getChildAt(j);
+                        if (heroBullet.getBounds().intersects(enemy.getBounds())) {
+                            var next = heroBullet.onHitTarget(enemy);
+                            enemy.hitBy(heroBullet);
+                            if(!next) break; 
+                        }
+                    }
+                    for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
+                        var bullet = this.enemyBulletBox.getChildAt(i);
+                        var bound = bullet.getBounds();
+                        var pos = bullet.getAbsPos();
+                        bound.setTo(pos[0], pos[1], 5, 5);
+                        if(heroBullet.getBounds().intersects(bound)){
+                            bullet.impactedBy(heroBullet);
+                        }
+                    }
+                }
                 /**
                  * 主角子弹碰敌机
                  */

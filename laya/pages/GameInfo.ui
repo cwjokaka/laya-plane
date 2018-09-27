@@ -2,8 +2,8 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":10,
-    "props":{"width":400,"sceneColor":"#000000","height":825},
+    "selecteID":12,
+    "props":{"width":480,"sceneColor":"#000000","height":825},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -15,7 +15,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":12,"x":4,"width":108,"skin":"resource/ui/myLabel.png","rotation":1,"height":34},
+            "props":{"y":12,"x":4,"width":120,"skin":"resource/ui/myLabel.png","rotation":1,"height":34},
             "nodeParent":1,
             "label":"Image",
             "isOpen":false,
@@ -54,16 +54,17 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":50,"x":5,"width":108,"skin":"resource/ui/myLabel.png","rotation":1,"height":34},
+            "props":{"y":50,"x":5,"width":120,"skin":"resource/ui/myLabel.png","rotation":1,"height":34},
             "nodeParent":1,
             "label":"Image",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":6,
             "child":[
                 {
+                    "x":30,
                     "type":"Label",
                     "props":{"y":0,"x":35,"wordWrap":true,"width":70,"var":"upgradesphereLabel","valign":"middle","text":"255","height":32,"fontSize":20,"color":"#120707"},
                     "nodeParent":6,
@@ -77,8 +78,9 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
-                    "props":{"y":0,"x":-2,"skin":"resource/role/upgrade.png"},
+                    "props":{"y":1,"x":0,"width":33,"skin":"resource/role/upgrade.png","height":32},
                     "nodeParent":6,
                     "label":"Image",
                     "isDirectory":false,
@@ -92,7 +94,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":33,"x":241,"width":102,"skin":"resource/ui/myLabel.png","height":10},
+            "props":{"y":29,"x":338,"width":102,"skin":"resource/ui/myLabel.png","height":10},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,
@@ -104,7 +106,7 @@
                 {
                     "x":30,
                     "type":"Sprite",
-                    "props":{"y":-1,"x":-1,"width":142,"var":"heroHpPos","height":32},
+                    "props":{"y":-1,"x":-1,"width":142,"var":"heroHpPos","height":34},
                     "nodeParent":10,
                     "label":"Sprite(heroHpPos)",
                     "isDirectory":false,
@@ -117,9 +119,10 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":-6,"x":-17,"width":22,"skin":"resource/ui/hpLogo.png","height":22},
+                    "props":{"y":-14,"x":-32,"width":40,"skin":"resource/ui/hpLogo.png","height":40},
                     "nodeParent":10,
                     "label":"Image",
+                    "isOpen":false,
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,

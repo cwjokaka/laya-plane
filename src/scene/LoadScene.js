@@ -119,6 +119,8 @@ var LoadScene = (function (_super) {
         // 敌机子弹
         Laya.Animation.createFrames(["resource/role/enemy_bullet.png"],"enemy_bullet_fly");
 
+        // 主角炸弹
+        Laya.Animation.createFrames(["resource/ui/heroBoom.png"],"hero_boom_fly");
 
         //缓存强化包
         Laya.Animation.createFrames(["resource/role/ufo1.png"],"ufo1_fly");

@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":4,
+    "selecteID":7,
     "props":{"width":400,"sceneColor":"#00ff00","height":825},
     "nodeParent":-1,
     "label":"View",
@@ -28,7 +28,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":264,"x":89,"width":214,"skin":"resource/ui/myLabel.png","height":71},
+            "props":{"y":264,"x":111,"width":214,"skin":"resource/ui/myLabel.png","height":71},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,
@@ -54,7 +54,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":375,"x":91,"width":214,"skin":"resource/ui/myLabel.png","height":71},
+            "props":{"y":375,"x":112,"width":214,"skin":"resource/ui/myLabel.png","height":71},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,

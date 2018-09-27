@@ -39,12 +39,13 @@ var Boss = (function (_super) {
     // 攻击方式
     _proto.attackMode = [
         [
-            {bullet: TrebleBulletGroup, delay: 60, repeat: 3, fireHoles: ['main']},
-            {bullet: EnemyBullet, delay: 30, repeat: 6, fireHoles: ['main', 'right', 'left']},
+            {bullet: TrebleBulletGroup, delay: 60, repeat: 2, fireHoles: ['main']},
+            {bullet: TrebleBulletGroup, delay: 60, repeat: 2, fireHoles: ['left']},
+            {bullet: TrebleBulletGroup, delay: 60, repeat: 2, fireHoles: ['right']},
+            {bullet: EnemyBullet, delay: 30, repeat: 6, fireHoles: ['main']},
             {bullet: EnemyBullet, delay: 15, repeat: 5, fireHoles: ['main']},
-            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: 5, fireHoles: ['main', 'right']},
-            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: -5, fireHoles: ['main', 'right']},
-            {bullet: RingBulletGroup, delay: 10, repeat: 20, angleOffset: 10, fireHoles: ['main', 'left', 'right']}
+            {bullet: RingBulletGroup, delay: 30, repeat: 10, angleOffset: 5, fireHoles: ['main']},
+            {bullet: RingBulletGroup, delay: 30, repeat: 10, angleOffset: -5, fireHoles: ['main']},
         ],
         [
 
@@ -104,7 +105,7 @@ var Boss = (function (_super) {
                 var nowFrame = Laya.timer.currFrame;
                 if (this.attackFrame <= nowFrame) {
                     var curAttack = this.attackMode[this.curForm][this.curAttackIndex];
-                    if (++this.curRepeatCount >= curAttack.repeat) {
+                    if (this.curRepeatCount++ >= curAttack.repeat) {
                         this.curRepeatCount = 1;
                         if (++this.curAttackIndex >= this.attackMode[this.curForm].length) {
                             this.curAttackIndex = 0;
@@ -116,7 +117,13 @@ var Boss = (function (_super) {
                         
                         var bulletClass = curAttack.bullet;
                         var bullet = Laya.Pool.getItemByClass(bulletClass.prototype.className, bulletClass);
-                        bullet.init({x: this.x + fireOffset[0], y: this.y + fireOffset[1], vy: (Math.random() + 1) * 2, curRepeat: this.curRepeatCount, angleOffset: curAttack.angleOffset});
+                        bullet.init({
+                            x: this.x + fireOffset[0],
+                            y: this.y + fireOffset[1],
+                            vy: (Math.random() + 1) * 2,
+                            curRepeat: this.curRepeatCount,
+                            angleOffset: curAttack.angleOffset
+                        });
                         ObjectHolder.enemyBulletBox.addChild(bullet);
                     }
                     this.attackFrame = nowFrame + curAttack.delay;

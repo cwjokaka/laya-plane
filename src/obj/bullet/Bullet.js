@@ -50,9 +50,7 @@ var Bullet = (function (_super) {
      * 攻击到目标时触发
      */
     _proto.onHitTarget = function(target) {
-        this.removeSelf();
-        //回收对象
-        Laya.Pool.recover("HeroBullet", this);
+        this.playAction("down");
     }
 
     return Bullet;

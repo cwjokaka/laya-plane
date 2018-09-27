@@ -73,7 +73,7 @@ var Enemy = (function (_super) {
             var height = newBound.height;
             var bar = Laya.Pool.getItemByClass(Bar.prototype.className, Bar);
             this.bar = bar;
-            bar.init({x: -(width / 2), y: -(height / 2) - 30, width: width,borderWidth: 4, maxValue: this.maxHp});
+            bar.init({x: -(width / 2), y: -(height / 2) - 30, width: width,borderWidth: 4, maxValue: this.maxHp, alpha: 0, fadeTime: 500});
             this.addChild(bar);
         }
     }

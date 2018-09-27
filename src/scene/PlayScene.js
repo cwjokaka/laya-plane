@@ -31,10 +31,10 @@ var PlayScene = (function (_super) {
     _proto.init = function() {
         this.addChild(this.background);
         this.addChild(this.enemyBox);
-        this.addChild(this.enemyBulletBox);
         this.addChild(this.heroBulletBox);
         this.addChild(this.itemBox);
         this.addChild(this.hero);
+        this.addChild(this.enemyBulletBox);
         this.addChild(this.playUI);
         Laya.timer.frameLoop(1, this, this.onLoop);
         GameHolder.gameData.appearBossIndex = 0;

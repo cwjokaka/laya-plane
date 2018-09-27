@@ -26,18 +26,25 @@ var Boss = (function (_super) {
         DEATH: 3
     };
 
+    // 炮口(偏移量)
+    _proto.fireHoles = {
+        main: [0, 0],
+        right: [-50, 0],
+        left: [50, 0]
+    }
+
     // 默认最大生命值
     _proto.maxHp = 150 * (GameHolder.gameData.appearBossIndex + 1) * 2;
 
     // 攻击方式
     _proto.attackMode = [
         [
-            {bullet: TrebleBulletGroup, delay: 60, repeat: 3},
-            {bullet: EnemyBullet, delay: 30, repeat: 6},
-            {bullet: EnemyBullet, delay: 15, repeat: 5},
-            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: 5},
-            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: -5},
-            {bullet: RingBulletGroup, delay: 10, repeat: 20, angleOffset: 10}
+            {bullet: TrebleBulletGroup, delay: 60, repeat: 3, fireHoles: ['main']},
+            {bullet: EnemyBullet, delay: 30, repeat: 6, fireHoles: ['main', 'right', 'left']},
+            {bullet: EnemyBullet, delay: 15, repeat: 5, fireHoles: ['main']},
+            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: 5, fireHoles: ['main', 'right']},
+            {bullet: RingBulletGroup, delay: 15, repeat: 20, angleOffset: -5, fireHoles: ['main', 'right']},
+            {bullet: RingBulletGroup, delay: 10, repeat: 20, angleOffset: 10, fireHoles: ['main', 'left', 'right']}
         ],
         [
 
@@ -97,17 +104,21 @@ var Boss = (function (_super) {
                 var nowFrame = Laya.timer.currFrame;
                 if (this.attackFrame <= nowFrame) {
                     var curAttack = this.attackMode[this.curForm][this.curAttackIndex];
-
                     if (++this.curRepeatCount >= curAttack.repeat) {
                         this.curRepeatCount = 1;
                         if (++this.curAttackIndex >= this.attackMode[this.curForm].length) {
                             this.curAttackIndex = 0;
                         }
                     }
-                    var bulletClass = curAttack.bullet;
-                    var bullet = Laya.Pool.getItemByClass(bulletClass.prototype.className, bulletClass);
-                    bullet.init({x: this.x, y: this.y, vy: (Math.random() + 1) * 2, curRepeat: this.curRepeatCount, angleOffset: curAttack.angleOffset});
-                    ObjectHolder.enemyBulletBox.addChild(bullet);
+                    var fireHoles = curAttack.fireHoles;
+                    for (var fireHole of fireHoles) {
+                        var fireOffset = this.fireHoles[fireHole];
+                        
+                        var bulletClass = curAttack.bullet;
+                        var bullet = Laya.Pool.getItemByClass(bulletClass.prototype.className, bulletClass);
+                        bullet.init({x: this.x + fireOffset[0], y: this.y + fireOffset[1], vy: (Math.random() + 1) * 2, curRepeat: this.curRepeatCount, angleOffset: curAttack.angleOffset});
+                        ObjectHolder.enemyBulletBox.addChild(bullet);
+                    }
                     this.attackFrame = nowFrame + curAttack.delay;
                 }
                 break;

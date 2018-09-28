@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":7,
+    "selecteID":4,
     "props":{"width":400,"sceneColor":"#00ff00","height":825},
     "nodeParent":-1,
     "label":"View",
@@ -15,7 +15,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":-2,"x":-3,"width":533,"skin":"resource/role/background.png","height":852},
+            "props":{"y":-2,"x":-3,"width":480,"skin":"resource/role/background.jpg","height":855},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -28,7 +28,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":264,"x":111,"width":214,"skin":"resource/ui/myLabel.png","height":71},
+            "props":{"y":223,"x":129,"width":214,"skin":"resource/ui/myLabel.png","height":71},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,
@@ -54,7 +54,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":375,"x":112,"width":214,"skin":"resource/ui/myLabel.png","height":71},
+            "props":{"y":338,"x":131,"width":214,"skin":"resource/ui/myLabel.png","height":71},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,

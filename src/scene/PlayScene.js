@@ -113,8 +113,8 @@ var PlayScene = (function (_super) {
                     for(var j = 0; j < this.enemyBox.numChildren; j++) {
                         var enemy = this.enemyBox.getChildAt(j);
                         if (heroBullet.getBounds().intersects(enemy.getBounds())) {
-                            var next = heroBullet.onHitTarget(enemy);
                             enemy.hitBy(heroBullet);
+                            heroBullet.onHitTarget();
                             if(!next) break; 
                         }
                     }

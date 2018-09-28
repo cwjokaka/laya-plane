@@ -35,9 +35,8 @@ P E466EB1C vslider$bar.png
 P 2BFF7046 vslider.png
 D resource
 D resource/role
-R 400F0B7B background.png
-R 39F080F7 background1.png
-R 4F008F46 background1b.png
+R 400F0B7B background.bpng
+R 6158CE43 background.jpg
 P E4078869 blank.png
 P C55A0DA5 btn_pause.png
 P 03ABFE64 bullet1.png
@@ -83,8 +82,10 @@ P A1876A5F hero_down1.png
 P 50922602 hero_down2.png
 P E0E80CA1 hero_down3.png
 P 9AC69A4E hero_down4.png
+P D8AA3396 hero_fly.png
 P 75C8D8F4 hero_fly1.png
 P 44A2D9AC hero_fly2.png
+R 378C4044 img_plane_boss.png
 R 4A9CC865 img_plane_enemy.png
 P 7CF51DF3 label.png
 P D8B68072 ufo1.png

@@ -29,9 +29,6 @@ var HeroBullet = (function (_super) {
             //停止动画播放
             this.action = "fly";
             this.body.stop();
-            this.removeSelf();
-            //回收对象
-            Laya.Pool.recover("HeroBullet", this);
         }else if(this.action === "hit"){
             this.playAction("fly");
         }

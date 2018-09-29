@@ -5,6 +5,8 @@ var Bullet = (function (_super) {
     function Bullet(opts) {
         Bullet.super(this);
         this.className = "Bullet";
+        //标记是否可以 杀死 敌方子弹
+        this.canKillBullet = false;
     }
 
     Laya.class(Bullet, "Bullet", _super);

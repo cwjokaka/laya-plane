@@ -118,6 +118,17 @@ var PlayScene = (function (_super) {
                             if(!next) break; 
                         }
                     }
+                    // if(heroBullet.canKillBullet){
+                    //     for(var i = 0; i < this.enemyBulletBox.numChildren; i++) {
+                    //         var bullet = this.enemyBulletBox.getChildAt(i);
+                    //         var bound = bullet.getBounds();
+                    //         var pos = bullet.getAbsPos();
+                    //         bound.setTo(pos[0], pos[1], 5, 5);
+                    //         if(heroBullet.getBounds().intersects(bound)){
+                    //             bullet.impactedBy(heroBullet);
+                    //         }
+                    //     }
+                    // }
                 }
                 /**
                  * 主角碰敌机

@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":17,
+    "selecteID":18,
     "props":{"width":480,"sceneColor":"#000000","height":825},
     "nodeParent":-1,
     "label":"View",
@@ -93,7 +93,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":6,"x":0,"width":120,"skin":"resource/ui/myLabel1.png","height":34},
+            "props":{"y":6,"x":0,"width":160,"skin":"resource/ui/myLabel1.png","height":40},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,
@@ -105,7 +105,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":1,"x":4,"wordWrap":true,"width":114,"var":"scoreLabel","valign":"middle","text":"2555555","height":32,"fontSize":20,"color":"#120707"},
+                    "props":{"y":1,"x":4,"wordWrap":true,"width":114,"var":"scoreLabel","valign":"middle","text":"2555555","height":32,"fontSize":25,"color":"#120707"},
                     "nodeParent":17,
                     "label":"Label(scoreLabel)",
                     "isDirectory":false,
@@ -120,7 +120,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":44,"x":0,"width":120,"skin":"resource/ui/myLabel1.png","height":34},
+            "props":{"y":50,"x":0,"width":160,"skin":"resource/ui/myLabel1.png","height":40},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,
@@ -132,7 +132,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":3,"x":34,"wordWrap":true,"width":80,"var":"upgradesphereLabel","valign":"middle","text":"255","height":32,"fontSize":20,"color":"#120707"},
+                    "props":{"y":3,"x":34,"wordWrap":true,"width":80,"var":"upgradesphereLabel","valign":"middle","text":"255","height":32,"fontSize":25,"color":"#120707"},
                     "nodeParent":18,
                     "label":"Label(upgradesphereLabel)",
                     "isDirectory":false,

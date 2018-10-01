@@ -56,6 +56,10 @@ var Bullet = (function (_super) {
         this.removeSelf();
         //回收对象
         Laya.Pool.recover("HeroBullet", this);
+        var effect = Laya.Pool.getItemByClass(EffectSpark.prototype.className, EffectSpark);
+        effect.init({x: this.x, y:this.y});
+        ObjectHolder.effectBox.addChild(effect);
+
     }
 
     return Bullet;

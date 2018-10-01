@@ -22,7 +22,7 @@ var PlayUI = (function(_super){
     _proto.onBoom = function(event){
         //阻止事件往下传递
         event.stopPropagation();
-        if(ObjectHolder.hero.boomNum > 0){
+        if(ObjectHolder.hero.boomNum > 0 && GameHolder.playState == GameHolder.playStateEnum.NORMAL){
             ObjectHolder.hero.boomNum--;
             var boom = new Boom();
             boom.init({'atk': 99999, 'x': 0, 'y': 825, 'vx': 0, 'vy': -4});

@@ -195,7 +195,6 @@ var PlayScene = (function (_super) {
                         //取消激光
                         if(this.hero.hasLaserBullet){
                             this.hero.laserBulletLifeCycle = 0;
-                            this.hero.laserBullet = 1;
                             this.hero.hasLaserBullet = false;
                             this.hero.laserBullet.destroy();
                         }

@@ -204,7 +204,7 @@ var Hero = (function (_super) {
         var bulletPos = HeroConfig.BULLET_POS[this.normalBulletNum - 1];
         for(var i = 0; i < this.normalBulletNum; i++){
             var normalBullet = Laya.Pool.getItemByClass("HeroBullet", HeroBullet);
-            normalBullet.init({'x':this.x + bulletPos[i], 'y':this.y - this.hitRadius -10, 'atk':this.atk, 'vx':0, 'vy':-7});
+            normalBullet.init({'x':this.x + bulletPos[i], 'y':this.y - this.hitRadius -10, 'atk':this.atk, 'vx':0, 'vy':-15});
             ObjectHolder.heroBulletBox.addChild(normalBullet);
         }
 

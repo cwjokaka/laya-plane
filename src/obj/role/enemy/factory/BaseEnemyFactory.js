@@ -29,7 +29,7 @@ var BaseEnemyFactory = (function () {
             arr.push(largeEnemy);
         }
         //生成斜角小飞机
-        if(Laya.timer.currFrame % (500) === 0){
+        if(Laya.timer.currFrame % (550) === 0){
             for(var i=0; i < 3; i++){
                 var bevelSmallEnemy = Laya.Pool.getItemByClass(BevelSmallEnemy.prototype.className, BevelSmallEnemy);
                 var hero = ObjectHolder.hero;

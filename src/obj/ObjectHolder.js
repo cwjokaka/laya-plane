@@ -11,6 +11,7 @@ var ObjectHolder = (function () {
         this.heroBoomBox = new Laya.Sprite();
         this.enemyBulletBox = new Laya.Sprite();
         this.enemyFactory = new BaseEnemyFactory();
+        this.effectBox = new Laya.Sprite();
         this.itemBox = new Laya.Sprite();
         this.hero = new Hero();
         this.playUI = new PlayUI({'maxHeroHp': this.hero.maxHp});
@@ -29,6 +30,8 @@ var ObjectHolder = (function () {
         this.heroBulletBox = new Laya.Sprite();
         this.itemBox.destroy();
         this.itemBox = new Laya.Sprite();
+        this.effectBox.destroy();
+        this.effectBox = new Laya.Sprite();
         this.hero.destroy();
         this.hero = new Hero();
         this.playUI.destroy();

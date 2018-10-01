@@ -15,6 +15,7 @@ var PlayScene = (function (_super) {
         this.heroBoomBox = ObjectHolder.heroBoomBox;
         this.itemBox = ObjectHolder.itemBox;
         this.hero = ObjectHolder.hero;
+        this.effectBox = ObjectHolder.effectBox;
         this.test = true;
         //创建UI界面
         this.playUI = ObjectHolder.playUI;
@@ -37,6 +38,7 @@ var PlayScene = (function (_super) {
         this.addChild(this.itemBox);
         this.addChild(this.hero);
         this.addChild(this.enemyBulletBox);
+        this.addChild(this.effectBox);
         this.addChild(this.playUI);
         Laya.timer.frameLoop(1, this, this.onLoop);
         GameHolder.gameData.appearBossIndex = 0;
@@ -151,8 +153,9 @@ var PlayScene = (function (_super) {
 
                 // 敌机移动&攻击
                 for(var i = 0; i < this.enemyBox.numChildren; i++){
-                    this.enemyBox.getChildAt(i).attack();
-                    this.enemyBox.getChildAt(i).moveAndRecover();
+                    var enemy = this.enemyBox.getChildAt(i);
+                    enemy.attack();
+                    enemy.moveAndRecover();
                 }
 
                 // 物品移动

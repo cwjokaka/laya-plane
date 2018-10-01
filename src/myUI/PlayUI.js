@@ -2,7 +2,7 @@ var PlayUI = (function(_super){
     function PlayUI(opts){
         PlayUI.super(this);
         //炸弹事件
-        this.boomLabel.on(Laya.Event.CLICK, this, this.onBoom);
+        this.boomBtn.on(Laya.Event.CLICK, this, this.onBoom);
         this.heroHpBar = new Bar();
         this.heroHpBar.init({width: 100, borderWidth: 4, maxValue: opts.maxHeroHp});
         this.heroHpPos.addChild(this.heroHpBar);
@@ -61,7 +61,7 @@ var PlayUI = (function(_super){
     }
     //显示积分
     _proto.showBoom = function(value){
-        this.boomLabel.text = "炸弹：" + value;
+        this.boomLabel.text = "x" + value;
     }
     return PlayUI;
 })(ui.GameInfoUI);

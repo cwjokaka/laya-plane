@@ -29,9 +29,16 @@ var EnemyBulletGroup = (function (_super) {
             this.getChildAt(i).moveAndRecover();
         }
         if (this.numChildren === 0) {
-            this.removeSelf();
+            this.recover();
             // Laya.Pool.recover(this.className, this);
         }
+    }
+
+    /**
+     * 子弹回收
+     */
+    _proto.recover = function() {
+        this.removeSelf();
     }
 
     /**

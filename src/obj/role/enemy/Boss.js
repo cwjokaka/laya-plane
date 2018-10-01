@@ -36,6 +36,14 @@ var Boss = (function (_super) {
     // 默认最大生命值
     _proto.maxHp = 150 * (GameHolder.gameData.appearBossIndex + 1) * 2;
 
+     // 物品掉落区间
+    _proto.itemDropZone = [
+        {from: 0, to: 0.01, item: ItemBoom},
+        {from: 0.03, to: 0.10, item: ItemBullet},
+        {from: 0.10, to: 0.23, item: ItemHp},
+        {from: 0.23, to: 1, item: ItemUpgrade}
+    ];
+
     // 攻击方式
     _proto.attackMode = [
         [
@@ -87,11 +95,31 @@ var Boss = (function (_super) {
                 }
                 break;
             case this.stateEnum.DEATH:
-                GameHolder.playState = GameHolder.playStateEnum.NORMAL;
+                    //清空子弹
+                    for(var i = 0; i < ObjectHolder.enemyBulletBox.numChildren; i++) {
+                        ObjectHolder.enemyBulletBox.getChildAt(i).recover();
+                    }
+                    GameHolder.playState = GameHolder.playStateEnum.BOSS_ENDING;
                 //GameHolder.increaseScore(this.score);
                 break;
             default:
                 break;
+        }
+    }
+    /**
+     * 物品掉落
+     */
+    _proto.dropItem = function() {
+        for(var j=0; j < 20; j++){
+            var ran = Math.random();
+            for(var i in this.itemDropZone) {
+                if(ran >= this.itemDropZone[i].from && ran <= this.itemDropZone[i].to){
+                    var item = Laya.Pool.getItemByClass(this.itemDropZone[i].item.className, this.itemDropZone[i].item);
+                    item.init({x: 30 + Math.random()*(SysConfig.SCREEN_WIDTH - 30), y: -800 * Math.random(), vy: 3});
+                    ObjectHolder.itemBox.addChild(item);
+                    break;
+                }
+            }            
         }
     }
 
@@ -153,6 +181,8 @@ var Boss = (function (_super) {
                     this.playAction('hit');
                 } else {
                     this.state = this.stateEnum.DEATH;
+                    //掉落奖励
+                    this.dropItem();
                     this.playAction('down');
                 }
                 break;

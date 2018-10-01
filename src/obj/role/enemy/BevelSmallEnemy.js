@@ -1,18 +1,18 @@
 /*
 * name;
 */
-var SmallEnemy = (function (_super) {
-    function SmallEnemy() {
+var BevelSmallEnemy = (function (_super) {
+    function BevelSmallEnemy() {
     }
 
-    Laya.class(SmallEnemy, "SmallEnemy", _super);
+    Laya.class(BevelSmallEnemy, "BevelSmallEnemy", _super);
 
-    var _proto = SmallEnemy.prototype;
+    var _proto = BevelSmallEnemy.prototype;
 
     // 类名
-    _proto.className = 'SmallEnemy';
+    _proto.className = 'BevelSmallEnemy';
     // 动画前缀
-    _proto.aniPre = 'enemy1_';
+    _proto.aniPre = 'bevelSmallEnemy_';
     // 宽度体型修正
     _proto.widthFix = 5;
     // 高度体型修正
@@ -20,15 +20,18 @@ var SmallEnemy = (function (_super) {
 
     // 默认最大生命值
     _proto.maxHp = 2;
+   
 
     /**
      * 初始化
      */
     _proto.init = function(opts) {
+        this.enemyType =  opts.enemyType + '_';
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
-        this.vy = opts.vy || 3;
+        this.vy = opts.vy || 2.5;
+        this.vx = opts.vx || 0;
         this.score = opts.score || 5;
     }
 
@@ -62,10 +65,27 @@ var SmallEnemy = (function (_super) {
         }
     }
 
+    /**
+     * 播放动画
+     */
+    _proto.playAction = function(action){
+        this.action = action;
+        this.body.play(0, true, this.aniPre + this.enemyType +this.action);
+        //获取动画大小区域t
+        this.bound = this.body.getBounds();
+        //设置机身居中
+        this.body.pos(-this.bound.width/2, -this.bound.height/2);
+    }
+
     _proto.attack = function() {
 
     }
 
+    _proto.move = function() {
+        if (this.state != this.stateEnum.DEATH)
+            this.y += this.vy;
+            this.x += this.vx;
+    }
 
-    return SmallEnemy;
+    return BevelSmallEnemy;
 }(Enemy));

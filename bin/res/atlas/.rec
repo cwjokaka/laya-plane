@@ -37,6 +37,8 @@ D resource
 D resource/role
 R 400F0B7B background.bpng
 R 6158CE43 background.jpg
+P 2669894E bevelSmallEnemy_lu_fly.png
+P 597DF6E0 bevelSmallEnemy_ru_fly.png
 P E4078869 blank.png
 P C55A0DA5 btn_pause.png
 P 03ABFE64 bullet1.png
@@ -80,11 +82,11 @@ P 366E1DEA enemy3_hit.png
 P B6F43752 enemy3_hit1.png
 P 15AD5A4B enemy3_hit2.png
 P 39B5E31A enemy3_hit3.png
-P D7E26D83 enemy4_down1.png
-P 549C2429 enemy4_down2.png
-P 2E373DFB enemy4_down3.png
-P 2CDB0724 enemy4_down4.png
-P 612AD565 enemy4_down5.png
+P E950CBD3 enemy4_down1.png
+P 1639F763 enemy4_down2.png
+P 152A93FA enemy4_down3.png
+P 85CC48A4 enemy4_down4.png
+P 20FECA2D enemy4_down5.png
 P 3E137DEE enemy4_down6.png
 P F923FA32 enemy4_fly.png
 P 05AB04E5 enemy4_fly1.png
@@ -131,10 +133,12 @@ P 5781ED9E upgrade2.png
 P FC7AF63D wsparticle_c_electric.png
 D resource/ui
 P 1B5389F5 attriUpgradeBg.png
+P 0E957899 boomBtn.png
 P 7EA9AE66 heroBoom.png
 P 5EE3F6E9 hpLogo.png
 P 9CC5A95F hpLogo1.png
-P A383C51D myLabel.png
+P D0740F5D myLabel.png
+P 3E2BF0C3 myLabel1.png
 P CFA3C26F progressBar$bar.png
 P C2BE12DA progressBar.png
 P CF676A85 upgrade.bpng

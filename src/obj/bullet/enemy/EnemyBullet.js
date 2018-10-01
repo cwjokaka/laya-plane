@@ -51,10 +51,17 @@ var EnemyBullet = (function (_super) {
         this.move();
         var pos = this.getAbsPos();
         if (pos[0] < -30 || pos[0] > SysConfig.SCREEN_WIDTH + 30 || pos[1] < -30 || pos[1] > SysConfig.SCREEN_HEIGHT + 30) {
-            this.removeSelf();
-            // 回收对象
-            Laya.Pool.recover(this.className, this);
+            this.recover();
         }
+    }
+
+    /**
+     * 子弹回收
+     */
+    _proto.recover = function() {
+        this.removeSelf();
+        // 回收对象
+        Laya.Pool.recover(this.className, this);
     }
 
     /**

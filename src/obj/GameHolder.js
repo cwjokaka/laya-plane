@@ -12,14 +12,15 @@ var GameHolder = (function () {
     };
 
     // 游戏状态
-    GameHolder.appearBossScores = [20, 4000, 8000, 15000];
+    GameHolder.appearBossScores = [100, 2000, 4000, 80000, 15000];
 
     // 游戏进行中的状态
     GameHolder.playStateEnum = {
         NORMAL: 0,
         SHOW_BOSS: 1,
         BOSSING: 2,
-        BONUS: 3
+        BOSS_ENDING : 3,
+        BONUS: 4
     };
 
     GameHolder.ratio = {

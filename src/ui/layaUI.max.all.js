@@ -25,10 +25,11 @@ var DeadPageUI=(function(_super){
 var GameInfoUI=(function(_super){
 		function GameInfoUI(){
 			
-		    this.scoreLabel=null;
-		    this.boomLabel=null;
-		    this.upgradesphereLabel=null;
 		    this.heroHpPos=null;
+		    this.boomBtn=null;
+		    this.boomLabel=null;
+		    this.scoreLabel=null;
+		    this.upgradesphereLabel=null;
 
 			GameInfoUI.__super.call(this);
 		}
@@ -36,13 +37,14 @@ var GameInfoUI=(function(_super){
 		CLASS$(GameInfoUI,'ui.GameInfoUI',_super);
 		var __proto__=GameInfoUI.prototype;
 		__proto__.createChildren=function(){
-		    
+		    			View.regComponent("Text",laya.display.Text);
+
 			laya.ui.Component.prototype.createChildren.call(this);
 			this.createView(GameInfoUI.uiView);
 
 		}
 
-		GameInfoUI.uiView={"type":"View","props":{"width":480,"height":825},"child":[{"type":"Image","props":{"y":12,"x":4,"width":120,"skin":"resource/ui/myLabel.png","rotation":1,"height":34},"child":[{"type":"Label","props":{"y":-2,"x":6,"wordWrap":true,"width":100,"var":"scoreLabel","valign":"middle","text":"2555555","height":32,"fontSize":20,"color":"#120707"}}]},{"type":"Label","props":{"y":793,"x":7,"width":59,"var":"boomLabel","valign":"middle","text":"炸弹","height":36,"fontSize":20,"color":"#1a22e8","borderColor":"#0c4ae8"}},{"type":"Image","props":{"y":50,"x":5,"width":120,"skin":"resource/ui/myLabel.png","rotation":1,"height":34},"child":[{"type":"Label","props":{"y":0,"x":35,"wordWrap":true,"width":70,"var":"upgradesphereLabel","valign":"middle","text":"255","height":32,"fontSize":20,"color":"#120707"}},{"type":"Image","props":{"y":1,"x":0,"width":33,"skin":"resource/role/upgrade.png","height":32}}]},{"type":"Image","props":{"y":29,"x":338,"width":102,"skin":"resource/ui/myLabel.png","height":10},"child":[{"type":"Sprite","props":{"y":-1,"x":-1,"width":142,"var":"heroHpPos","height":34}},{"type":"Image","props":{"y":-13,"x":-34,"width":34,"skin":"resource/role/hp_item.png","height":36}}]}]};
+		GameInfoUI.uiView={"type":"View","props":{"width":480,"height":825},"child":[{"type":"Image","props":{"y":29,"x":338,"width":102,"skin":"resource/ui/myLabel.png","height":10},"child":[{"type":"Sprite","props":{"y":-1,"x":-1,"width":142,"var":"heroHpPos","height":34}},{"type":"Image","props":{"y":-13,"x":-34,"width":34,"skin":"resource/role/hp_item.png","height":36}}]},{"type":"Image","props":{"y":775,"x":6,"width":50,"skin":"resource/ui/myLabel.png","height":50},"child":[{"type":"Image","props":{"y":1,"x":4,"width":40,"var":"boomBtn","skin":"resource/ui/boomBtn.png","height":30}},{"type":"Text","props":{"y":43,"x":16,"width":30,"var":"boomLabel","text":"x 5","pivotY":12,"height":20,"color":"#f4eeee"}}]},{"type":"Image","props":{"y":6,"x":0,"width":120,"skin":"resource/ui/myLabel1.png","height":34},"child":[{"type":"Label","props":{"y":1,"x":4,"wordWrap":true,"width":114,"var":"scoreLabel","valign":"middle","text":"2555555","height":32,"fontSize":20,"color":"#120707"}}]},{"type":"Image","props":{"y":44,"x":0,"width":120,"skin":"resource/ui/myLabel1.png","height":34},"child":[{"type":"Label","props":{"y":3,"x":34,"wordWrap":true,"width":80,"var":"upgradesphereLabel","valign":"middle","text":"255","height":32,"fontSize":20,"color":"#120707"}},{"type":"Image","props":{"y":3,"x":-1,"width":33,"skin":"resource/role/upgrade.png","height":32}}]}]};
 		return GameInfoUI;
 	})(View);
 var HomePageUI=(function(_super){

@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":10,
-    "selecteID":13,
+    "selectedBox":1,
+    "selecteID":17,
     "props":{"width":480,"sceneColor":"#000000","height":825},
     "nodeParent":-1,
     "label":"View",
@@ -12,85 +12,6 @@
     "hasChild":true,
     "compId":1,
     "child":[
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":12,"x":4,"width":120,"skin":"resource/ui/myLabel.png","rotation":1,"height":34},
-            "nodeParent":1,
-            "label":"Image",
-            "isOpen":false,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":3,
-            "child":[
-                {
-                    "type":"Label",
-                    "props":{"y":-2,"x":6,"wordWrap":true,"width":100,"var":"scoreLabel","valign":"middle","text":"2555555","height":32,"fontSize":20,"color":"#120707"},
-                    "nodeParent":3,
-                    "label":"Label(scoreLabel)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":4,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                }]
-        },
-        {
-            "x":15,
-            "type":"Label",
-            "props":{"y":793,"x":7,"width":59,"var":"boomLabel","valign":"middle","text":"炸弹","height":36,"fontSize":20,"color":"#1a22e8","borderColor":"#0c4ae8"},
-            "nodeParent":1,
-            "label":"Label(boomLabel)",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":5,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":50,"x":5,"width":120,"skin":"resource/ui/myLabel.png","rotation":1,"height":34},
-            "nodeParent":1,
-            "label":"Image",
-            "isOpen":true,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":6,
-            "child":[
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":0,"x":35,"wordWrap":true,"width":70,"var":"upgradesphereLabel","valign":"middle","text":"255","height":32,"fontSize":20,"color":"#120707"},
-                    "nodeParent":6,
-                    "label":"Label(upgradesphereLabel)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":7,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":1,"x":0,"width":33,"skin":"resource/role/upgrade.png","height":32},
-                    "nodeParent":6,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":8,
-                    "child":[
-                        ]
-                }]
-        },
         {
             "x":15,
             "type":"Image",
@@ -126,6 +47,112 @@
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":13,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":775,"x":6,"width":50,"skin":"resource/ui/myLabel.png","height":50},
+            "nodeParent":1,
+            "label":"Image",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":14,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":1,"x":4,"width":40,"var":"boomBtn","skin":"resource/ui/boomBtn.png","height":30},
+                    "nodeParent":14,
+                    "label":"Image(boomBtn)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":15,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":43,"x":16,"width":30,"var":"boomLabel","text":"x 5","pivotY":12,"height":20,"color":"#f4eeee"},
+                    "nodeParent":14,
+                    "label":"Text(boomLabel)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":16,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":6,"x":0,"width":120,"skin":"resource/ui/myLabel1.png","height":34},
+            "nodeParent":1,
+            "label":"Image",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":17,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":1,"x":4,"wordWrap":true,"width":114,"var":"scoreLabel","valign":"middle","text":"2555555","height":32,"fontSize":20,"color":"#120707"},
+                    "nodeParent":17,
+                    "label":"Label(scoreLabel)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":4,
+                    "child":[
+                        ],
+                    "$HIDDEN":false
+                }]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":44,"x":0,"width":120,"skin":"resource/ui/myLabel1.png","height":34},
+            "nodeParent":1,
+            "label":"Image",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":18,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":3,"x":34,"wordWrap":true,"width":80,"var":"upgradesphereLabel","valign":"middle","text":"255","height":32,"fontSize":20,"color":"#120707"},
+                    "nodeParent":18,
+                    "label":"Label(upgradesphereLabel)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":7,
+                    "child":[
+                        ],
+                    "$HIDDEN":false
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":3,"x":-1,"width":33,"skin":"resource/role/upgrade.png","height":32},
+                    "nodeParent":18,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":8,
                     "child":[
                         ]
                 }]

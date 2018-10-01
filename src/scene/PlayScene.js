@@ -116,7 +116,10 @@ var PlayScene = (function (_super) {
                         var enemy = this.enemyBox.getChildAt(j);
                         if (heroBullet.getBounds().intersects(enemy.getBounds())) {
                             enemy.hitBy(heroBullet);
-                            heroBullet.onHitTarget();
+                            if(enemy.state != enemy.stateEnum.DEATH){
+                                heroBullet.onHitTarget();
+                            }
+                            
                             if(!next) break; 
                         }
                     }
@@ -189,6 +192,15 @@ var PlayScene = (function (_super) {
                         break;
                     // 出BOSS
                     case GameHolder.playStateEnum.SHOW_BOSS:
+                        //取消激光
+                        if(this.hero.hasLaserBullet){
+                            this.hero.laserBulletLifeCycle = 0;
+                            this.hero.laserBullet = 1;
+                            this.hero.hasLaserBullet = false;
+                            this.hero.laserBullet.destroy();
+                        }
+
+
                         this.boss = Laya.Pool.getItemByClass(Boss.className, Boss);
                         this.boss.init({x: SysConfig.SCREEN_WIDTH / 2,y: -100});
                         this.enemyBox.addChild(this.boss);
@@ -197,6 +209,12 @@ var PlayScene = (function (_super) {
                     // 打BOSS中
                     case GameHolder.playStateEnum.BOSSING:
                         break;
+                     // 打死亡后操作
+                    case GameHolder.playStateEnum.BOSS_ENDING:
+                        if(ObjectHolder.itemBox.numChildren < 1){
+                            GameHolder.playState = GameHolder.playStateEnum.NORMAL;
+                        }
+                        break;                   
                     // 奖励时间
                     case GameHolder.playStateEnum.BONUS:
                         break;

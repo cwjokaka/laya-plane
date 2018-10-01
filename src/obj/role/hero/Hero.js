@@ -40,9 +40,9 @@ var Hero = (function (_super) {
     var _proto = Hero.prototype;
 
     // 宽度体型修正
-    _proto.widthFix = 9;
+    _proto.widthFix = 15;
     // 高度体型修正
-    _proto.heightFix = 5;
+    _proto.heightFix = 12;
 
     // 状态枚举
     _proto.itemEnum = {
@@ -144,9 +144,11 @@ var Hero = (function (_super) {
     _proto.impactedItem = function(item){
         switch (item.className) {
            case this.itemEnum.LASER_BULLET:
-                this.hasLaserBullet = true;
-                this.laserBulletFrame = Laya.timer.currFrame;
-                this.laserBulletLifeCycle = item.lifeCycle;
+                if(GameHolder.playState == GameHolder.playStateEnum.NORMAL){
+                    this.hasLaserBullet = true;
+                    this.laserBulletFrame = Laya.timer.currFrame;
+                    this.laserBulletLifeCycle = item.lifeCycle;
+                }
                 break;
             case this.itemEnum.DOUBLE_BULLET:
                 if(this.normalBulletNum == 1){

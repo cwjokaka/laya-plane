@@ -155,7 +155,6 @@ var LoadScene = (function (_super) {
         //缓存升级球
         Laya.Animation.createFrames(["resource/role/upgrade.png"],"upgrade_fly");
 		//缓存升级球
-<<<<<<< HEAD
         Laya.Animation.createFrames(["resource/ui/hpLogo.png"],"heroHp_fly");
 
         //缓存火花效果
@@ -169,11 +168,9 @@ var LoadScene = (function (_super) {
         ,"effect_spark");
 
 
-=======
         Laya.Animation.createFrames(["resource/role/hp_item.png"],"heroHp_fly");
         //缓存激光图标
         Laya.Animation.createFrames(["resource/role/laser_item.png"],"laser_item_fly");
->>>>>>> 10209a53c14761b1136ffdbd65b856a707e3c09b
     }
 	return LoadScene;
 

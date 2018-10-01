@@ -24,6 +24,11 @@ var Hero = (function (_super) {
         this.normalBulletNum = 1;
         this.normalBulletFrame = 0;
         this.normalBulletLifeCycle = 0;
+        //激光子弹
+        this.hasLaserBullet = false;
+        this.laserBulletFrame = 0;
+        this.laserBulletLifeCycle = 0;
+        this.laserBullet = 1;
         
         this.maxBoomNum = 10;
         this.boomNum = 10;
@@ -35,7 +40,7 @@ var Hero = (function (_super) {
     var _proto = Hero.prototype;
 
     // 宽度体型修正
-    _proto.widthFix = 35;
+    _proto.widthFix = 9;
     // 高度体型修正
     _proto.heightFix = 5;
 
@@ -45,6 +50,7 @@ var Hero = (function (_super) {
         SKILL_BOOM: 'ItemBoom',  
         UPGRATE: 'ItemUpgrade',
         HP: 'ItemHp',
+        LASER_BULLET: 'ItemLaser',
     }
 
 	_proto.init = function(){
@@ -137,6 +143,11 @@ var Hero = (function (_super) {
 
     _proto.impactedItem = function(item){
         switch (item.className) {
+           case this.itemEnum.LASER_BULLET:
+                this.hasLaserBullet = true;
+                this.laserBulletFrame = Laya.timer.currFrame;
+                this.laserBulletLifeCycle = item.lifeCycle;
+                break;
             case this.itemEnum.DOUBLE_BULLET:
                 if(this.normalBulletNum == 1){
                     this.normalBulletNum++;
@@ -166,9 +177,16 @@ var Hero = (function (_super) {
     _proto.shoot = function(){
             //获取当前时间
             var time = Laya.Browser.now();
-            //如果当前时间大于下次设计时间
-            if(Laya.timer.currFrame % (Math.floor(this.shootInterval)) === 0){
-                this.creatBullet();
+            if(this.hasLaserBullet &&  this.laserBulletFrame + this.laserBulletLifeCycle > Laya.timer.currFrame){
+                this.creatLaserBullet();
+            }else if(Laya.timer.currFrame % (Math.floor(this.shootInterval)) === 0){//如果当前时间大于下次设计时间
+                this.creatNomalBullet();
+            }
+
+            if(this.hasLaserBullet && this.laserBulletFrame + this.laserBulletLifeCycle <= Laya.timer.currFrame){
+                this.hasLaserBullet = false;
+                this.laserBullet.destroy();
+                this.laserBullet = 1
             }
 
             if(this.normalBulletNum > 1 && (this.normalBulletFrame + this.normalBulletLifeCycle < Laya.timer.currFrame)){
@@ -180,7 +198,7 @@ var Hero = (function (_super) {
 
     }
 
-    _proto.creatBullet = function(){
+    _proto.creatNomalBullet = function(){
         var bulletPos = HeroConfig.BULLET_POS[this.normalBulletNum - 1];
         for(var i = 0; i < this.normalBulletNum; i++){
             var normalBullet = Laya.Pool.getItemByClass("HeroBullet", HeroBullet);
@@ -188,6 +206,16 @@ var Hero = (function (_super) {
             ObjectHolder.heroBulletBox.addChild(normalBullet);
         }
 
+    }
+
+    _proto.creatLaserBullet = function(){
+        if(this.laserBullet != 1){
+            return;
+        }
+        var heroLaserBullet = Laya.Pool.getItemByClass("HeroLaserBullet", HeroLaserBullet);
+        heroLaserBullet.childInit(this);
+        this.laserBullet = heroLaserBullet;
+        ObjectHolder.heroBulletBox.addChild(heroLaserBullet);
     }
 
     return Hero;

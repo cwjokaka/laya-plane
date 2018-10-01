@@ -4,9 +4,10 @@
     // SysConfig.SCREEN_HEIGHT = Laya.Browser.clientHeight;
 
     Laya.init(SysConfig.SCREEN_WIDTH, SysConfig.SCREEN_HEIGHT, WebGL);
-    Laya.Stat.show(0,0);
+    //Laya.Stat.show(0,0);
     //屏幕缩放模式 始终等比显示
-    Laya.stage.scaleMode = Laya.Stage.SCALE_SHOWALL;
+    //Laya.stage.scaleMode = Laya.Stage.SCALE_SHOWALL;
+    Laya.stage.scaleMode = Laya.Stage.SCALE_EXACTFIT;
     Laya.stage.frameRate = Laya.Stage.FRAME_FAST;
 
     //水平对齐方式， 水平居中

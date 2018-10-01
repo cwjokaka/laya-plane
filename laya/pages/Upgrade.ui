@@ -1,9 +1,9 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":17,
-    "selecteID":20,
-    "props":{"width":400,"sceneColor":"#dca2f3","height":825},
+    "selectedBox":27,
+    "selecteID":27,
+    "props":{"width":480,"sceneColor":"#dca2f3","height":852},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -15,46 +15,20 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":152,"x":47,"width":303,"skin":"resource/ui/upgrade.png","height":545},
+            "props":{"y":-5,"x":1,"width":480,"skin":"resource/ui/upgrade.jpg","height":852},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":2,
+            "compId":27,
             "child":[
                 ]
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":157,"x":46,"width":37,"skin":"resource/role/upgrade.png","height":36},
-            "nodeParent":1,
-            "label":"Image",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":3,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Label",
-            "props":{"y":164,"x":79,"width":74,"var":"upgradeSphereLabel","text":"123123","styleSkin":"resource/role/label.png","height":28,"fontSize":20,"color":"#092256","bold":true,"align":"center"},
-            "nodeParent":1,
-            "label":"Label(upgradeSphereLabel)",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":4,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":305,"x":83,"width":188,"skin":"resource/ui/attriUpgradeBg.png","height":48},
+            "props":{"y":305,"x":96,"width":188,"skin":"resource/ui/attriUpgradeBg.png","height":48},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,
@@ -106,7 +80,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":306,"x":234,"width":94,"var":"hpUpgradeBtn","skin":"resource/ui/upgradeBtn.png","height":47},
+            "props":{"y":306,"x":247,"width":94,"var":"hpUpgradeBtn","skin":"resource/ui/upgradeBtn.png","height":47},
             "nodeParent":1,
             "label":"Image(hpUpgradeBtn)",
             "isOpen":true,
@@ -132,7 +106,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":313,"x":244,"width":29,"skin":"resource/role/upgrade.png","height":27},
+            "props":{"y":313,"x":257,"width":29,"skin":"resource/role/upgrade.png","height":27},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -145,7 +119,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":370,"x":84,"width":188,"skin":"resource/ui/attriUpgradeBg.png","height":48},
+            "props":{"y":370,"x":97,"width":188,"skin":"resource/ui/attriUpgradeBg.png","height":48},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,
@@ -184,7 +158,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":371,"x":235,"width":94,"var":"shootSpeedBtn","skin":"resource/ui/upgradeBtn.png","height":47},
+            "props":{"y":371,"x":248,"width":94,"var":"shootSpeedBtn","skin":"resource/ui/upgradeBtn.png","height":47},
             "nodeParent":1,
             "label":"Image(shootSpeedBtn)",
             "isOpen":true,
@@ -210,7 +184,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":378,"x":245,"width":29,"skin":"resource/role/upgrade.png","height":27},
+            "props":{"y":378,"x":258,"width":29,"skin":"resource/role/upgrade.png","height":27},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -223,7 +197,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":437,"x":83,"width":188,"skin":"resource/ui/attriUpgradeBg.png","height":48},
+            "props":{"y":437,"x":96,"width":188,"skin":"resource/ui/attriUpgradeBg.png","height":48},
             "nodeParent":1,
             "label":"Image",
             "isOpen":true,
@@ -262,7 +236,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":438,"x":234,"width":94,"var":"attUpgradeBtn","skin":"resource/ui/upgradeBtn.png","height":47},
+            "props":{"y":438,"x":247,"width":94,"var":"attUpgradeBtn","skin":"resource/ui/upgradeBtn.png","height":47},
             "nodeParent":1,
             "label":"Image(attUpgradeBtn)",
             "isOpen":true,
@@ -288,7 +262,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":445,"x":244,"width":29,"skin":"resource/role/upgrade.png","height":27},
+            "props":{"y":445,"x":256,"width":29,"skin":"resource/role/upgrade.png","height":27},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -297,6 +271,43 @@
             "compId":18,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":104,"x":143,"width":157,"skin":"resource/ui/myLabel.png","height":62},
+            "nodeParent":1,
+            "label":"Image",
+            "isOpen":null,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":28,
+            "child":[
+                {
+                    "type":"Image",
+                    "props":{"y":11,"x":32,"width":37,"skin":"resource/role/upgrade.png","height":36},
+                    "nodeParent":28,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":3,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Label",
+                    "props":{"y":17,"x":65,"width":74,"var":"upgradeSphereLabel","text":"123123","styleSkin":"resource/role/label.png","height":28,"fontSize":20,"color":"#092256","bold":true,"align":"center"},
+                    "nodeParent":28,
+                    "label":"Label(upgradeSphereLabel)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":4,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {

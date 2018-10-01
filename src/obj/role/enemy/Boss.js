@@ -34,7 +34,7 @@ var Boss = (function (_super) {
     }
 
     // 默认最大生命值
-    _proto.maxHp = 120 * (GameHolder.gameData.appearBossIndex + 1) * 2;
+    _proto.maxHp = 150 * (GameHolder.gameData.appearBossIndex + 1) * 2;
 
      // 物品掉落区间
     _proto.itemDropZone = [

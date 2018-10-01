@@ -28,7 +28,7 @@ var SmallEnemy = (function (_super) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
-        this.vy = opts.vy || 3;
+        this.vy = opts.vy || 3.3;
         this.score = opts.score || 5;
     }
 

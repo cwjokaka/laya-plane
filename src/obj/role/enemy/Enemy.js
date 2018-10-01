@@ -25,9 +25,9 @@ var Enemy = (function (_super) {
     _proto.itemDropZone = [
         {from: 0, to: 0.03, item: ItemBoom},
         {from: 0.03, to: 0.13, item: ItemBullet},
-        {from: 0.13, to: 0.23, item: ItemHp},
-        {from: 0.23, to: 0.33, item: ItemLaser},
-        {from: 0.33, to: 1, item: ItemUpgrade}
+        {from: 0.13, to: 0.20, item: ItemHp},
+        {from: 0.20, to: 0.25, item: ItemLaser},
+        {from: 0.25, to: 1, item: ItemUpgrade}
     ];
 
     // 状态枚举

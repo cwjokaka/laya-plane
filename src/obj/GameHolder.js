@@ -12,7 +12,7 @@ var GameHolder = (function () {
     };
 
     // 游戏状态
-    GameHolder.appearBossScores = [2000, 4000, 8000, 15000];
+    GameHolder.appearBossScores = [20, 4000, 8000, 15000];
 
     // 游戏进行中的状态
     GameHolder.playStateEnum = {

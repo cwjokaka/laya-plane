@@ -40,7 +40,7 @@ var Hero = (function (_super) {
     var _proto = Hero.prototype;
 
     // 宽度体型修正
-    _proto.widthFix = 35;
+    _proto.widthFix = 9;
     // 高度体型修正
     _proto.heightFix = 5;
 
@@ -178,7 +178,6 @@ var Hero = (function (_super) {
             //获取当前时间
             var time = Laya.Browser.now();
             if(this.hasLaserBullet &&  this.laserBulletFrame + this.laserBulletLifeCycle > Laya.timer.currFrame){
-                console.log("创建激光");
                 this.creatLaserBullet();
             }else if(Laya.timer.currFrame % (Math.floor(this.shootInterval)) === 0){//如果当前时间大于下次设计时间
                 this.creatNomalBullet();

@@ -19,7 +19,7 @@ var DeadPageUI=(function(_super){
 
 		}
 
-		DeadPageUI.uiView={"type":"View","props":{"width":400,"height":825},"child":[{"type":"Image","props":{"y":404,"x":106,"width":176,"skin":"resource/ui/myLabel.png","height":50},"child":[{"type":"Label","props":{"y":0,"x":0,"width":178,"var":"endLabel","valign":"middle","text":"结束","height":49,"fontSize":30,"color":"#c81818","align":"center"}}]}]};
+		DeadPageUI.uiView={"type":"View","props":{"width":480,"height":825},"child":[{"type":"Image","props":{"y":396,"x":145,"width":176,"skin":"resource/ui/myLabel.png","height":50},"child":[{"type":"Label","props":{"y":0,"x":0,"width":178,"var":"endLabel","valign":"middle","text":"结束","height":49,"fontSize":30,"color":"#c81818","align":"center"}}]}]};
 		return DeadPageUI;
 	})(View);
 var GameInfoUI=(function(_super){

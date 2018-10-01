@@ -19,11 +19,11 @@ var HeroLaserBullet = (function(_super){
         this.body.play(0, true, "laser_bullet_fly");
         this.setBounds(this.body.getBounds());
         this.hero = hero;
-        this.x = this.hero.x - 10;
+        this.x = this.hero.x - 13;
         this.y = this.hero.y - this.hero.hitRadius - 868;        
     }
     _proto.move = function(){
-        this.x = this.hero.x - 10;
+        this.x = this.hero.x - 13;
         this.y = this.hero.y - this.hero.hitRadius - 868;  
     }
 

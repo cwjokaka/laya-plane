@@ -148,7 +148,7 @@ var LoadScene = (function (_super) {
 
         //缓存子弹动画
         Laya.Animation.createFrames(["resource/role/bullet1.png"],"bullet1_fly");                // 主角炸弹
-       // Laya.Animation.createFrames(["resource/role/enemy1_down1.png","resource/role/enemy1_down2.png"],"bullet1_down");
+        Laya.Animation.createFrames(["resource/role/enemy1_down1.png","resource/role/enemy1_down2.png"],"bullet1_down");
 
         // 敌机子弹
         Laya.Animation.createFrames(["resource/role/enemy_bullet.png"],"enemy_bullet_fly");

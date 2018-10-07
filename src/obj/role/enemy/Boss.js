@@ -34,7 +34,7 @@ var Boss = (function (_super) {
     }
 
     // 默认最大生命值
-    _proto.maxHp = 150 * (GameHolder.gameData.appearBossIndex + 1) * 2;
+    _proto.maxHp = 150;
 
      // 物品掉落区间
     _proto.itemDropZone = [
@@ -64,6 +64,10 @@ var Boss = (function (_super) {
      * 初始化
      */
     _proto.init = function(opts) {
+        this.maxHp = this.maxHp * GameHolder.gameData.appearBossIndex* 2;
+        opts.hp =  this.maxHp;
+        opts.maxHp =  this.maxHp;
+        console.log(" this.hp " +  this.maxHp);
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
@@ -72,7 +76,7 @@ var Boss = (function (_super) {
         this.dir = 1;
         this.state = this.stateEnum.SHOW;
         this.width = this.body.getBounds().width;
-        this.score = 100;
+        this.score = 1000;
         this.curForm = 0;
         this.curAttackIndex = 0;
         this.curRepeatCount = 1;
@@ -183,6 +187,7 @@ var Boss = (function (_super) {
                     this.state = this.stateEnum.DEATH;
                     //掉落奖励
                     this.dropItem();
+                    GameHolder.increaseScore(this.score);
                     this.playAction('down');
                 }
                 break;

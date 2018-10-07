@@ -70,6 +70,9 @@ var Enemy = (function (_super) {
         this.state = this.stateEnum.ALIVE;
         // 添加血条
         if(!opts.isHiddenBlood){
+            if(this.maxHp > 50){
+                console.log("maxHp" + this.maxHp);
+            }
             var width = newBound.width;
             var height = newBound.height;
             var bar = Laya.Pool.getItemByClass(Bar.prototype.className, Bar);

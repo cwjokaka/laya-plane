@@ -29,9 +29,14 @@ var Hero = (function (_super) {
         this.laserBulletFrame = 0;
         this.laserBulletLifeCycle = 0;
         this.laserBullet = 1;
-        
         this.maxBoomNum = 10;
         this.boomNum = 10;
+        
+        this.state = this.STATE.NORMAL;
+
+        // 无敌时间
+        this.invincibleTime = 0;
+
         this.init();
     }
 
@@ -51,6 +56,15 @@ var Hero = (function (_super) {
         UPGRATE: 'ItemUpgrade',
         HP: 'ItemHp',
         LASER_BULLET: 'ItemLaser',
+        INVINVIBLE: 'ItemInvincible'
+    }
+
+    // 状态枚举
+    _proto.STATE = {
+        NORMAL: 0, // 正常  
+        DEATH: 1,   // 死亡
+        INVINIBLE: 2, // 无敌
+        HIDDEN:3   // 隐身
     }
 
 	_proto.init = function(){
@@ -125,7 +139,22 @@ var Hero = (function (_super) {
      * from: 攻击源
      */
     _proto.hitAction = function(loseHp) {
-        this.editHp(-1 * loseHp);
+        switch(this.state){
+            case this.STATE.NORMAL: {
+                this.editHp(-1 * loseHp);
+                break;
+            }
+            case this.STATE.DEATH: {
+                break;
+            }
+            case this.STATE.INVINIBLE: {
+                break;
+            }
+            case this.STATE.HIDDEN: {
+                break;
+            }
+        }
+
     }
 
     _proto.editHp = function(value){
@@ -169,6 +198,12 @@ var Hero = (function (_super) {
             case this.itemEnum.HP:
                 this.editHp(item.increaseHp);
                 break;
+            case this.itemEnum.INVINVIBLE:
+                this.state = this.STATE.INVINVIBLE;
+                this.invincibleTime = item.lifeCycle;
+                this.alpha = 0.5;
+                break;
+
             default:
                 console.error('未知物品:', item.className);
 
@@ -195,6 +230,11 @@ var Hero = (function (_super) {
                 this.normalBulletNum--;
                 this.normalBulletFrame = 0;
                 this.normalBulletLifeCycle = 0;
+            }
+
+            if(--this.invincibleTime <= 0) {
+                this.state = this.STATE.NORMAL;
+                this.alpha = 1;
             }
 
 

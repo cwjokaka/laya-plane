@@ -14,7 +14,7 @@ var ItemInvincible = (function (_super) {
     // 类名
     _proto.className = 'ItemInvincible';
     // 动画前缀
-    _proto.aniPre = 'ufo1_';
+    _proto.aniPre = 'shield_';
 
     _proto.init = function(opts) {
         _super.call(this, opts);

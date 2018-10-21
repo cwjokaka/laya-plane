@@ -45,6 +45,9 @@ P 03ABFE64 bullet1.png
 P E0432FE6 bullet1b.png
 P 67A9A743 bullet2.png
 P F3A98A3A bullet2b.png
+P CE88688C effect_shine1.png
+P 6A1580FE effect_shine2.png
+P 54761C4B effect_shine3.png
 P 79DC9445 effect_spark1.png
 P B0C67E28 effect_spark2.png
 P 44A8C263 effect_spark3.png
@@ -124,6 +127,7 @@ R 4A9CC865 img_plane_enemy.png
 P 7CF51DF3 label.png
 R 741055B4 laser_bullet.png
 P 11762A81 laser_item.png
+P 2020DCA9 shield_item.png
 P D8B68072 ufo1.png
 P 266CE476 ufo2.png
 P 94F9BE92 upgrade - 副本.png

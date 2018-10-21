@@ -115,11 +115,10 @@ var PlayScene = (function (_super) {
                     for(var j = 0; j < this.enemyBox.numChildren; j++) {
                         var enemy = this.enemyBox.getChildAt(j);
                         if (heroBullet.getBounds().intersects(enemy.getBounds())) {
-                            enemy.hitBy(heroBullet);
                             if(enemy.state != enemy.stateEnum.DEATH){
                                 heroBullet.onHitTarget();
                             }
-                            
+                            enemy.hitBy(heroBullet);
                             if(!next) break; 
                         }
                     }

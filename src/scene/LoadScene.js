@@ -164,6 +164,9 @@ var LoadScene = (function (_super) {
         Laya.Animation.createFrames(["resource/role/ufo2.png"],"ufo2_fly");
         //缓存升级球
         Laya.Animation.createFrames(["resource/role/upgrade.png"],"upgrade_fly");
+        //缓存无敌盾
+        Laya.Animation.createFrames(["resource/role/shield_item.png"],"shield_fly");
+
 		//缓存升级球
         Laya.Animation.createFrames(["resource/ui/hpLogo.png"],"heroHp_fly");
 
@@ -176,6 +179,13 @@ var LoadScene = (function (_super) {
         "resource/role/effect_spark6.png"
         ]
         ,"effect_spark");
+
+        //无敌闪光效果
+        Laya.Animation.createFrames(["resource/role/effect_shine1.png",
+        "resource/role/effect_shine2.png",
+        "resource/role/effect_shine3.png"
+        ]
+        ,"effect_shine");
 
 
         Laya.Animation.createFrames(["resource/role/hp_item.png"],"heroHp_fly");

@@ -68,7 +68,7 @@ var EnemyBullet = (function (_super) {
         // this.graphics.drawRect(0, 0, 5, 5, 'black');  
         if (hero.getBounds().intersects(bound)) {
             this.impactedBy(hero);
-            hero.editHp(-this.atk);
+            hero.hitAction(-this.atk);
         }
     }
 

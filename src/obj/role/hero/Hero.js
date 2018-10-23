@@ -33,7 +33,8 @@ var Hero = (function (_super) {
         this.boomNum = 10;
         
         this.state = this.STATE.NORMAL;
-
+        this.width = 0;
+        this.height = 0;
         // 无敌时间
         this.invincibleTime = 0;
 
@@ -76,6 +77,8 @@ var Hero = (function (_super) {
         this.playAction("fly");
         var bound = this.body.getBounds();
         var newBound = bound.clone();
+        this.width = newBound.width;
+        this.height = newBound.height;
         newBound.setTo(newBound.x + this.widthFix, newBound.y + this.heightFix, newBound.width - 2 * this.widthFix, newBound.height - 2 * this.heightFix);
         this.setBounds(newBound);
 
@@ -235,10 +238,16 @@ var Hero = (function (_super) {
             if(--this.invincibleTime <= 0) {
                 this.state = this.STATE.NORMAL;
                 this.alpha = 1;
+            } else if (Laya.timer.currFrame % 3 == 0){
+                var effect = Laya.Pool.getItemByClass(EffectShine.prototype.className, EffectShine);
+                effect.init({x: this.x + (Math.random() - 0.5) * this.width, y:this.y + (Math.random() - 0.5) * this.height});
+                ObjectHolder.effectBox.addChild(effect);
             }
 
 
     }
+
+
 
     _proto.creatNomalBullet = function(){
         var bulletPos = HeroConfig.BULLET_POS[this.normalBulletNum - 1];

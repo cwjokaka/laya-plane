@@ -82,7 +82,7 @@ var EnemyBullet = (function (_super) {
         bound.setTo(pos[0], pos[1], 5, 5);
         if (hero.getBounds().intersects(bound)) {
             this.impactedBy(hero);
-            // hero.editHp(-this.atk);
+            hero.editHp(-this.atk);
         }
     }
 

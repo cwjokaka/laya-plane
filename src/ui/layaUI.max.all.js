@@ -65,7 +65,7 @@ var HomePageUI=(function(_super){
 
 		}
 
-		HomePageUI.uiView={"type":"View","props":{"width":400,"height":825},"child":[{"type":"Image","props":{"y":-2,"x":-3,"width":480,"skin":"resource/role/background.jpg","height":855}},{"type":"Image","props":{"y":223,"x":129,"width":214,"skin":"resource/ui/myLabel.png","height":71},"child":[{"type":"Label","props":{"y":15,"x":38,"width":120,"var":"startGameLabel","text":"开始游戏","height":48,"fontSize":36,"color":"#cd1b18"}}]},{"type":"Image","props":{"y":338,"x":131,"width":214,"skin":"resource/ui/myLabel.png","height":71},"child":[{"type":"Label","props":{"y":13,"x":33,"width":182,"var":"upgradeAttriLabel","text":"升级属性","height":62,"fontSize":36,"color":"#cd1b18"}}]}]};
+		HomePageUI.uiView={"type":"View","props":{"width":400,"height":825},"child":[{"type":"Image","props":{"y":-2,"x":-3,"width":480,"skin":"resource/role/background.jpg","height":855}},{"type":"Image","props":{"y":288,"x":147,"width":190,"skin":"resource/ui/zb_intro_Btn_pre1.png","height":70},"child":[{"type":"Button","props":{"y":0,"x":0,"width":195,"var":"startGameLabel","height":83}}]},{"type":"Image","props":{"y":461,"x":149,"width":190,"skin":"resource/ui/update_btn_pressed.png","height":60},"child":[{"type":"Button","props":{"y":15,"x":20,"width":192,"var":"upgradeAttriLabel","pivotY":15,"pivotX":20,"height":65}}]}]};
 		return HomePageUI;
 	})(View);
 var UpgradeUI=(function(_super){

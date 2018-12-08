@@ -5,6 +5,8 @@ var Bullet = (function (_super) {
     function Bullet(opts) {
         Bullet.super(this);
         this.className = "Bullet";
+        //标记是否可以 杀死 敌方子弹
+        this.canKillBullet = false;
     }
 
     Laya.class(Bullet, "Bullet", _super);
@@ -30,7 +32,7 @@ var Bullet = (function (_super) {
      * 子类初始化方法
      */
     _proto.childInit = function(opts){
-        this.graphics.drawRect(0, 0, 5, 5, 'red');  
+        // this.graphics.drawRect(0, 0, 5, 5, 'red');  
     }
 
     /**
@@ -50,9 +52,14 @@ var Bullet = (function (_super) {
      * 攻击到目标时触发
      */
     _proto.onHitTarget = function(target) {
+        this.playAction("down");
         this.removeSelf();
         //回收对象
         Laya.Pool.recover("HeroBullet", this);
+        var effect = Laya.Pool.getItemByClass(EffectSpark.prototype.className, EffectSpark);
+        effect.init({x: this.x, y:this.y});
+        ObjectHolder.effectBox.addChild(effect);
+
     }
 
     return Bullet;

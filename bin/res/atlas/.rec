@@ -36,7 +36,8 @@ P 2BFF7046 vslider.png
 D resource
 D resource/role
 R 400F0B7B background.bpng
-R 6158CE43 background.jpg
+R 6EA3F873 background.jpg
+R 6158CE43 background1.jpg
 P 2669894E bevelSmallEnemy_lu_fly.png
 P 597DF6E0 bevelSmallEnemy_ru_fly.png
 P E4078869 blank.png
@@ -145,8 +146,10 @@ P D0740F5D myLabel.png
 P 3E2BF0C3 myLabel1.png
 P CFA3C26F progressBar$bar.png
 P C2BE12DA progressBar.png
+P 8754502B update_btn_pressed.png
 P CF676A85 upgrade.bpng
 R 6158CE43 upgrade.jpg
 P 1D5B2BEE upgradeBtn.png
 P 09E754CC upgradeBtn1.png
 P C7A25D0E wsparticle_32.png
+P 2CBF196B zb_intro_Btn_pre1.png

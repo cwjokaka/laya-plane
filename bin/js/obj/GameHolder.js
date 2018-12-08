@@ -12,14 +12,15 @@ var GameHolder = (function () {
     };
 
     // 游戏状态
-    GameHolder.appearBossScores = [30, 800, 2000, 15000];
+    GameHolder.appearBossScores = [800, 2000, 4000, 8000, 15000];
 
     // 游戏进行中的状态
     GameHolder.playStateEnum = {
         NORMAL: 0,
         SHOW_BOSS: 1,
         BOSSING: 2,
-        BONUS: 3
+        BOSS_ENDING : 3,
+        BONUS: 4
     };
 
     GameHolder.ratio = {
@@ -27,7 +28,7 @@ var GameHolder = (function () {
         atk:    [1, 1.1, 1.2]
     }
 
-   GameHolder.ememyHp = [1, 2, 5]
+   GameHolder.ememyHp = [1, 2, 3]
 
     GameHolder.gameData = {
         appearBossIndex: 0,//boss出现的下标
@@ -63,9 +64,9 @@ var GameHolder = (function () {
     GameHolder.getRatioHp = function(type){
         var  ratio = 0.15;
         if(type == 1){
-            ratio = 0.12;
+            ratio = 0.10;
         }else if(ratio == 2){
-            ratio = 0.08;
+            ratio = 0.06;
         }
         var hp = GameHolder.ememyHp[type] * GameHolder.playInfos.level * ratio;
         return hp;

@@ -27,9 +27,8 @@ var HeroBullet = (function (_super) {
         //如果是击毁动画 则隐藏对象
         if(this.action === "down"){
             //停止动画播放
+            this.action = "fly";
             this.body.stop();
-            //隐藏显示
-            this.visible = false;
         }else if(this.action === "hit"){
             this.playAction("fly");
         }

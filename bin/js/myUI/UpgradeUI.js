@@ -24,7 +24,7 @@ var UpgradeUI = (function(_super){
         this.upgradeSphereLabel.text = CustHolder.upgradeSphere;
         this.attLabel.text = CustHolder.fighters[this.currentFighter].atk;
         this.hpLabel.text = CustHolder.fighters[this.currentFighter].hp;
-        this.shootSpeedLabel.text = CustHolder.fighters[this.currentFighter].shootSpeed;
+        this.shootSpeedLabel.text =(60 / CustHolder.fighters[this.currentFighter].shootSpeed).toFixed(2);
     }
 
     _proto.goBack = function(){
@@ -59,7 +59,7 @@ var UpgradeUI = (function(_super){
             CustHolder.upgradeSphere -= 50;
             CustHolder.upgradeShootSpeed(this.currentFighter, 1);
 
-            this.shootSpeedLabel.text = CustHolder.fighters[this.currentFighter].shootSpeed;
+            this.shootSpeedLabel.text = (60 / CustHolder.fighters[this.currentFighter].shootSpeed).toFixed(2);
             this.upgradeSphereLabel.text = CustHolder.upgradeSphere;
         }
     }

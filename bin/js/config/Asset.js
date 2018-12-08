@@ -4,7 +4,7 @@
 var Asset = {
     
     IMAGE: {
-        BACKGROUND: './res/background.png',
+        BACKGROUND: './res/background.jpg',
     },
     ATLAS: {
         RESOURCE: './res/atlas/resource.atlas',

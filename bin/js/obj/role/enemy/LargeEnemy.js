@@ -19,7 +19,7 @@ var LargeEnemy = (function (_super) {
     _proto.heightFix = 20;
 
     // 物品掉落率 0~1
-    _proto.itemDropChance = 0.8;
+    _proto.itemDropChance = 0.9;
 
     // 默认最大生命值
     _proto.maxHp = 10;
@@ -33,7 +33,7 @@ var LargeEnemy = (function (_super) {
         _super.call(this, opts);
         _super.prototype.init.call(this, opts);
         opts = opts || {};
-        this.vy = opts.vy || 1;
+        this.vy = opts.vy || 1.9;
         this.score = 20;
     }
 

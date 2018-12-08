@@ -26,6 +26,7 @@ var Bar = (function (_super) {
         this.maxValue = opts.maxValue || 64;
         this.curValue = opts.curValue || this.maxValue;
         this.alpha = opts.alpha || 0.3;
+        this.fadeTime = opts.fadeTime || 0;
         // 绘制边框
         // this.graphics.drawLines(0, 0, [0, 0, this.width, 0, this.width, this.height, 0, this.height, 0, 0], this.borderColor, this.borderWidth);
         // 填充颜色(底层)
@@ -44,6 +45,11 @@ var Bar = (function (_super) {
             this.curValue = 0;
         } else {
             this.curValue = value;
+        }
+
+        if(this.fadeTime > 0) {
+            this.alpha = 0.3;
+            Laya.Tween.to(this, {alpha : 0}, this.fadeTime, Laya.Ease.linearIn, null, 1500, true);
         }
 
         this.graphics.clear();

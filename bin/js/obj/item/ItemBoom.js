@@ -4,6 +4,7 @@
 var ItemBoom = (function (_super) {
 
     function ItemBoom() {
+        this.atk = 10000;
     }
 
     Laya.class(ItemBoom, "ItemBoom", _super);

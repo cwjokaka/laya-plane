@@ -23,10 +23,12 @@ var Enemy = (function (_super) {
     _proto.itemDropChance = 0;
     // 物品掉落区间
     _proto.itemDropZone = [
-        {from: 0, to: 0.07, item: ItemBoom},
-        {from: 0.07, to: 0.15, item: ItemBullet},
-        {from: 0.15, to: 0.23, item: ItemHp},
-        {from: 0.23, to: 1, item: ItemUpgrade}
+        {from: 0, to: 0.03, item: ItemBoom},
+        {from: 0.03, to: 0.13, item: ItemBullet},
+        {from: 0.13, to: 0.20, item: ItemHp},
+        {from: 0.20, to: 0.25, item: ItemLaser},
+        {from: 0.25, to: 0.75, item: ItemUpgrade},
+        {from: 0.75, to: 1, item: ItemInvincible}
     ];
 
     // 状态枚举
@@ -68,12 +70,17 @@ var Enemy = (function (_super) {
         this.setBounds(newBound);
         this.state = this.stateEnum.ALIVE;
         // 添加血条
-        var width = newBound.width;
-        var height = newBound.height;
-        var bar = Laya.Pool.getItemByClass(Bar.prototype.className, Bar);
-        this.bar = bar;
-        bar.init({x: -(width / 2), y: -(height / 2) - 30, width: width,borderWidth: 4, maxValue: this.maxHp});
-        this.addChild(bar);
+        if(!opts.isHiddenBlood){
+            if(this.maxHp > 50){
+                console.log("maxHp" + this.maxHp);
+            }
+            var width = newBound.width;
+            var height = newBound.height;
+            var bar = Laya.Pool.getItemByClass(Bar.prototype.className, Bar);
+            this.bar = bar;
+            bar.init({x: -(width / 2), y: -(height / 2) - 30, width: width,borderWidth: 4, maxValue: this.maxHp, alpha: 0, fadeTime: 500});
+            this.addChild(bar);
+        }
     }
 
     // 默认移动方式
@@ -168,7 +175,7 @@ var Enemy = (function (_super) {
         var nowFrame = Laya.timer.currFrame;
         if (this.attackFrame <= nowFrame) {
             var bullet = Laya.Pool.getItemByClass(EnemyBullet.className, EnemyBullet);
-            bullet.init({x: this.x, y: this.y, vy: 5, vx: 0});
+            bullet.init({x: this.x - 3, y: this.y - 3, vy: 5, vx: 0});
             ObjectHolder.enemyBulletBox.addChild(bullet);
             this.attackFrame = nowFrame + this.attackInterval;
         }
@@ -184,7 +191,9 @@ var Enemy = (function (_super) {
             this.dropItem();
             this.removeSelf();
             Laya.Pool.recover(this.className, this);
-            Laya.Pool.recover(this.bar.className, this.bar);
+            if(this.bar){
+              Laya.Pool.recover(this.bar.className, this.bar);              
+            }
         } else if(this.state === this.stateEnum.HURT) {
             this.state = this.stateEnum.ALIVE;
             this.playAction("fly");

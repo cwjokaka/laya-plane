@@ -2,7 +2,7 @@ var PlayUI = (function(_super){
     function PlayUI(opts){
         PlayUI.super(this);
         //炸弹事件
-        this.boomLabel.on(Laya.Event.CLICK, this, this.onBoom);
+        this.boomBtn.on(Laya.Event.CLICK, this, this.onBoom);
         this.heroHpBar = new Bar();
         this.heroHpBar.init({width: 100, borderWidth: 4, maxValue: opts.maxHeroHp});
         this.heroHpPos.addChild(this.heroHpBar);
@@ -22,11 +22,11 @@ var PlayUI = (function(_super){
     _proto.onBoom = function(event){
         //阻止事件往下传递
         event.stopPropagation();
-        if(ObjectHolder.hero.boomNum > 0){
+        if(ObjectHolder.hero.boomNum > 0 && GameHolder.playState == GameHolder.playStateEnum.NORMAL){
             ObjectHolder.hero.boomNum--;
             var boom = new Boom();
-            boom.init({'atk': 99999, 'x': 0, 'y': 825, 'vx': 0, 'vy': -3});
-            ObjectHolder.heroBulletBox.addChild(boom);
+            boom.init({'atk': 99999, 'x': 0, 'y': 825, 'vx': 0, 'vy': -4});
+            ObjectHolder.heroBoomBox.addChild(boom);
             this.showBoom(ObjectHolder.hero.boomNum);
         }
         //Laya.stage.once(Laya.Event.CLICK, this, this.onStageClick);
@@ -61,7 +61,7 @@ var PlayUI = (function(_super){
     }
     //显示积分
     _proto.showBoom = function(value){
-        this.boomLabel.text = "炸弹：" + value;
+        this.boomLabel.text = "x" + value;
     }
     return PlayUI;
 })(ui.GameInfoUI);

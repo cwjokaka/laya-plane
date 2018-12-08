@@ -78,35 +78,85 @@ var LoadScene = (function (_super) {
 	 */
     _proto.loadAnimation = function(){
         //缓存飞机的动作
-        Laya.Animation.createFrames(["resource/role/hero_fly1.png","resource/role/hero_fly2.png"],"hero_fly");
+        Laya.Animation.createFrames(["resource/role/hero_fly.png"],"hero_fly");
         //缓存集中爆炸动作
-        Laya.Animation.createFrames(["resource/role/hero_down1.png","resource/role/hero_down2.png"
-        ,"resource/role/hero_down3.png","resource/role/hero_down4.png"],"hero_down");
+        Laya.Animation.createFrames(["resource/role/enemy1_down1.png","resource/role/enemy1_down2.png"],"hero_down");
 
         //缓存敌机1飞行动作
         Laya.Animation.createFrames(["resource/role/enemy1_fly1.png"],"enemy1_fly");
         //缓存敌机1爆炸动作
-        Laya.Animation.createFrames(["resource/role/enemy1_down1.png","resource/role/enemy1_down2.png","resource/role/enemy1_down3.png"
-        ,"resource/role/enemy1_down4.png"],"enemy1_down");
+        Laya.Animation.createFrames(["resource/role/enemy1_down1.png","resource/role/enemy1_down2.png","resource/role/enemy1_down1.png"],"enemy1_down");
+
+        //缓存斜角  左上 敌机 飞行动作
+        Laya.Animation.createFrames(["resource/role/bevelSmallEnemy_lu_fly.png"],"bevelSmallEnemy_lu_fly");
+        //缓存敌机1爆炸动作
+        Laya.Animation.createFrames(["resource/role/enemy1_down1.png","resource/role/enemy1_down2.png","resource/role/enemy1_down1.png"],"bevelSmallEnemy_lu_down");
+
+        //缓存斜角  右上 敌机 飞行动作
+        Laya.Animation.createFrames(["resource/role/bevelSmallEnemy_ru_fly.png"],"bevelSmallEnemy_ru_fly");
+        //缓存敌机1爆炸动作
+        Laya.Animation.createFrames(["resource/role/enemy1_down1.png","resource/role/enemy1_down2.png","resource/role/enemy1_down1.png"],"bevelSmallEnemy_ru_down");
+
 
         //缓存敌机2飞行动作
-        Laya.Animation.createFrames(["resource/role/enemy2_fly1.png"],"enemy2_fly");
+        Laya.Animation.createFrames(["resource/role/enemy2_fly.png"],"enemy2_fly");
         //缓存敌机2爆炸动作
-        Laya.Animation.createFrames(["resource/role/enemy2_down1.png","resource/role/enemy2_down2.png","resource/role/enemy2_down3.png"
-        ,"resource/role/enemy2_down4.png"],"enemy2_down");
+        Laya.Animation.createFrames([
+         "resource/role/explosion2.png",
+        "resource/role/explosion3.png",
+        "resource/role/explosion4.png",
+        "resource/role/explosion5.png",
+        "resource/role/explosion6.png",
+        "resource/role/explosion7.png",
+        "resource/role/explosion8.png",
+        "resource/role/explosion9.png",
+        "resource/role/explosion10.png",
+        "resource/role/explosion12.png",
+        "resource/role/explosion13.png",
+        "resource/role/explosion15.png",
+        ],"enemy2_down");
         //缓存敌机2碰撞动作
-        Laya.Animation.createFrames(["resource/role/enemy2_hit.png"],"enemy2_hit");
+        Laya.Animation.createFrames(["resource/role/enemy2_hit1.png","resource/role/enemy2_hit2.png","resource/role/enemy2_hit3.png"],"enemy2_hit");
 
         //缓存敌机3飞行动作
-        Laya.Animation.createFrames(["resource/role/enemy3_fly1.png","resource/role/enemy3_fly2.png"],"enemy3_fly");
+        Laya.Animation.createFrames(["resource/role/enemy3_fly.png"],"enemy3_fly");
         //缓存敌机3爆炸动作
-        Laya.Animation.createFrames(["resource/role/enemy3_down1.png","resource/role/enemy3_down2.png","resource/role/enemy3_down3.png"
-        ,"resource/role/enemy3_down4.png","resource/role/enemy3_down5.png","resource/role/enemy3_down6.png"],"enemy3_down");
+        Laya.Animation.createFrames([
+         "resource/role/explosion2.png",
+        "resource/role/explosion3.png",
+        "resource/role/explosion4.png",
+        "resource/role/explosion5.png",
+        "resource/role/explosion6.png",
+        "resource/role/explosion7.png",
+        "resource/role/explosion8.png",
+        "resource/role/explosion9.png",
+        "resource/role/explosion10.png",
+        "resource/role/explosion12.png",
+        "resource/role/explosion13.png",
+        "resource/role/explosion15.png",
+        ],"enemy3_down");
         //缓存敌机3碰撞动作
-        Laya.Animation.createFrames(["resource/role/enemy3_hit.png"],"enemy3_hit");
+        Laya.Animation.createFrames(["resource/role/enemy3_hit1.png","resource/role/enemy3_hit2.png","resource/role/enemy3_hit3.png"],"enemy3_hit");
+
+        //缓存敌机4飞行动作
+        Laya.Animation.createFrames(["resource/role/enemy4_fly.png"],"enemy4_fly");
+        //缓存敌机4爆炸动作
+        Laya.Animation.createFrames(["resource/role/enemy4_down1.png","resource/role/enemy4_down5.png","resource/role/enemy4_down3.png"
+        ,"resource/role/enemy4_down4.png","resource/role/enemy4_down5.png","resource/role/enemy4_down3.png","resource/role/enemy4_down2.png","resource/role/enemy4_down5.png"],"enemy4_down");
+        //缓存敌机4碰撞动作
+        Laya.Animation.createFrames(["resource/role/enemy4_fly.png"],"enemy4_hit");
 
         //缓存子弹动画
-        Laya.Animation.createFrames(["resource/role/bullet1.png"],"bullet1_fly");
+        Laya.Animation.createFrames(["resource/role/bullet1.png"],"bullet1_fly");                // 主角炸弹
+        Laya.Animation.createFrames(["resource/role/enemy1_down1.png","resource/role/enemy1_down2.png"],"bullet1_down");
+
+        // 敌机子弹
+        Laya.Animation.createFrames(["resource/role/enemy_bullet.png"],"enemy_bullet_fly");
+
+        // 主角炸弹
+        Laya.Animation.createFrames(["resource/ui/heroBoom.png"],"hero_boom_fly");
+        //缓存激光子弹
+        Laya.Animation.createFrames(["resource/role/laser_bullet.png"],"laser_bullet_fly");
 
         //缓存强化包
         Laya.Animation.createFrames(["resource/role/ufo1.png"],"ufo1_fly");
@@ -114,8 +164,33 @@ var LoadScene = (function (_super) {
         Laya.Animation.createFrames(["resource/role/ufo2.png"],"ufo2_fly");
         //缓存升级球
         Laya.Animation.createFrames(["resource/role/upgrade.png"],"upgrade_fly");
+        //缓存无敌盾
+        Laya.Animation.createFrames(["resource/role/shield_item.png"],"shield_fly");
+
 		//缓存升级球
         Laya.Animation.createFrames(["resource/ui/hpLogo.png"],"heroHp_fly");
+
+        //缓存火花效果
+        Laya.Animation.createFrames(["resource/role/effect_spark1.png",
+        "resource/role/effect_spark2.png",
+        "resource/role/effect_spark3.png",
+        "resource/role/effect_spark4.png",
+        "resource/role/effect_spark5.png",
+        "resource/role/effect_spark6.png"
+        ]
+        ,"effect_spark");
+
+        //无敌闪光效果
+        Laya.Animation.createFrames(["resource/role/effect_shine1.png",
+        "resource/role/effect_shine2.png",
+        "resource/role/effect_shine3.png"
+        ]
+        ,"effect_shine");
+
+
+        Laya.Animation.createFrames(["resource/role/hp_item.png"],"heroHp_fly");
+        //缓存激光图标
+        Laya.Animation.createFrames(["resource/role/laser_item.png"],"laser_item_fly");
     }
 	return LoadScene;
 

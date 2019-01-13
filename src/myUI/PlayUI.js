@@ -1,3 +1,6 @@
+/**
+ * 正在游戏的UI 暂停按钮 血条 积分 炸弹 等显示组件UI
+ */
 var PlayUI = (function(_super){
     function PlayUI(opts){
         PlayUI.super(this);
@@ -18,7 +21,7 @@ var PlayUI = (function(_super){
         this.showUpgradesphere(0);
     }
 
-    //暂停按钮点击事件
+    //炸弹点击事件
     _proto.onBoom = function(event){
         //阻止事件往下传递
         event.stopPropagation();

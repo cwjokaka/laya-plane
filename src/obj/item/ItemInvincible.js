@@ -1,5 +1,5 @@
 /*
-* name;
+* 无敌奖励;
 */
 var ItemInvincible = (function (_super) {
 

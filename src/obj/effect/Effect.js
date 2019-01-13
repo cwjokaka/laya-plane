@@ -1,5 +1,5 @@
 /*
-* name;
+* 效果类;
 */
 var Effect = (function (_super) {
     function Effect() {

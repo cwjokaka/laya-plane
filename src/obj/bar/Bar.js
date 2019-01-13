@@ -1,5 +1,5 @@
 /*
-* name;
+* 血条基类;
 */
 var Bar = (function (_super) {
     function Bar() {

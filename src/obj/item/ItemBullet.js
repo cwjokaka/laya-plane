@@ -1,5 +1,5 @@
 /*
-* name;
+* 双倍子弹;
 */
 var ItemBullet = (function (_super) {
 

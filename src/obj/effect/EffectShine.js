@@ -1,5 +1,5 @@
 /*
-* name;
+* 射线效果
 */
 var EffectShine = (function (_super) {
     function EffectShine() {

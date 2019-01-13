@@ -1,3 +1,6 @@
+/**
+ * 程序的初始化类，用于laya引擎的初始化，设置游戏窗口的等主体；（第一个被执行函数） 
+ */
 (function(){
     var WebGL = laya.webgl.WebGL;
     // SysConfig.SCREEN_WIDTH = Laya.Browser.clientWidth;

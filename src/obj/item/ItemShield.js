@@ -1,5 +1,5 @@
 /*
-* name;
+* 护盾;
 */
 var ItemShield = (function (_super) {
 

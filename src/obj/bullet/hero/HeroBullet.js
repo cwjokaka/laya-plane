@@ -1,5 +1,5 @@
 /*
-* name;
+* 主角普通子弹;
 */
 var HeroBullet = (function (_super) {
     function HeroBullet() {

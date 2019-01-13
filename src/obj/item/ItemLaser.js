@@ -1,5 +1,5 @@
 /*
-* 用于升级属性的道具
+* 激光道具
 */
 var ItemLaser = (function (_super) {
 

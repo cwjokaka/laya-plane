@@ -1,5 +1,5 @@
 /*
-* name;
+* 炸弹物品;
 */
 var ItemBoom = (function (_super) {
 

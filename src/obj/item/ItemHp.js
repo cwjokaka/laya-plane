@@ -1,5 +1,5 @@
 /*
-* name;
+* 生命值奖励;
 */
 var ItemHp = (function (_super) {
 

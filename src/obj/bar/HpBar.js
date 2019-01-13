@@ -1,5 +1,5 @@
 /*
-* name;
+* 血条;
 */
 var HpBar = (function (_super) {
 

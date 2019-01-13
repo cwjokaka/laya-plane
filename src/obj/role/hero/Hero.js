@@ -1,16 +1,18 @@
 /*
 * hero 基类
 */
+//多倍子弹时的  子弹位置偏移量
 var bulletPos = [[0], [-15, 15], [-30, 0, 30], [-45, -15, 15, 45]];
+
 var Hero = (function (_super) {
     function Hero() {
         Hero.super(this);
         
         var fighter = CustHolder.fighters[0];
-        this.atk = fighter.atk;
-        this.hp = fighter.hp;
-        this.maxHp = fighter.hp;
-        this.shootInterval = fighter.shootSpeed;
+        this.atk = fighter.atk; //伤害
+        this.hp = fighter.hp; //血量
+        this.maxHp = fighter.hp;//最大生命值
+        this.shootInterval = fighter.shootSpeed;//射击速度
         //初始位置
         this.x = SysConfig.SCREEN_WIDTH / 2;
         this.y = SysConfig.SCREEN_HEIGHT - 80;
@@ -173,35 +175,38 @@ var Hero = (function (_super) {
         this.editHp(-1);
     }
 
+    /**
+     * 与奖励物品 碰撞 触发
+     */
     _proto.impactedItem = function(item){
         switch (item.className) {
-           case this.itemEnum.LASER_BULLET:
+           case this.itemEnum.LASER_BULLET://激光子弹
                 if(GameHolder.playState == GameHolder.playStateEnum.NORMAL){
                     this.hasLaserBullet = true;
                     this.laserBulletFrame = Laya.timer.currFrame;
                     this.laserBulletLifeCycle = item.lifeCycle;
                 }
                 break;
-            case this.itemEnum.DOUBLE_BULLET:
+            case this.itemEnum.DOUBLE_BULLET://双倍子弹
                 if(this.normalBulletNum == 1){
                     this.normalBulletNum++;
                     this.normalBulletFrame = Laya.timer.currFrame;
                     this.normalBulletLifeCycle = item.lifeCycle;
                 }
                 break;
-            case this.itemEnum.SKILL_BOOM:
+            case this.itemEnum.SKILL_BOOM://炸弹
                 if(this.boomNum < this.maxBoomNum){
                     this.boomNum++;
                     ObjectHolder.playUI.showBoom(this.boomNum);
                 }
                 break;
-            case this.itemEnum.UPGRATE:
+            case this.itemEnum.UPGRATE://升级用的星星
                 GameHolder.increaseUpgradeSphere(8);
                 break;
-            case this.itemEnum.HP:
+            case this.itemEnum.HP://红心 补血
                 this.editHp(item.increaseHp);
                 break;
-            case this.itemEnum.INVINVIBLE:
+            case this.itemEnum.INVINVIBLE://无敌状态
                 this.state = this.STATE.INVINVIBLE;
                 this.invincibleTime = item.lifeCycle;
                 this.alpha = 0.5;
@@ -213,13 +218,15 @@ var Hero = (function (_super) {
         }
     }
 
-
+    /**
+     * 主角设计
+     */
     _proto.shoot = function(){
             //获取当前时间
             var time = Laya.Browser.now();
             if(this.hasLaserBullet &&  this.laserBulletFrame + this.laserBulletLifeCycle > Laya.timer.currFrame){
                 this.creatLaserBullet();
-            }else if(Laya.timer.currFrame % (Math.floor(this.shootInterval)) === 0){//如果当前时间大于下次设计时间
+            }else if(Laya.timer.currFrame % (Math.floor(this.shootInterval)) === 0){//如果当前时间大于下次射击时间
                 this.creatNomalBullet();
             }
 
@@ -248,7 +255,9 @@ var Hero = (function (_super) {
     }
 
 
-
+    /**
+     * 产生普通子弹
+     */
     _proto.creatNomalBullet = function(){
         var bulletPos = HeroConfig.BULLET_POS[this.normalBulletNum - 1];
         for(var i = 0; i < this.normalBulletNum; i++){
@@ -259,6 +268,9 @@ var Hero = (function (_super) {
 
     }
 
+    /**
+     * 产生激光子弹
+     */
     _proto.creatLaserBullet = function(){
         if(this.laserBullet != 1){
             return;

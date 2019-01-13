@@ -11,7 +11,7 @@ var GameHolder = (function () {
         END: 2
     };
 
-    // 游戏状态
+    // BOSS出现积分值
     GameHolder.appearBossScores = [800, 2000, 4000, 8000, 15000];
 
     // 游戏进行中的状态
@@ -40,14 +40,15 @@ var GameHolder = (function () {
 
     GameHolder.init = function(opts) {
         GameHolder.playInfos.playUI = opts.playUI;
-        GameHolder.playInfos.score = 0;
-        GameHolder.playInfos.level = 1;
-        GameHolder.playInfos.nextLevelScore = 50;
+        GameHolder.playInfos.score = 0;//积分
+        GameHolder.playInfos.level = 1;//难度等级 用户不可见
+        GameHolder.playInfos.nextLevelScore = 50;//下次难度升级的积分
         GameHolder.playInfos.upgradeSphere = 0;
         this.state = GameHolder.stateEnum.PLAY;
         this.playState = GameHolder.playStateEnum.NORMAL;
     }
 
+    //增加积分
     GameHolder.increaseScore = function(value){
         GameHolder.playInfos.score += value;
         if(GameHolder.playInfos.score > GameHolder.playInfos.nextLevelScore){

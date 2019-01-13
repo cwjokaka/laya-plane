@@ -23,12 +23,12 @@ var Enemy = (function (_super) {
     _proto.itemDropChance = 0;
     // 物品掉落区间
     _proto.itemDropZone = [
-        {from: 0, to: 0.03, item: ItemBoom},
-        {from: 0.03, to: 0.13, item: ItemBullet},
-        {from: 0.13, to: 0.20, item: ItemHp},
-        {from: 0.20, to: 0.25, item: ItemLaser},
-        {from: 0.25, to: 0.75, item: ItemUpgrade},
-        {from: 0.75, to: 1, item: ItemInvincible}
+        {from: 0, to: 0.03, item: ItemBoom}, //炸弹
+        {from: 0.03, to: 0.13, item: ItemBullet},//双倍子弹
+        {from: 0.13, to: 0.20, item: ItemHp},//血瓶
+        {from: 0.20, to: 0.25, item: ItemLaser},//激光
+        {from: 0.25, to: 0.75, item: ItemUpgrade},//升级的星星
+        {from: 0.75, to: 1, item: ItemInvincible}//无敌
     ];
 
     // 状态枚举

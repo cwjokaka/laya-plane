@@ -7,7 +7,7 @@ var CustHolder = (function () {
     CustHolder.init = function(opts) {
         //升级球
         this.upgradeSphere = 2000;
-        //拥有的战机集合（暂未实现）
+        //拥有的战机集合
         this.fighters = [
                 {'atk' : 1, 'shootSpeed' : 50, 'hp' : 10,},
             ];

@@ -1,5 +1,5 @@
 /*
-* 游戏场景
+* 游戏场景 （正在游戏时的场景）
 */
 var PlayScene = (function (_super) {
 
@@ -7,6 +7,7 @@ var PlayScene = (function (_super) {
 
     function PlayScene(_super) {
         PlayScene.super(this);
+        //初始化游戏对象
         ObjectHolder.init();
         this.background = ObjectHolder.background;
         this.enemyBox = ObjectHolder.enemyBox;

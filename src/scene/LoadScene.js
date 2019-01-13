@@ -1,5 +1,5 @@
 /*
-* 资源加载场景
+* 资源加载场景 （加载图片 音效等文件资源）
 */
 var LoadScene = (function (_super) {
 	var Stage       = Laya.Stage;

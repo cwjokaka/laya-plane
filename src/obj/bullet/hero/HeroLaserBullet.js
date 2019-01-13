@@ -1,3 +1,6 @@
+/**
+ * 主角激光子弹
+ */
 var HeroLaserBullet = (function(_super){
     function HeroLaserBullet(){
         HeroLaserBullet.super(this);
@@ -22,6 +25,7 @@ var HeroLaserBullet = (function(_super){
         this.x = this.hero.x - 13;
         this.y = this.hero.y - this.hero.hitRadius - 868;        
     }
+    //移动 跟随 主角位置
     _proto.move = function(){
         this.x = this.hero.x - 13;
         this.y = this.hero.y - this.hero.hitRadius - 868;  

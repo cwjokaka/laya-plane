@@ -1,3 +1,6 @@
+/**
+ * 主角属性升级UI的 触发函数
+ */
 var UpgradeUI = (function(_super){
     function UpgradeUI(startScence){
         UpgradeUI.super(this);

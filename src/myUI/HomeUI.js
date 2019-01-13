@@ -1,3 +1,6 @@
+/**
+ * 游戏主界面UI 触发事件定义
+ */
 var HomeUI = (function(_super){
     function HomeUI(startScence){
         HomeUI.super(this);
@@ -12,10 +15,12 @@ var HomeUI = (function(_super){
 
     var _proto = HomeUI.prototype;
 
+    //开始游戏
     _proto.startGame = function(){
         this.startScence.startGame();
     }
 
+    //跳转到升级页面
     _proto.upgradeAttri = function(){
         this.startScence.showUpgradeUI();
     }

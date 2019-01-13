@@ -1,3 +1,6 @@
+/**
+ * 主角死亡时 的UI 函数
+ */
 var DeadUI = (function(_super){
     function DeadUI(playScence){
         DeadUI.super(this);
@@ -10,6 +13,7 @@ var DeadUI = (function(_super){
 
     var _proto = DeadUI.prototype;
 
+    //结束游戏
     _proto.endGame = function(){
         CustHolder.increaseSphere(GameHolder.playInfos.upgradeSphere);
         this.playScence.removeSelf();
@@ -19,8 +23,5 @@ var DeadUI = (function(_super){
         this.destroy();
     }
 
-    _proto.upgradeAttri = function(){
-        this.startScence.showUpgradeUI();
-    }
     return DeadUI;
 })(ui.DeadPageUI);

@@ -1,5 +1,5 @@
 /*
-* name;
+* 火花效果;
 */
 var EffectSpark = (function (_super) {
     function EffectSpark() {
